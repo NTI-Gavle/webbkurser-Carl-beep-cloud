@@ -37,12 +37,88 @@ Vilket sätt fungerar inte och varför?
 */
 
 
-$fnamn = “Kalle”;
-$enamn = “Anka”;
+$fnamn = "Kalle";
+$enamn = "Anka";
 $tal = 16;
-$road = “Ankvägen”;
+$road = "Ankvägen";
 
-//echo ("$fnamn " + "$enamn " + "$tal " + "$road");
+echo ("$fnamn " . "$enamn " . "bor på " . "$tal " . "$road");
 
- echo ("$fnamn") + ("$enamn") + ("$tal") + ($road);
+
+
+echo('$fnamn' . '$enamn' . '$stal' . '$road');
+
+
+echo ( $fnamn. $enamn.$tal.$road);
+?>
+
+
+<hr>
+
+<h1>upgift 3 </h1>
+Summera de första 100 heltalen (1,2,...,100) genom att använda en
+for-loop
+while-loop
+<br><br>
+
+
+<?php
+
+
+
+$fan = 0;
+for ($i=0; $i < 100; $i++) { 
+
+	$fan += ($i + 1);
+
+ 
+
+
+}
+
+echo($fan);
+
+?>
+<br><br><br>
+<?php
+$tjohej = 0;
+$tjonej = 0;
+
+while ($tjonej <= 100) {
+
+$tjohej += $tjonej;
+$tjonej++;
+
+
+}
+
+
+	
+echo($tjohej);
+?>
+
+
+<h1>upgift 4</h1>
+
+<br><br>
+
+Skriv ut varje tiotal grader Celsius, från -20 till 40 samt motsvarande Fahrenheit värde. Kör en loop och skriv <br>
+Testa även att spara värdena i två arrayer. När loopen är klar skriver du ut arrayerna. Testa 3 sätt att skriva ut en array <br>
+Använd en egen loop <br>
+var_dump <br>
+print_r <br>
+
+
+
+<?php
+
+/*
+$Fransic = array();
+
+for ($i=-20; $i < 40; $i+ 10) { 
+	
+
+
+}
+*/
 ?>
