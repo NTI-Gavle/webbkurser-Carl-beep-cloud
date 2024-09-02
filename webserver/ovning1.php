@@ -112,13 +112,7 @@ print_r <br>
 
 <?php
 
-/*
-$Fransic = array();
-
-for ($i=-20; $i < 40; $i+ 10) { 
-	
 
 
-}
-*/
+
 ?>

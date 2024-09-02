@@ -21,3 +21,35 @@ let c = document.getElementById("c").value = a+b;
 
 
 }
+
+
+function skr()
+{
+
+let S = document.getElementById("S").value;
+
+
+const Slist = S.split(",");
+
+let a = 0;
+
+for (let index = 0; index < Slist.length; index++) {
+ let b =   parseInt(Slist[index]);
+if (isNaN(b)) {
+    continue;
+}
+   a += b;
+
+  
+} 
+
+
+console.log(a);
+
+
+document.getElementById("fan").value = a;
+
+
+
+
+}
