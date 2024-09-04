@@ -109,10 +109,60 @@ var_dump <br>
 print_r <br>
 
 
-
+<br><br><br><br>
 <?php
 
+$cel = -20;
+$fah = 0;
 
+while ($cel <= 40) {
+	echo("Celcius  är " . $cel);
+	echo("<br>");
+	$fah = (9/5 * $cel) + 32;
+	echo("Fahreinheit är " . $fah);
+	echo("<br>");
+	$cel += 10;
+
+
+}
 
 
 ?>
+
+
+
+<br><br><br>
+
+
+<h1>Upgift 5 </h1>
+<br><br>
+Skapa en array med 10 platser, lägg in med en lämplig loop talet 1 på första platsen.
+ Sen skall varje plats värde vara dubbelt så stor som föregående. Beräkna sedan på ett smart sätt medelvärdet av dessa (1,2,4,8, …)
+<br><br>
+<?php
+
+
+$talarr = array([]);
+
+ $bing = 1;
+
+echo($talarr[0]);
+
+for ($g=0; $g < 10 ; $g++) { 
+	$talarr[] = $bing;
+$bing = $bing*2;
+
+echo($talarr[$g]);
+echo("<br>");
+
+}
+
+
+
+
+
+<br><br>
+var_dump($talarr);
+<br><br>
+
+?> 
