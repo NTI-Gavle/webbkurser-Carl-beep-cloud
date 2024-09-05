@@ -141,7 +141,7 @@ Skapa en array med 10 platser, lägg in med en lämplig loop talet 1 på första
 <br><br>
 <?php
 
-
+/*
 $talarr = array([]);
 
  $bing = 1;
@@ -161,8 +161,121 @@ echo("<br>");
 
 
 
-<br><br>
+echo("<br>");
+echo("<br>");
 var_dump($talarr);
-<br><br>
+echo("<br>");
+echo("<br>");
+*/
+
+/*
+Skapa en array med 10 platser, lägg in med en lämplig loop talet 1 på första platsen.
+ Sen skall varje plats värde vara dubbelt så stor som föregående. Beräkna sedan på ett smart sätt medelvärdet av dessa (1,2,4,8, …)
+ */
+
+ $a = 1;
+$array = [];
+for ($i=0; $i < 10; $i++) { 
+
+	$array[] = $a;
+
+ $a = $a *2;
+
+
+}
+
+$summa = 0;
+for ($i=0; $i < count($array); $i++) { 
+	
+$summa = $summa + $array[$i];
+
+
+
+
+}
+
+
+echo("medelvärdet är " . $summa/count($array));
 
 ?> 
+
+<br><br><br>
+
+<h1>upgift 6</h1>
+<br><br>
+
+<?php
+
+
+/*Skriv ut alla primtal som finns upp till bland de 99 första heltalen (2,3, …,) Skriv även ut hur många primtal det är.*/
+
+
+for ($i=1; $i < 100; $i++) { 
+
+$isPriem=true;
+
+	for ($j=2; $j < $i; $j++) {
+		
+		if ($i % $j == 0) {
+			
+			
+			$isPriem = false;
+			break;
+			
+		}
+		
+	}
+
+
+if ($isPriem ) {
+	
+	echo"$i  <br> ";
+}
+
+}
+
+
+
+
+?>
+
+
+<br><br>
+<h1>upgift 7</h1>
+<br><br>
+
+
+<?php
+
+echo"2  <br>";
+$u=0;
+for ($i=3; $u < 100; $i+=2) { 
+
+	$isPriem=true;
+	
+		for ($j=2; $j < sqrt($i); $j++) {
+			
+			if ($i % $j == 0) {
+				
+				
+				$isPriem = false;
+				break;
+				
+			}
+			
+		}
+	
+	
+	if ($isPriem ) {
+		$u++;
+		echo"$i  <br> ";
+	}
+	
+	}
+
+
+
+?>
+
+
+
