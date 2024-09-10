@@ -196,6 +196,35 @@ Skriv ett program som läser in 7 domarsiffror (0-10 poäng) i modelltävling, a
 Medelvärdet ska skrivas ut med 2 decimaler. (Kolla upp hur man gör detta).
 */
 
+let varde = [];
+let fu = [];
+let resultatet =0;
+let rom = 0;
+function point()
+{
+
+   
+
+    po = document.getElementById("point").value;
+    varde = po.split(".");
+
+    let fu =  varde.sort((a, b) => a - b);
+document.getElementById("point").value = "";
+if (varde.length > 7) {
+    alert("DU skrev för mycket idiot");
+}
+
+for (let index = 1; index < fu.length-1; index++) {
+   
+    resultatet += fu[index];
+}
+
+ rom = resultatet/(fu.length-2);
+let rom2 =parseInt(rom);
+
+document.getElementById("resultt").innerHTML = rom2;
 
 
-
+console.log(fu);
+console.log(rom2);
+}
