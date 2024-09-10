@@ -38,10 +38,164 @@ Lägg till knappar för start och stopp av de automatiska bild bytet.
 
 
 
+//del 1
+let manuel = ['http://om.china-embassy.gov.cn/eng/fyrth/202009/W020210603200808793816.jpg','https://www.synthpopfanatic.com/wp-content/uploads/2019/10/vnvnoire.jpg'];
+
+let bi = document.getElementById("o");
+Bnummer = 0;
+function bytan()
+{   
+bi.src = manuel[Bnummer];
+
+
+
+Bnummer++;
+
+if (Bnummer == manuel.length) {
+    Bnummer =0;
+}
+    
+}
+
+//del 2
+
 let imagess = ['https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/%E8%B5%B5%E7%AB%8B%E5%9D%9A20200603.png/220px-%E8%B5%B5%E7%AB%8B%E5%9D%9A20200603.png','http://om.china-embassy.gov.cn/eng/fyrth/202009/W020210603200808793816.jpg'];
 let imag = document.getElementById("i");
 setInterval(function () {
     let random = Math.floor(Math.random() * 2);
     imag.src = imagess[random];
 }, 1200);
+
+
+
+//del 3
+
+let bilderna = ['https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/%E8%B5%B5%E7%AB%8B%E5%9D%9A20200603.png/220px-%E8%B5%B5%E7%AB%8B%E5%9D%9A20200603.png','http://om.china-embassy.gov.cn/eng/fyrth/202009/W020210603200808793816.jpg'
+,'https://upload.wikimedia.org/wikipedia/en/0/03/Ptf2010-AlbumCover.jpg','https://i.ytimg.com/vi/OIMQegjZwRo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAt62f1OPpgASYT-4vmRTk3w6OSCA'];
+
+let bo = document.getElementById("p");
+let oj;
+ABnummer = 0;
+function start()
+{
+
+  oj =  setInterval(rull,1500);
+}
+
+
+function rull()
+{
+
+bo.src = bilderna[ABnummer];
+
+
+    ABnummer++;
+
+    if (ABnummer == bilderna.length) {
+        ABnummer =0;
+    }
+        
+
+}
+
+
+function stop()
+{
+
+    clearInterval(oj);
+}
+
+
+/*
+
+Kopiera uppgift 1. Nu vill vi vara lite mer flexibel med våra värden i arrayen. Placera ut en textruta som du skall läsa in tal ifrån.
+ Då bör du även lägga till en knapp. Du ska skriva in ett tal i rutan sedan trycka på knappen för att lägga in de talet i arrayen,
+  sedan skriva in ett tal och klicka på knappen, osv.
+Lägg till en knapp som beräknar summan av de inlästa talen och skriver ut det snyggt. (kanske i en div-tagg)
+Lägg till en knapp som skriver ut de inlästa talen snyggt.
+Lägg till en knapp som beräknar medelvärdet av de inlästa talen och skriver ut det snyggt.
+Lägg till en knapp som skriver ut de inlästa talen sorterade.
+*/
+
+
+nummer = [];
+tal =0;
+function till()
+{
+
+  let tal1 =  document.getElementById("num").value;
+
+  
+ nummer[tal] = tal1;
+
+
+ document.getElementById("num").value = "";
+
+    tal++;
+
+    
+}
+
+sum = 0;
+
+function summ()
+{
+
+    for (let index = 0; index < nummer.length; index++) {
+    let ojsan = parseInt(nummer[index]);
+        sum +=  ojsan;
+
+        
+    }
+
+document.getElementById("sum").innerHTML = "summan är : " +sum;
+}
+
+function snyg()
+{
+
+document.getElementById("snyg").innerHTML = nummer;
+
+
+}
+
+medellll= 0;
+
+function mede()
+{
+
+
+    for (let index = 0; index < nummer.length; index++) {
+        let ojsan = parseInt(nummer[index]);
+            medellll +=  ojsan;
+    
+            
+        }
+    
+        let osadada = medellll/nummer.length;
+
+    document.getElementById("medell").innerHTML = "Medelvårdet är : "+ osadada;
+
+
+}
+
+
+function sorterade()
+{
+  let fuck =  nummer.sort((a, b) => a - b);
+
+  document.getElementById("sorterade").innerHTML = fuck;
+}
+
+
+
+
+/*
+Skriv ett program som läser in 7 domarsiffror (0-10 poäng) i modelltävling, alla är givna med en decimal (exempel 7,8).
+ Beräkna och skriv ut slutpoängen, som är lika med medelvärdet av de 5 som är kvar när man har tagit bort de största och minsta värdet.
+Medelvärdet ska skrivas ut med 2 decimaler. (Kolla upp hur man gör detta).
+*/
+
+
+
 
