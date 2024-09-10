@@ -133,36 +133,101 @@ Skriv ut arrayen både före och efter du har anropat funktionen.
 t.ex [1,2,3,4,5,6] → [1,0,3,0,5,0]
 */
 
-//$arr = ("1 "."23 "."543 "."12 "."54 "."12 "."12 "."41 ");
-$arr = array(1,24,543,13,123,5,4,2,124,543,131);
 
-$string = implode(", ",$arr);
 
-echo"$string";
-$oj = 0;
-//$yeah = count($arr);
 function fem()
 {
 
-    for ($i=0; $i < 11; $i++) { 
+    $arr = [1, 2, 5, 2, 5, 8, 7];
+
+    $string = implode(", ",$arr);
+    
+    echo"$string";
+
+
+    for ($i=0; $i < 7; $i++) { 
      
-        if ($arr[$i] & 1 == 0) {
+  
+
+        if (($arr[$i] & 2) == 0) {
+    
+            $arr[$i] = 0;
         
-            $arr[$i] = $oj;
 
         }
 
-        
+       
     }
+    echo"<br>";
+    $string2 = implode(", ",$arr);
 
-  
+
+  echo"$string2";
 
 
 
 }
 
 fem();
+?>
 
+
+<br>
+<h1>upgift 6 </h1>
+<br>
+
+<?php
+
+/*
+Skapa en array med valfritt antal värden (eller bättre slumpa ut en array), anropa en funktion som beräknar medianen av talen och returnerar medianen. Skriv sedan ut medianen.
+*/
+$arr = [];
+for ($i=0; $i < 7; $i++) { 
+$rnd = rand(1,125);
+$arr[$i] = $rnd;
+
+}
+
+sex($arr);
+
+function sex($arr)
+{
+
+sort($arr);
+
+$count = count($arr);
+
+$middle = floor($count/2);
+
+if ($count % 2 == 0) {
+    $median = ($arr[$middle - 1] + $arr[$middle]) /2;
+}
+
+else
+{
+
+    $median = $arr[$middle];
+}
+
+echo($median);
+echo("<br>");
+print_r($arr);
+
+
+}
+?>
+
+<br>
+<h1>upgift 7</h1>
+<br>
+
+
+
+<?php
+/*
+Skapa en array med valfritt antal värden (eller bättre slumpa ut en array), anropa en funktion som beräknar både medelvärdet och medianen samt returnerar
+ båda och skriver sedan ut dem.
+*/
 
 
 
@@ -172,3 +237,4 @@ fem();
 
 
 ?>
+
