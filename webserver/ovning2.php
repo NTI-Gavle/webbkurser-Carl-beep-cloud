@@ -178,9 +178,9 @@ fem();
 
 <?php
 
-/*
-Skapa en array med valfritt antal värden (eller bättre slumpa ut en array), anropa en funktion som beräknar medianen av talen och returnerar medianen. Skriv sedan ut medianen.
-*/
+
+//*Skapa en array med valfritt antal värden (eller bättre slumpa ut en array), anropa en funktion som beräknar medianen av talen och returnerar medianen. Skriv sedan ut medianen.
+
 $arr = [];
 for ($i=0; $i < 7; $i++) { 
 $rnd = rand(1,125);
@@ -224,17 +224,100 @@ print_r($arr);
 
 
 <?php
-/*
-Skapa en array med valfritt antal värden (eller bättre slumpa ut en array), anropa en funktion som beräknar både medelvärdet och medianen samt returnerar
- båda och skriver sedan ut dem.
-*/
+
+//!Skapa en array med valfritt antal värden (eller bättre slumpa ut en array), anropa en funktion som beräknar både medelvärdet och medianen samt returnerar
+ //!båda och skriver sedan ut dem.
 
 
 
 
+ $arr = [];
+
+ $rod = rand(1,11);
+$sum = 0;
+ for ($i=0; $i < $rod; $i++) { 
+ $rnd = rand(1,125);
+ $arr[$i] = $rnd;
+ $sum += $arr[$i];
+ }
+
+ echo"medel värdet är "; echo(sju($sum,$rod,$arr));
+
+ function sju($sum,$rod,$arr)
+ {
+
+$medel = $sum/$rod;
 
 
+sort($arr);
 
+$count = count($arr);
+
+$middle = floor($count/2);
+
+if ($count % 2 == 0) {
+    $median = ($arr[$middle - 1] + $arr[$middle]) /2;
+}
+
+else
+{
+
+    $median = $arr[$middle];
+}
+
+return$median." medianen är  ".$medel;
+ }
+
+?>
+
+<br>
+<h1>upgift 8</h1>
+<br>
+
+<?php
+
+//!Skapa en funktion vid namn howManyPrimes() vilket ska kunna anropas med valfritt antal argument t.ex howManyPrimes(3,55,43,23,84,99,11) och returnera 
+//!hur många primtal argumenten innehåller.
+//!Tips 1! Använd dig utav func_num_args() och func_get_args() eller kolla upp array packing/unpacking (...)
+
+
+ojsan(1,5,1,6,234,12);
+
+
+function ojsan()
+{
+$ost = 0;
+$talen = 0;
+ $nummer = func_num_args();
+$arr = func_get_args();
+ 
+for ($i=0; $i < $nummer; $i++) { 
+    
+$ost = $arr[$i];
+
+if ($ost<= 1) {
+    continue;
+
+}
+
+$istrue = true;
+for ($i = 2; $i * $i <= $ost; $i++) {
+    if ($ost % $i === 0) {
+        $istrue = false;
+        break;
+    }
+    
+}
+
+if ($istrue = true) {
+    $talen++;
+}
+
+}
+
+return"antal prim tal" . $talen;
+
+}
 
 ?>
 
