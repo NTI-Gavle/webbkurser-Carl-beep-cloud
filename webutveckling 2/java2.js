@@ -191,9 +191,9 @@ function sorterade()
 
 
 /*
-Skriv ett program som läser in 7 domarsiffror (0-10 poäng) i modelltävling, alla är givna med en decimal (exempel 7,8).
- Beräkna och skriv ut slutpoängen, som är lika med medelvärdet av de 5 som är kvar när man har tagit bort de största och minsta värdet.
-Medelvärdet ska skrivas ut med 2 decimaler. (Kolla upp hur man gör detta).
+? Skriv ett program som läser in 7 domarsiffror (0-10 poäng) i modelltävling, alla är givna med en decimal (exempel 7,8).
+ ? Beräkna och skriv ut slutpoängen, som är lika med medelvärdet av de 5 som är kvar när man har tagit bort de största och minsta värdet.
+? Medelvärdet ska skrivas ut med 2 decimaler. (Kolla upp hur man gör detta).
 */
 
 let varde = [];
@@ -214,19 +214,147 @@ if (varde.length > 7) {
     alert("DU skrev för mycket idiot");
 }
 
+
 for (let index = 1; index < fu.length-1; index++) {
-   
-    resultatet += fu[index];
+
+   let ojoj = parseInt( fu[index]);
+    resultatet += ojoj;
 }
+console.log(resultatet);
 
  rom = resultatet/(fu.length-2);
 let rom2 =parseInt(rom);
 
 //parseInt(rom2);
 
-document.getElementById("resultt").innerHTML = rom2;
+
+document.getElementById("resultt").innerHTML = rom2.toFixed(2);
 
 
-console.log(fu);
-console.log(rom2);
+console.log(rom2.toFixed(2));
 }
+
+
+
+
+
+//? Skapa en 2-dimensionell array, 4x4, slumpa ut heltal från 1 till och med 50 på varje plats. 
+//? Summera de 4 raderna för sig och de 4 kolumnerna (dvs 8 tal) skriv ut på något snyggt och välstrukturerat sätt.
+
+// Todo var för ska man skriva TODO för att få det orange
+
+
+let ost=0;
+let mus = [];
+let dunder =0;
+let yeah = [
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0]
+];
+
+function DA()
+{
+
+for (let index = 0; index < 4; index++) {
+ 
+
+
+    for (let j = 0; j < 4; j++) {
+      
+        yeah[index][j] = getRandomInt(1,51);
+        ost+= yeah[index][j];
+    }
+    mus[index] = ost;
+    
+}
+
+for (let index = 0; index < mus.length; index++) {
+   
+   console.log("Summan på  array nummer " + index + " är " + mus[index] );
+   dunder += mus[index]; 
+}
+
+console.log("summan på alla 4 kolumnerna är " + dunder);
+
+for (let index = 0; index < 4; index++) {
+   
+    console.log("Kolumn " + (index+1) + "  " + yeah[index]);
+    
+}
+
+
+}
+
+//* använder den här funktionen i upgift 6 också!!!!
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;   
+  
+  }
+
+
+
+// ? Spara de 100 första primtalen i en array och skriv sedan ut de snyggt. Du ska inte lägga in talen själv utan använd flera funktioner.
+
+
+
+let arr = [100];
+let ostt =0;
+let jonas =0;
+function prim()
+{
+
+for (let index = 0; index < 100; index++) {
+    
+    ostt = getRandomInt(1,1500);
+
+     
+    while (arr[index] != ostt) {
+        
+    
+    if (isPrime(ostt))
+    {
+ 
+        arr[index] = ostt;
+    }
+else
+{
+
+    ostt = getRandomInt(1,1500);
+
+
+    isPrime(ostt);
+   
+}
+    }
+
+
+}
+
+console.log(arr);
+    document.getElementById("primisar").innerHTML = " Här är 100 primtal mellan 1 och 1500 "+ arr;
+
+    
+}
+
+
+
+//! använder functionen i uppgift 6 stal den 100% från gemeni
+
+function isPrime(ostt) {
+    if (ostt <= 1) {
+      return false;
+    }
+  
+    for (let i = 2; i <= Math.sqrt(ostt); i++) {
+      if (ostt % i === 0) {
+        return false;
+      }
+    }
+  
+    return true;   
+  
+  }
