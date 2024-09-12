@@ -222,6 +222,8 @@ for (let index = 1; index < fu.length-1; index++) {
  rom = resultatet/(fu.length-2);
 let rom2 =parseInt(rom);
 
+//parseInt(rom2);
+
 document.getElementById("resultt").innerHTML = rom2;
 
 
