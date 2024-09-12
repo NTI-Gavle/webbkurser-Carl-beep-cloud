@@ -281,43 +281,102 @@ return$median." medianen är  ".$medel;
 //!Tips 1! Använd dig utav func_num_args() och func_get_args() eller kolla upp array packing/unpacking (...)
 
 
-ojsan(1,5,1,6,234,12);
-
+echo(" fan vad det är kul med glass och " .ojsan(11,61,12,61,12,1));
+$ost;
 
 function ojsan()
 {
-$ost = 0;
-$talen = 0;
+  
+    $talet =0; 
+//! gör att det läser av antalet olika nummer och lägger in det i en array.
  $nummer = func_num_args();
 $arr = func_get_args();
  
+
 for ($i=0; $i < $nummer; $i++) { 
     
+    //* Tanken gör att $ost får samma värde som $arr[$i] på platsen i arrayen.
 $ost = $arr[$i];
 
 if ($ost<= 1) {
     continue;
-
 }
 
+//! räknar ut ifall det är ett primtal
 $istrue = true;
-for ($i = 2; $i * $i <= $ost; $i++) {
+for ($i = 2; $i  < $ost; $i++) {
     if ($ost % $i === 0) {
         $istrue = false;
-        break;
-    }
-    
+         break;
+    } 
 }
 
 if ($istrue = true) {
-    $talen++;
+    $talet++;
+    //* ifall det är ett primtal lägg til 1 på värdet $talet.
+    
+   }
 }
 
-}
-
-return"antal prim tal" . $talen;
+return"antal prim tal är " . $talet;
 
 }
 
 ?>
 
+
+<br>
+<h1>upgift 8 2</h1>
+<br>
+
+
+
+<?php
+
+
+echo(" fan vad det är kul med glass och " .ojsann(11,61,12,61,61,1));
+$ost;
+ 
+function ojsann(){
+  
+    $talet =0; 
+//! gör att det läser av antalet olika nummer och lägger in det i en array.
+ $nummer = func_num_args();
+$arr = func_get_args();
+ 
+
+for ($i=0; $i < $nummer; $i++) { 
+
+$ost = $arr[$i];
+
+
+if (Isprime($ost)) {
+   $talet++;
+}
+}
+
+return"ANtal primtal är " . $talet;
+
+}
+
+
+
+function IsPrime($ost)
+{
+
+    if ($ost < 2) {
+        return false;
+    }
+    for ($i = 2; $i <= sqrt($ost); $i++) {
+        if ($ost % $i == 0) {
+            return false;
+        }
+    }
+    return true;
+    
+}
+
+
+
+
+?>
