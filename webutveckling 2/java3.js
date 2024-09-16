@@ -44,6 +44,77 @@ let Enamn = document.getElementById("Enamn").value;
 
 let Epost = document.getElementById("Epost").value;
 
+//! förnamn
+ let SFnamn =Fnamn.toLowerCase();
 
+ let Förnamn = SFnamn.charAt(0).toUpperCase() + SFnamn.slice(1);
+
+ document.getElementById("21").innerHTML = Förnamn;
+
+//! efternamn
+ let SEnamn =Enamn.toLowerCase();
+
+ let efternamn = SEnamn.charAt(0).toUpperCase() + SEnamn.slice(1);
+
+ document.getElementById("22").innerHTML = efternamn;
+
+
+
+
+if (Epost.includes('@')) {
+    document.getElementById("23").innerHTML = Epost;
+}
+
+else   {
+    document.getElementById("23").innerHTML = "du glömmde @ ";
+}
 
 }
+
+
+
+
+
+//? Skapa två textrutor. En för användarnamn och en ruta för lösenord.
+//? Användarnamnet måste innehålla delsträngen “nti” någonstans.
+//? Lösenordet måste vara minst 6 tecken långt och innehålla minst en av följande tecken: “5”, “&”, “!”
+//? När du trycker på knappen säger du antingen om allt är okej eller om det är något som är fel snyggt i en “div”-ruta 
+
+
+
+let A;
+let B;
+function log()
+{
+
+    let anv = document.getElementById("användare").value;
+
+    let pas = document.getElementById("lösenord").value;
+
+    if (anv.includes('nti')) {
+       A = " Anv rätt ";
+    }
+
+    else{
+
+    A = "Du måste ha med (nti) i användarnamnet";
+
+    }
+
+    if (pas.includes("5","&","!")) {
+        B = " P rätt ";
+    }
+
+    else{
+
+       B = "Du måste ha med (5,& eller !) för att det ska funka ";  
+    }
+    document.getElementById("res").innerHTML  = A +B ;
+    
+}
+
+
+//? Utöka kontrollen av e-postadressen från nr 2. Den skall vara minst 6 tecken lång, varav minst 4 tecken efter @-tecknet.
+//? Efter @-teckent skall även vara en punkt ( . ). Punkten får inte vara på någon av de två sista platserna.  
+
+
