@@ -27,12 +27,15 @@ document.getElementById("3").innerHTML = num3;
 } 
 
 
-
+//! upgift 3
 //? Skapa 3 textrutor för följande saker. Förnamn, efternamn och e-post. Skapa en ruta där du skriver ut allt snyggt.
 //?  Men först kontrollera så att e-postadressen innehåller ett @ om den inte gör det så skall det skrivas ett felmeddelande i div;en.
 //? När du skriver ut för och efternamn fint så ska du se till så att den första bokstaven är stor och de andra är små. Exempelvis:
 
 
+//! upgift 4 
+//? Utöka kontrollen av e-postadressen från nr 2. Den skall vara minst 6 tecken lång, varav minst 4 tecken efter @-tecknet.
+//? Efter @-teckent skall även vara en punkt ( . ). Punkten får inte vara på någon av de två sista platserna.  
 
 
 function u2()
@@ -61,18 +64,27 @@ let Epost = document.getElementById("Epost").value;
 
 
 
-if (Epost.includes('@')) {
+if ((Epost.includes('@')&& (Epost.length > 6)&& (Epost.slice('@'.length >4)) && (punkt(Epost.slice('@'.length)) ))) {
     document.getElementById("23").innerHTML = Epost;
 }
 
 else   {
-    document.getElementById("23").innerHTML = "du glömmde @ ";
+    document.getElementById("23").innerHTML = "Du måste ha med en @ och det ska vara minst 6 tecken långt det ska vara 4 tecken efter @ och innehålla en punkt efter @ men inte sista 2 bokstäverna";
 }
 
 }
 
+function punkt()
+{
 
 
+for (let index = Epost.slice('@'.length); Epost.slice('@'.length)-2; index--) {
+    
+    nu[index].includes('.');
+    return false;
+}
+return true;
+}
 
 
 //? Skapa två textrutor. En för användarnamn och en ruta för lösenord.
@@ -113,8 +125,5 @@ function log()
     
 }
 
-
-//? Utöka kontrollen av e-postadressen från nr 2. Den skall vara minst 6 tecken lång, varav minst 4 tecken efter @-tecknet.
-//? Efter @-teckent skall även vara en punkt ( . ). Punkten får inte vara på någon av de två sista platserna.  
 
 
