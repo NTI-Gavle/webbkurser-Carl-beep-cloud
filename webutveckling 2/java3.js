@@ -63,8 +63,8 @@ let Epost = document.getElementById("Epost").value;
 
 
 
-
-if ((Epost.includes('@')&& (Epost.length > 6)&& (Epost.slice('@'.length >4)) && (punkt(Epost.slice('@'.length)) ))) {
+//! enligt GPT 277 characters lång if statment och den funkar inte.!!!!!
+if ((Epost.includes('@')&& (Epost.length > 6)&& (Epost.slice('@'.length >4)) && (Epost.charAt([Epost.slice('@'.length)-Epost.slice('@'.length)-1]).includes('.')) && (Epost.charAt([Epost.slice('@'.length)-Epost.slice('@'.length)-2]).includes('.')) )) {
     document.getElementById("23").innerHTML = Epost;
 }
 
@@ -74,17 +74,8 @@ else   {
 
 }
 
-function punkt()
-{
 
 
-for (let index = Epost.slice('@'.length); Epost.slice('@'.length)-2; index--) {
-    
-    nu[index].includes('.');
-    return false;
-}
-return true;
-}
 
 
 //? Skapa två textrutor. En för användarnamn och en ruta för lösenord.
