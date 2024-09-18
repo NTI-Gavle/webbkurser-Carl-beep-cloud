@@ -38,14 +38,15 @@ document.getElementById("3").innerHTML = num3;
 //? Efter @-teckent skall även vara en punkt ( . ). Punkten får inte vara på någon av de två sista platserna.  
 
 
+let EPostParts;
 function u2()
 {
 
-let Fnamn = document.getElementById("Fnamn").value;
+    let Fnamn = document.getElementById("Fnamn").value;
 
-let Enamn = document.getElementById("Enamn").value;
-
-let Epost = document.getElementById("Epost").value;
+    let Enamn = document.getElementById("Enamn").value;
+    
+    let Epost = document.getElementById("Epost").value;
 
 //! förnamn
  let SFnamn =Fnamn.toLowerCase();
@@ -63,10 +64,12 @@ let Epost = document.getElementById("Epost").value;
 
 //!    && (Epost.charAt(Epost[Epost.slice('@').length-Epost.slice('@')-1]).includes('.'))       &&        (Epost.charAt(Epost[Epost.slice('@').length-Epost.slice('@'.length)-2]).includes('.'))  
 
-let smart = Epost.slice('@'.length);
+
+EPostParts = Epost.split("@");
+
 
 //! enligt GPT 277 characters lång if statment och den funkar inte.!!!!!
-if ((Epost.includes('@')&& (Epost.length > 6)&& ( Epost.slice('@'.length)>4))   &&   charAt(smart-1) != includes('.') && charAt(smart-2) !=   includes('.') ) {
+if ((Epost.includes('@')&& (Epost.length > 6)&& ( Epost.slice('@'.length)>4))   &&   EPostParts[1].substring(EPostParts[1].length-2).includes(".")  ) {
     document.getElementById("23").innerHTML = Epost;
 }
 else   {
