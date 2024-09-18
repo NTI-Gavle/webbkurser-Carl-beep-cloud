@@ -61,13 +61,14 @@ let Epost = document.getElementById("Epost").value;
 
  document.getElementById("22").innerHTML = efternamn;
 
+//!    && (Epost.charAt(Epost[Epost.slice('@').length-Epost.slice('@')-1]).includes('.'))       &&        (Epost.charAt(Epost[Epost.slice('@').length-Epost.slice('@'.length)-2]).includes('.'))  
 
+let smart = Epost.slice('@'.length);
 
 //! enligt GPT 277 characters lång if statment och den funkar inte.!!!!!
-if ((Epost.includes('@')&& (Epost.length > 6)&& (Epost.slice('@'.length >4)) && (Epost.charAt([Epost.slice('@'.length)-Epost.slice('@'.length)-1]).includes('.')) && (Epost.charAt([Epost.slice('@'.length)-Epost.slice('@'.length)-2]).includes('.')) )) {
+if ((Epost.includes('@')&& (Epost.length > 6)&& ( Epost.slice('@'.length)>4))   &&   charAt(smart-1) != includes('.') && charAt(smart-2) !=   includes('.') ) {
     document.getElementById("23").innerHTML = Epost;
 }
-
 else   {
     document.getElementById("23").innerHTML = "Du måste ha med en @ och det ska vara minst 6 tecken långt det ska vara 4 tecken efter @ och innehålla en punkt efter @ men inte sista 2 bokstäverna";
 }
