@@ -125,3 +125,56 @@ function log()
 
 
 
+
+//? Ändra i nr 3 så att istället för 5,& eller ! så skall lösenordet innehålla MINST EN siffra.
+
+
+
+
+
+let Ab;
+let Ba;
+function logg()
+{
+
+    let anvv = document.getElementById("an").value;
+
+    let pass = document.getElementById("lö").value;
+
+    if (anvv.includes('nti')) {
+       Ab = " Anv rätt ";
+    }
+
+    else{
+
+    Ab = "Du måste ha med (nti) i användarnamnet";
+
+    }
+
+    if (pass.includes("1","2","3","4","5","6","7","8","9","0",)) {
+        Ba = " P rätt ";
+    }
+
+    else{
+
+       Ba = "Du måste ha med minst en siffra för att det ska funka ";  
+    }
+    document.getElementById("res11").innerHTML  = Ab +Ba ;
+    
+}
+
+
+
+//? Vi skall kryptera text. Du skall ersätta alla bokstäver med tecknet som finns på samma plats i krypto-strängen.
+
+//? "abcdefghijklmnopqrstuvwxyzåäö"
+//? “Hj4%*qv/hxXAB8=)DCf#!;WrUsd63”
+
+//? Det vill säga att ett “c” ersätts med “4” och “e” med “*”
+//? Låt mellanslag, comma och punkt vara kvar som de är.
+
+//? Gör så att det är möjligt att läsa in en sträng och skriv ut den krypterade.
+//? Lägg kryptering i en funktion och lägg även till en funktion för dekryptering. 
+
+
+
