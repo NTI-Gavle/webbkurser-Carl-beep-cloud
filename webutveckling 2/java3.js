@@ -68,8 +68,11 @@ function u2()
 EPostParts = Epost.split("@");
 
 
+
+//! bra att ha:  EPostParts[1].substring(EPostParts[1].length-2).includes(".");
+
 //! enligt GPT 277 characters lång if statment och den funkar inte.!!!!!
-if ((Epost.includes('@')&& (Epost.length > 6)&& ( Epost.slice('@'.length)>4))   &&   EPostParts[1].substring(EPostParts[1].length-2).includes(".")  ) {
+if ((Epost.includes('@')&& (Epost.length > 6) && ( Epost.slice('@').length>4 ))     &&   EPostParts[1].substring(EPostParts[1].length-2).includes() != "." ) {
     document.getElementById("23").innerHTML = Epost;
 }
 else   {
