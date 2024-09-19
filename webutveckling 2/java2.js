@@ -276,10 +276,14 @@ for (let index = 0; index < mus.length; index++) {
    dunder += mus[index]; 
 }
 
+    
+
 console.log("summan på alla 4 kolumnerna är " + dunder);
 
 for (let index = 0; index < 4; index++) {
    
+  
+    
     console.log("Kolumn " + (index+1) + "  " + yeah[index]);
     
 }

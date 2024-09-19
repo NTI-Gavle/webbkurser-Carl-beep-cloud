@@ -176,5 +176,17 @@ function logg()
 //? Gör så att det är möjligt att läsa in en sträng och skriv ut den krypterade.
 //? Lägg kryptering i en funktion och lägg även till en funktion för dekryptering. 
 
+let van = document.getElementById("om").value;
+
+let vantext = "abcdefghijklmnopqrstuvwxyzåäö";
+
+function kryp()
+{
+
+for (let index = 0; index < van.length; index++) {
+  
+    
+}
 
 
+}
