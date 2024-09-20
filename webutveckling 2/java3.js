@@ -151,7 +151,7 @@ function logg()
 
     }
 
-    if (pass.includes("1","2","3","4","5","6","7","8","9","0",)) {
+    if (pass.includes("1"||"2"||"3"||"4"||"5"||"6"||"7"||"8"||"9"||"0")) {
         Ba = " P rätt ";
     }
 
@@ -176,17 +176,31 @@ function logg()
 //? Gör så att det är möjligt att läsa in en sträng och skriv ut den krypterade.
 //? Lägg kryptering i en funktion och lägg även till en funktion för dekryptering. 
 
-let van = document.getElementById("om").value;
 
-let vantext = "abcdefghijklmnopqrstuvwxyzåäö";
 
 function kryp()
 {
 
-for (let index = 0; index < van.length; index++) {
-  
-    
-}
+    let van = document.getElementById("om").value.toLowerCase();
+    let kypttext = van.split("");
 
+    let vantext = "abcdefghijklmnopqrstuvwxyzåäö";
+    
+
+    
+  let krypstring = "Hj4%*qv/hxXAB8=)DCf#!;WrUsd63";
+
+  for (let index = 0; index < van.length; index++) {
+    let pos = vantext.indexOf(van[index]);
+    kypttext[index]=krypstring[pos];
+
+    
+  }
+  kypttext=kypttext.join("");
+
+  
+  
+console.log("hjesan");
+document.getElementById("skr").innerHTML = kypttext;
 
 }
