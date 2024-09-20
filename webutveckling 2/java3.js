@@ -199,8 +199,38 @@ function kryp()
   kypttext=kypttext.join("");
 
   
-  
-console.log("hjesan");
+
+
 document.getElementById("skr").innerHTML = kypttext;
+
+}
+
+
+
+function antikryp()
+{
+
+    let van = document.getElementById("skr").innerHTML;
+    let kypttext = van.split("");
+    
+let vantext = "Hj4%*qv/hxXAB8=)DCf#!;WrUsd63";
+
+let krypstring   = "abcdefghijklmnopqrstuvwxyzåäö";
+     
+
+
+  for (let index = 0; index < van.length; index++) {
+    let pos = vantext.indexOf(van[index]);
+    kypttext[index]=krypstring[pos];
+
+    
+  }
+  kypttext=kypttext.join("");
+
+  
+
+
+document.getElementById("skr2").innerHTML = kypttext;
+
 
 }
