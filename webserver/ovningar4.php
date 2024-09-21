@@ -125,7 +125,7 @@ Klass: <input type="text" name="klass"><br>
 Name: <input type="text" name="name3"><br>
 Last Name: <input type="text" name="lname"><br>
 Klass: <input type="text" name="klass"><br>
-<multiselect name="list" id="">
+<select style="height: 150px;" name="list[]" id="" multiple>
     <option value="kaka">kaka</option>
     <option value="korv">korv</option>
     <option value="ost">ost</option>
@@ -133,15 +133,17 @@ Klass: <input type="text" name="klass"><br>
     <option value="pankaka">pankaka</option>
     <option value="sylt">sylt</option>
     <option value="vatten">vatten</option>
-</multiselect>
+</select>
 
 <select  name="kurs" id="">
 
 <option type="radio" name="oj" value="Daniel">Daniel</option>
 <option type="radio" name="oj" value="Thomas">Thomas</option>
-<option type="radio" name="oj" value="Toa">Tova</option>
+<option type="radio" name="oj" value="Tova">Tova</option>
 <option type="radio" name="oj"  value="Erik">Erik</option>
 
 </select>
 <input type="submit">
 </form>
+
+
