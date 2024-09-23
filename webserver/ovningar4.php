@@ -165,3 +165,46 @@ Klass: <input type="text" name="klass"><br>
     <input type="submit">
 </form>
 
+
+<br>
+<h1>upgift 6 riktiga </h1>
+<br>
+
+
+<?php
+
+//? Skapa en sida som innehåller ett formulär med tre textrutor och en “Beräkna” knapp.
+//? En ny sida skall anropas i action-fältet och värdena från formuläret skall användas och beräkna medelvärdet av de tre talen.
+//?  De tre talen och medelvärdet skall skrivas ut på den nya sidan.
+
+
+?>
+
+<form action="o4f/6r.php" method="post">
+
+ tal 1: <input name="ett" type="number">
+<br>
+tal 2: <input name="två" type="number">
+<br>
+tal 3: <input name="tre" type="number">
+<br>
+<input type="submit">
+</form>
+
+<br>
+<h1>upgift 7</h1>
+<br>
+
+
+<?php
+
+//? Gör allt i uppgift 6 på en och samma php-sida, dvs det behövs bara en enda fil. 
+//? Välj själv om formuläret alltid skall synas eller om det bara skall synas då svaret inte skrivs ut.
+
+
+?>
+
+<form action="o4f/7,1.php">
+    <input type="submit">
+</form>
+
