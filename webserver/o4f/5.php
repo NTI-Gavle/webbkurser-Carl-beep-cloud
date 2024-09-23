@@ -17,13 +17,15 @@ $j = $g . $h;
 
 }
 
+
+
 else{
 
  $j = "Din favorit rätt är " . $value;
 }
 
-
 ?>
+
 
 
 <h4>Hej: <?php echo $_POST["name3"] . $_POST["lname"]. " "; ?> i klass <?php echo $_POST["klass"] . " ";

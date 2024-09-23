@@ -147,3 +147,21 @@ Klass: <input type="text" name="klass"><br>
 </form>
 
 
+<br>
+<h1>upgift 6</h1>
+<br>
+<?php
+
+//? gör ifall namnet  är fransic och lösenordet är kamel123 så står det fett ballt annars står det bara fel
+
+?>
+
+
+<form action="o4f/6.php" method="post">
+  Namn:   <input name="namnet" type="text">
+    <br>
+ Lösenord:    <input name="pas" type="text">
+    <br>
+    <input type="submit">
+</form>
+
