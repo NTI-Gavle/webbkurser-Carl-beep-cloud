@@ -160,7 +160,7 @@ Klass: <input type="text" name="klass"><br>
 <form action="o4f/6.php" method="post">
   Namn:   <input name="namnet" type="text">
     <br>
- Lösenord:    <input name="pas" type="text">
+ Lösenord:    <input name="pas" type="password">
     <br>
     <input type="submit">
 </form>

@@ -1,4 +1,4 @@
-
+<h1>Upgift 7 </h1>
 <form action="7,1.php" method="post">
 
  tal 1: <input name="ett" type="number">
