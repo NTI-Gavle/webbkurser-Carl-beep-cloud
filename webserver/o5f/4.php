@@ -43,7 +43,8 @@ function slav()
 @$_SESSION["sum"] += $_SESSION["num"];
 
 
-print_r($_SESSION["tal"]);
+//! print_r($_SESSION["tal"]);
+var_dump($_SESSION["tal"]);
 echo $_SESSION["sum"]/$_SESSION["div"];
 
 unset($_SESSION["num"]);
