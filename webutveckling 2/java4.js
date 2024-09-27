@@ -55,20 +55,91 @@ document.getElementById("sum").innerHTML = sum;
 
 }
 
+let drum = 0;
 
 function rakna4() {
-    
-    let num2 = document.getElementById("nam4").value;
-    let num = document.getElementById("num4").value;
-    let num3 = document.getElementById("nom4").value;
-let sum = 0;
 
+ 
 
+    let bong = document.getElementById("nam4").value;
+    let bing = document.getElementById("num4").value;
+    let bang = document.getElementById("nom4").value;
 
-sum = num2 + num + num3;
+bong =parseInt(bong);
+bing =parseInt(bing);
+bang =parseInt(bang);
 
-console.log(sum);
+drum = bing + bong + bang;
 
+console.log(drum);
+document.getElementById("drumdum").innerHTML = drum;
 
 
 }
+
+
+let arr = [6,1,5,2,5,1,2,4,5442,12,3,4,23,546,544];
+
+function rakna5()
+{
+  console.log(arr);
+  let drum =0;
+
+for (let index = 0; index < arr.length; index++) {
+drum += arr[index];
+  
+}
+console.log(drum);
+
+}
+
+
+let D = [];
+
+
+let drum2 = 0;
+function rakna6()
+{
+
+
+document.createElement("div");
+
+
+drum2 = arr[0];
+
+
+for(let i = 1; i < arr.length; i++){
+  drum2 *= arr[i]
+    let new_div = document.createElement("div");
+    new_div.innerHTML = drum2;
+    document.body.appendChild(new_div);
+
+
+}
+
+}
+let Plats = 0;
+
+let summan =0;
+function raknaE()
+{
+
+let o = document.getElementById("oj").value;
+document.getElementById("oj").value = "";
+let oj =parseInt(o);
+D[Plats] = oj;
+dic(D[Plats]);
+Plats++;
+
+}
+
+function dic()
+{
+summan += D[Plats];
+  let new_div = document.createElement("div");
+  new_div.innerHTML = summan;
+  document.body.appendChild(new_div);
+
+
+}
+
