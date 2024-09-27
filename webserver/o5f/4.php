@@ -37,10 +37,13 @@ function slav()
     
 @$_SESSION["num"] = $_POST["numnum"];
 
+@$_SESSION["tal"][]=$_POST["numnum"];
+
 
 @$_SESSION["sum"] += $_SESSION["num"];
 
 
+print_r($_SESSION["tal"]);
 echo $_SESSION["sum"]/$_SESSION["div"];
 
 unset($_SESSION["num"]);
