@@ -121,6 +121,8 @@ for(let i = 1; i < arr.length; i++){
 let Plats = 0;
 
 let summan =0;
+
+let o =0;
 function raknaE()
 {
 
@@ -135,11 +137,231 @@ Plats++;
 
 function dic()
 {
+  o++;
 summan += D[Plats];
   let new_div = document.createElement("div");
-  new_div.innerHTML = summan;
+  new_div.innerHTML = summan +": " + o;
   document.body.appendChild(new_div);
 
+
+}
+
+
+
+// ! weeee skit i det här gör om!!!!!!!!!
+
+let jämn =[];
+let j = 0;
+
+let ojämn = [];
+let ojj =0;
+
+let jsum = 0;
+let osum =0;
+function rakna7()
+{
+
+  let nummer = document.getElementById("jam").value;
+ 
+if ((nummer %2)==0) {
+
+  jämn[j] = nummer;
+
+j++;
+
+}
+
+
+else  {
+
+  ojämn[ojj] = nummer;
+
+  ojj++;
+  
+
+}
+
+document.getElementById("jam").value = "";
+
+for (let index = 0; index < jämn.length; index++) {
+  
+ jämnt(jämn[index]);
+  
+}
+
+for (let index = 0; index < ojämn.length; index++) {
+  
+  ojämnt(ojämn[index]); 
+}
+
+
+
+}
+
+
+function jämnt(jöm)
+{
+
+ jöm = parseInt(jöm);
+jsum += jöm;  
+
+
+
+}
+
+function ojämnt(jom)
+{
+jom = parseInt(jom);
+osum += jom;
+
+
+}
+
+
+
+
+
+
+
+
+//! testar igen upgift 8 
+
+let jäm = [];
+let jsuman = 0;
+let g =0;
+
+let gäm = [];
+let gsuman = 0;
+let gg =0;
+
+function rakna7i()
+{
+
+  let tal = document.getElementById("jami").value;
+
+let ojsan = tal.split(',');
+
+
+
+for (let index = 0; index < ojsan.length; index++) {
+
+   ojsan[index] = parseInt(ojsan[index]);
+  
+if ((ojsan[index] % 2) == 0) {
+
+ui(ojsan[index]);
+
+}
+
+else{
+uo(ojsan[index]);
+
+
+}
+
+
+}
+
+jsuman = parseInt(jsuman);
+gsuman = parseInt(gsuman);
+
+if (jsuman > gsuman) {
+  document.getElementById("oga").innerHTML = "jämnt summa är " + jsuman  + ": " + jäm + "och är större än: " + gsuman + ": " + gäm;
+}
+
+else{
+
+  document.getElementById("oga").innerHTML = "udda summa är " + gsuman + ": " + gäm + " och är större än: " + jsuman + ": " + jäm; 
+}
+
+//! document.getElementById("jami").value = "";
+
+
+}
+
+
+
+function ui(o)
+{
+jsuman += o;
+jäm[g] = o;
+g++;
+
+
+
+}
+
+
+
+function uo(o)
+{
+gsuman += o;
+gäm[g] = o;
+gg++;
+
+
+
+}
+
+
+
+function lotto()
+{
+let hm = "";
+for (let index = 0; index < 7; index++) {
+
+  
+
+
+let tal =  Math.floor(Math.random() * 36);
+hm += tal + " ";
+}
+
+document.getElementById("lot").innerHTML = hm;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function lotto2()
+{
+
+  let str =[];
+let nim = 1;
+
+str[0] =  Math.floor(Math.random() * 36);
+while (str.length < 7) {
+let n = Math.floor(Math.random() * 36);
+  if (cr(n,str) == true) {
+    str[nim] = n;
+    nim++;
+  }
+
+}
+
+document.getElementById("lot2").innerHTML = str;
+}
+
+
+function cr(n,str)
+{
+  for (let index = 0; index < str.length; index++) {
+    if (str[index] == n) {
+      return false
+    }
+    
+  }
+return true;
 
 }
 
