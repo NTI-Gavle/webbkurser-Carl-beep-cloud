@@ -10,7 +10,7 @@ session_start();
 $_SESSION["ost"] = $_POST['namn']; 
 
 
-if (isset($_SESSION["ost"]) && $_SESSION["ost"] != "mat") {
+if (isset($_SESSION["ost"]) && $_SESSION["ost"] != "Fransic") {
    
      session_unset();
    header("Location: 3.php");
@@ -19,7 +19,6 @@ if (isset($_SESSION["ost"]) && $_SESSION["ost"] != "mat") {
 }
 
 else {
-
 
     echo "detta är en välldigt hemlig hemlighet och fan vad coolt!!!!";
 }

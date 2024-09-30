@@ -1,49 +1,5 @@
-php foreach loop ifall man vill skriva ut alla saker i loopen och innehållet 
-är en Array fast det blir en list typ.
+ica maxi naka
 
+https://www.tiktok.com/@icamaxi_nacka/video/7418198020078046496 
 
-
-
-$h = "";
-
-foreach ($_POST['list'] as $key => $value) {
- 
-$h .= $value . ", ";
-
-}
-
-$h = allting i list fast i en lång sträng.
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-$o = 0;
-$h = "";
-$j;
-foreach ($_POST['list'] as $key => $value) {
- 
-$h .= $value . ", ";
-
-    $o++;
-}
-
-
-//! fler än 1
-if ($o > 1) {
-    
-    $g = "dina favorit rätter är: ";
-$j = $g . $h;
-
-}
-
-//! mindre än 1
-else{
-
- $j = "Din favorit rätt är " . $value;
-}
-
-
-
-
-
+Brott mot mänskligheten
