@@ -19,3 +19,4 @@ $_SESSION["ost"] = "";
 <input type="text" name="namn" size="36" value="<?php echo $_SESSION['ost'];?>" >
     <input type="submit">
 </form>
+

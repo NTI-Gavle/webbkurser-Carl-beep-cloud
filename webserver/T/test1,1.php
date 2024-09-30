@@ -4,37 +4,36 @@ session_start();
 
 <?php
 
-$_SESSION["anv"] = $_POST['namn'];
+if(isset($_POST['namn'])) {
+@$_SESSION["anv"] = $_POST['namn'];
 
-$_SESSION["pas"] = $_POST['lös'];
+@$_SESSION["pas"] = $_POST['lös'];
 
-//! echo $_SESSION["anv"] . " " . $_SESSION["pas"];
-
+}
+if(isset($_POST['reg1'])) {
 $_SESSION["reg-anv"] = $_POST['reg1'];
 $_SESSION["reg-pas"] = $_POST['reg2'];
+}
+
+
 ?>
 
 
 
 <?php
 
-if (isset($_SESSION["reg-anv"]) && isset($_SESSION["reg-pas"])) {
-    header("test1.php");
-}
-
-else {
-    header("test1,2.php");
-}
 
 
 if (isset($_SESSION["anv"]) && isset($_SESSION["pas"]) && $_SESSION["anv"] == $_SESSION["reg-anv"] && $_SESSION["pas"] == $_SESSION["reg-pas"] ) {
    
     echo " du är inloggad tjohej vad episkt";
+
+    
 }
 
 else {
     
-    session_unset();
+   //! session_unset();
     header("Location: test1.php");
 
 }
@@ -55,7 +54,7 @@ else {
 function myFunction() {
 
     session_unset();
-    header("Location: test1.php");
+    header("Location: test1,2.php");
 
 }
 

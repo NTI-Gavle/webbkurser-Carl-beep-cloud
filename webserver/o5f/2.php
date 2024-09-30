@@ -7,14 +7,7 @@ session_start();
 ?>
 
 
-<?php
-// Set session variables
 
-
-
-
-
-?>
 
 <?php
 

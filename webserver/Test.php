@@ -4,5 +4,9 @@
 <br>
 
 <form action="T/test1.php">
-    <input type="submit">
+    <input value="login" type="submit">
+</form>
+
+<form action="T/test1,2.php">
+    <input value="Reg" type="submit">
 </form>
