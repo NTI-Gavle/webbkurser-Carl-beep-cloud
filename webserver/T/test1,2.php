@@ -17,7 +17,7 @@ $_SESSION["reg-pas"] = "";
 <form action="test1,1.php" method="post">
  Användarnamn:    <input name="reg1" type="text">
  <br>
-  Lösenord:  <input name="reg2" type="text">
+  Lösenord:  <input name="reg2" type="password">
   <br>
   <br>
   <input type="submit">
