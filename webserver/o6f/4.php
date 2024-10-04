@@ -38,6 +38,10 @@ if(isset($_POST['la'])) {
       echo "First name needs to have first letter Uppercase:  ";
    }
   
+
+
+
+
    if (ctype_upper(substr($E, 0, 1))) {
   $g++;
       
@@ -59,12 +63,14 @@ $position = strpos($Ep, '@');
 $result = substr($Ep, $position, strlen($Ep));
 
   
-   $result2 = substr($result,strlen($result)-2,strlen($result));
-
-   
+$result2 = substr($result,strlen($result)-2,strlen($result));
 
 
-   if (str_contains($Ep,'@') && strlen($Ep) > 6 && strlen($result) > 4 &&  /* // todo  här är problemet */  preg_match('/./', $result2) <= 0) {
+
+echo "<br>"; 
+
+
+   if (str_contains($Ep,'@') && strlen($Ep) > 6 && strlen($result) > 4 &&  str_contains($Ep,'.') &&  preg_match('/\./', $result2) <= 0) {
       
       $g++;
 
