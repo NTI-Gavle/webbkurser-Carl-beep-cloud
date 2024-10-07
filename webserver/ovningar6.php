@@ -31,7 +31,7 @@ Skapa ett formulär med 2 textrutor för inläsning av två tal. Skriv sedan ut 
 <br>
 <h1>upgift 4</h1>
 <br>
-
+tror jag är klar 
 
 
 <form action="o6f/4.php">
@@ -43,6 +43,11 @@ Skapa ett formulär med 2 textrutor för inläsning av två tal. Skriv sedan ut 
 <br>
 <h1>upgift 5</h1>
 <br>
+
+
+
+Utöka uppgift 2 med att du kontrollerar att lösenordet måste innehåller minst en siffra och en versal. Informera användaren om allt är okej eller om det är fel.
+
 
 
 
