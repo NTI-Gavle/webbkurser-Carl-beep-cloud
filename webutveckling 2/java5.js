@@ -72,24 +72,19 @@ function H(way)
       
         figur_1.style.position = "absolute";
         figur_1.style.left = (pos*150)+"px";
-       
-      
+     
 }
-
-
-
 
 function U(way)
 {
 
+  
    pos += way;
     let figur_1 = document.getElementById('rör');
     figur_1.textContent=pos;
       
         figur_1.style.position = "absolute";
         figur_1.style.top = (pos*50)+"px";
-
-
 }
 
 document.addEventListener("keydown", function(event) {
@@ -99,20 +94,19 @@ document.addEventListener("keydown", function(event) {
       H(1);
     }
 
-  
 
     if ( event.key === "ArrowLeft" ||event.key === 37 ){
 
         H(-1);
       }
 
+
       if (event.key === "ArrowUp" ||event.key === 38 ){
 
         U(-1);
       }
-  
-    
-  
+
+
       if ( event.key === "ArrowDown" ||event.key === 40 ){
   
           U(1);
