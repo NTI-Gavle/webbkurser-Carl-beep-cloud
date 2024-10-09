@@ -61,6 +61,9 @@ Utöka uppgift 2 med att du kontrollerar att lösenordet måste innehåller mins
 <h1>upgift 6</h1>
 <br>
 
+Läs in en text och översätt till rövarspråket. Skriv ut båda texterna.
+
+
 
 
 <form action="o6f/6.php">
