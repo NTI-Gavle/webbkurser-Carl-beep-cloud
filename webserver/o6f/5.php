@@ -31,7 +31,7 @@ echo " Användarnamn behöver innehålla php!!!:    ";
 }
 
 
-if (strlen($P) >5 && str_contains($A,'1'|| '2'||'3'||'4'||'5'||'6'||'7'||'8'||'9'||'0')) {
+if (strlen($P) >5 && str_contains($P,'1')|| str_contains($P,'2')|| str_contains($P,'3')||str_contains($P,'4')||str_contains($P,'5')||str_contains($P,'6')||str_contains($P,'7')||str_contains($P,'8')||str_contains($P,'9')||str_contains($P,'0')) {
     $g++;
 }
 
