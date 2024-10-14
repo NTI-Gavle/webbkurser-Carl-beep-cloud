@@ -61,17 +61,18 @@ document.getElementById("rut2").style.backgroundColor = `rgb(${b}, ${c}, ${d})`;
 
 }
 
-let pos = 0;
+let posX = 0;
+let posY = 0;
 function H(way)
 {
 
 
-    pos = Math.min(Math.max(pos+way, 0), 10);;
+    posX = Math.min(Math.max(posX+way, 0), 10);;
     let figur_1 = document.getElementById('rör');
-    figur_1.textContent=pos;
+    figur_1.textContent=posX;
       
         figur_1.style.position = "absolute";
-        figur_1.style.left = (pos*150)+"px";
+        figur_1.style.left = (posX*150)+"px";
      
 }
 
@@ -79,12 +80,12 @@ function U(way)
 {
 
   
-   pos += way;
+   posY += way;
     let figur_1 = document.getElementById('rör');
-    figur_1.textContent=pos;
+    figur_1.textContent=posY;
       
         figur_1.style.position = "absolute";
-        figur_1.style.top = (pos*50)+"px";
+        figur_1.style.top = (posY*50)+"px";
 }
 
 document.addEventListener("keydown", function(event) {

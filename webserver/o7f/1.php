@@ -69,7 +69,7 @@ class Badboll extends Boll
         $this->floats = $floats;
     }
 
-    
+
     function show()
     {
 

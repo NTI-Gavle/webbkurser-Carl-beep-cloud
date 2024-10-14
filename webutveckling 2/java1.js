@@ -79,14 +79,14 @@ document.getElementById("tide").innerHTML    = "Du har varit inne på den här s
 
 
 
-setInterval(tiden2,50000);
+setInterval(tiden2,5000);
 
 
 
 function tiden2()
 {
 
-//console.log("HElllo world");
+console.log("HElllo world");
 var crsq = document.createElement('div', 'id=created');
 crsq.innerHTML = "Hello World";
 document.getElementsByTagName("body")[0].appendChild(crsq);
