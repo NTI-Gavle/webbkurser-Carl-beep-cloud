@@ -15,7 +15,9 @@ tid++;
 
 
 // upgift 2
-let parent = document.getElementById("pdiv");
+
+/*
+let parent = document.getElementById("oga");
 
 
 function Hello()
@@ -32,9 +34,16 @@ parent.appendChild(pc);
 }
 
 
-//!  setInterval(Hello,5000);
+  setInterval(Hello,2000);
+*/
 
 
+
+    let timer2 = setInterval(upg2timer, 5000);
+    let output2 = document.getElementById("oga");
+    function upg2timer() {
+        document.getElementById("oga").innerHTML += "HELLO WORLD <br>";
+    }
 
 
 
@@ -45,6 +54,8 @@ parent.appendChild(pc);
 // upgift 3
 
 let pausebool = false;
+let startbool = false;
+let Mtid=0;
 
 function pause()
 {
@@ -60,7 +71,12 @@ function resume()
 let oj;
 function start()
 {
+    if (startbool == false) {
+        
+    
 oj = setInterval(sidtid2,1000);
+    }
+startbool=true;
 pausebool = false;
 }
 
@@ -84,6 +100,14 @@ function reset()
 tid2=0;
 document.getElementById("sidtid2").innerHTML = "Du har varit inne på sidan i: "+tid2+ " sekudner";
 pausebool = true;
+
+}
+
+
+function mellan()
+{
+Mtid= tid2;
+document.getElementById("mt").innerHTML += Mtid +"<br>";
 
 }
 
@@ -130,7 +154,21 @@ document.getElementById("sum").innerHTML = "Tiden är ute";
 // upgift 5
 
 
+let num; 
+let nhold = document.getElementById("nhold");
 
 
+
+function dub()
+{
+    num = parseFloat(document.getElementById("o").value);
+setInterval(calc,1000);
+}
+
+function calc()
+{
+    document.getElementById("nhold").innerHTML += num+"<br>";
+num*=2;
+}
 
 

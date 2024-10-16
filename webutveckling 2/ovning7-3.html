@@ -21,13 +21,13 @@
 
 Skriv ett javascript som skriver ut “Hello world” var 5:e sekund i en divruta. Se till så att den varje gång lägger till i en ny rad. dvs efter 20 sekunder ska det stå “Hello World” på 4 rader.
 <br> 
-<h3>Detn är inte klar</h3>
+<div style="  border: solid black 1px;
+width: 500px;
+height: 300px;
+padding: 10px;
 
-<br>
-
-<div id="pdiv">
-
-</div>
+white-space: pre-wrap;
+overflow-y: auto;" id="oga"></div>
 
 <br>
 <br>
@@ -40,9 +40,11 @@ Utveckla uppgift 1 till ett fungerande stoppur. dvs start paus och nollställ.
 <br>
 <br>
 <button onclick="start()">Starta tiden</button>
-<button onclick="pause()">Pause</button><button onclick="resume()"> antipause</button><button onclick="reset()">reset</button>
+<button onclick="pause()">Pause</button><button onclick="resume()"> antipause</button><button onclick="reset()">reset</button> <button onclick="mellan()"> Mellan tid</button>
 
-<br><br>
+<br>
+<div id="mt"></div>
+<br>
 
 <h1>upgift 4 </h1>
 
@@ -57,6 +59,7 @@ Minuter: <input id="min" type="number"> <br>  Sekunder: <input id="sek" type="nu
 <div id="sum"></div>
 
 
+
 <br><br>
 <h1>upgift 5</h1>
 
@@ -64,9 +67,29 @@ Minuter: <input id="min" type="number"> <br>  Sekunder: <input id="sek" type="nu
 Utveckla en dubblare. Läs in ett tal från en textruta. Skriv ut i en div-ruta varannan sekund de dubbla värdet.
  Se till att alla värden finns kvar i div-rutan. T.ex om vi läser in 3 så skall det skrivas ut följande: 3, 6, 12, 24, 48, osv. Ett nytt tal på ny rad varannan sekund.
 <br>
+<br>
+
+<input id="o" type="number" placeholder="Nummer dubblaren">
+<br>
+<button onclick="dub()">Klicka</button> <br>
+<div id="nhold"></div>
+<br><br>
+
+<h1>upgift 6 </h1>
+<br>
 
 
 
+Utöka uppgift 3 så att det inte går att starta flera “timers” genom att klicka på start-knappen flera gånger. <br>
+<h4 style=" font-weight: 1000;" >gjorde en bool</h4>
+
+<br>
+
+<h1>upgift 7</h1>
+
+<br>
+
+Utöka uppgift 6 så att man även kan ta mellantider.
 
 </body>
 </html>
