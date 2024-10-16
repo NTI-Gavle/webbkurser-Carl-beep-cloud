@@ -13,5 +13,14 @@ Skapa en klass vid namn Boll med egenskaperna färg och radie, skapa sen ett pro
     <input type="submit">
 </form>
 
+<br><br>
+
+<h1>upgift 6/7
+</h1>
+<br>
+
+<form action="o7f/2.php" method="post">
+    <input type="submit">
+</form>
 
 
