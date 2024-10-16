@@ -6,9 +6,16 @@ Skapa en array och lagra alla dina olika bollar i den. Läs in och skriv ut på 
 
 
 <?php
+session_start();
 
-$arr = [];
-$arrcount = 0;
+
+if (!isset($_SESSION['arr'])) {
+    $_SESSION['arr'] = [];
+}
+
+
+//$arr=[];
+//$arrcount = 0;
 
 
 
@@ -160,22 +167,28 @@ class bastuboll extends Boll{
 
 if (isset($_POST['flyt'])) {
     
-if ($_POST['flyt'] = "ost") {
+if ($_POST['flyt'] == "ost") {
     $ball = new ostBoll($_POST['t'], $_POST['rad'], $_POST['flyt']);
-    $arr[$arrcount] = $ball;
-    $arrcount++;
+    $_SESSION['arr'][] = $ball;
+  //  $arr[$arrcount] = $ball;
+  //  $arrcount++;
+  
 }
 
-if ($_POST['flyt'] = "Floats") {
+if ($_POST['flyt'] == "Floats") {
     $ball = new Badboll($_POST['t'], $_POST['rad'], $_POST['flyt']);
-    $arr[$arrcount] = $ball;
-    $arrcount++;
+    $_SESSION['arr'][] = $ball;
+   // $arr[$arrcount] = $ball;
+   // $arrcount++;
+   
 }
 
-if ($_POST['flyt'] = "Bastu") {
+if ($_POST['flyt'] == "Bastu") {
     $ball = new bastuboll($_POST['t'], $_POST['rad'], $_POST['flyt']);
-    $arr[$arrcount] = $ball;
-    $arrcount++;
+    $_SESSION['arr'][] = $ball;
+ //   $arr[$arrcount] = $ball;
+  //  $arrcount++;
+  
 }
 
 
@@ -183,18 +196,13 @@ if ($_POST['flyt'] = "Bastu") {
 
 if (isset($_POST['ding'])) {
 
-   $numer= count($arr);
-   
-   for ($i=0; $i < $numer; $i++) { 
-    
-  $arr[$i]->show();
-
-
-//! Det FUNKAR INTE VARÖFR 
-
+   foreach ($_SESSION['arr'] as $obj) {
+       $obj->show();
    }
 
 }
+
+
 
 
 
@@ -246,3 +254,5 @@ if (isset($_POST['ding'])) {
 <form action="" method="post">
     <input name="ding" type="submit">
 </form>
+
+<br>
