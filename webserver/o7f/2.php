@@ -4,6 +4,11 @@
 Ändra så att någon metod har samma namn i alla klasserna (och samma antal argument och typer). Skriv om ditt huvudprogram så att det utnyttjar subklasserna. 
 Skapa en array och lagra alla dina olika bollar i den. Läs in och skriv ut på lämpligt sätt.
 
+<br><br><br>
+7 
+
+Bekanta dig med begreppet static. Sök information själv och skapa en klassvariabel i klassen Boll som håller reda på hur många bollar som finns “just nu” när programmet körs. 
+Skapa en metod för att “hämta” värdet. Varför inte göra en den som en klassmetod? Testa om det fungera
 
 <?php
 session_start();
@@ -22,6 +27,7 @@ if (!isset($_SESSION['arr'])) {
 class Boll
 {
 
+    protected static int $antal=0;
     protected $färg;
 
     protected $r;
@@ -34,13 +40,15 @@ class Boll
         $this->färg = $F;
 
         $this->r = $radie;
+   
 
     }
 
 
-    function show()
-    {
 
+    function show()
+  {
+    
         echo "<br>";
         echo "<br>";
         echo "BALL INFO";
@@ -50,9 +58,19 @@ class Boll
         echo "Bollens radie är " . $this->r;
         echo "<br>";
         echo "Bollens area är " . $this->r * $this->r * 3.14;
-
+        echo $this->sho();
     }
 
+
+
+
+    // todo      DET FUNKAR INTE 
+    function sho()
+    {
+        Boll::$antal++;
+        return Boll::$antal;
+    }
+// todo TILLS HIT
 
 }
 class Badboll extends Boll
@@ -71,7 +89,7 @@ class Badboll extends Boll
 
     function show()
     {
-
+        
         echo "<br>";
         echo "<br>";
         echo "BadBALL INFO";
@@ -83,7 +101,13 @@ class Badboll extends Boll
         echo "Bollens area är " . $this->r * $this->r * 3.14;
         echo "<br>";
         echo "Yes if BadBolle can flaot: " . $this->floats;
-      
+        echo $this->sho();
+    }
+
+    function sho()
+    {
+        $this->antal++;
+        return $this->antal;
     }
 
 
@@ -103,7 +127,7 @@ class ostBoll extends Boll
 
 function show()
     {
-
+        
         echo "<br>";
         echo "<br>";
         echo "BadBALL INFO";
@@ -115,7 +139,7 @@ function show()
         echo "Bollens area är " . $this->r * $this->r * 3.14;
         echo "<br>";
         echo "Hur ostig är bollen: " . $this->ostig;
-      
+        echo $this->sho();
       
     }
 
@@ -140,7 +164,7 @@ class bastuboll extends Boll{
 
     function show()
     {
-
+         
         echo "<br>";
         echo "<br>";
         echo "BadBALL INFO";
@@ -152,7 +176,7 @@ class bastuboll extends Boll{
         echo "Bollens area är " . $this->r * $this->r * 3.14;
         echo "<br>";
         echo "ÄR det e bastu boll: " . $this->bastu;
-      
+        echo $this->sho();
     }
 
 

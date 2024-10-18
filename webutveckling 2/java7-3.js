@@ -38,7 +38,19 @@ parent.appendChild(pc);
 */
 
 
+//? Varför funkade inte det här
 
+
+
+
+    let timer2 = setInterval(upg2timer, 5000);
+    let output2 = document.getElementById("oga");
+    function upg2timer() {
+        output2.innerHTML += "HELLO WORLD <br>";
+    }
+
+
+/*
     let timer2 = setInterval(upg2timer, 5000);
     let output2 = document.getElementById("oga");
     function upg2timer() {
@@ -46,7 +58,7 @@ parent.appendChild(pc);
     }
 
 
-
+*/
 
 
 
