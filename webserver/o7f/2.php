@@ -11,6 +11,7 @@ Bekanta dig med begreppet static. Sök information själv och skapa en klassvari
 Skapa en metod för att “hämta” värdet. Varför inte göra en den som en klassmetod? Testa om det fungera
 
 <?php
+// todo    Det funkade inte men sen fungerade det helst plötsligt.
 session_start();
 
 
@@ -30,7 +31,7 @@ class Boll
     protected static int $antal=0;
     protected $färg;
 
-    protected $r;
+    protected $r =0;
 
 
 
@@ -39,7 +40,8 @@ class Boll
 
         $this->färg = $F;
 
-        $this->r = $radie;
+        
+        $this->r = intval($radie);
    
 
     }
@@ -64,13 +66,13 @@ class Boll
 
 
 
-    // todo      DET FUNKAR INTE 
     function sho()
     {
+        echo "  <br> Boll nummer:";
         Boll::$antal++;
         return Boll::$antal;
     }
-// todo TILLS HIT
+
 
 }
 class Badboll extends Boll
@@ -104,11 +106,7 @@ class Badboll extends Boll
         echo $this->sho();
     }
 
-    function sho()
-    {
-        $this->antal++;
-        return $this->antal;
-    }
+
 
 
 }
@@ -130,7 +128,7 @@ function show()
         
         echo "<br>";
         echo "<br>";
-        echo "BadBALL INFO";
+        echo "OSTBALL INFO";
         echo "<br>";
         echo "Färgen på bollen är " . $this->färg;
         echo "<br>";
@@ -142,6 +140,8 @@ function show()
         echo $this->sho();
       
     }
+
+
 
 
     
@@ -167,7 +167,7 @@ class bastuboll extends Boll{
          
         echo "<br>";
         echo "<br>";
-        echo "BadBALL INFO";
+        echo "BASTUBALL INFO";
         echo "<br>";
         echo "Färgen på bollen är " . $this->färg;
         echo "<br>";

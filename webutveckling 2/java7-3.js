@@ -16,7 +16,7 @@ tid++;
 
 // upgift 2
 
-/*
+
 let parent = document.getElementById("oga");
 
 
@@ -25,30 +25,23 @@ function Hello()
 
     
 let pc = document.createElement("div");
-
 pc.textContent = "Hello World";
-
-
 parent.appendChild(pc);
 
 }
-
-
-  setInterval(Hello,2000);
-*/
-
+  setInterval(Hello,2500);
 
 //? Varför funkade inte det här
 
 
-
+/*
 
     let timer2 = setInterval(upg2timer, 5000);
     let output2 = document.getElementById("oga");
     function upg2timer() {
         output2.innerHTML += "HELLO WORLD <br>";
     }
-
+*/
 
 /*
     let timer2 = setInterval(upg2timer, 5000);
