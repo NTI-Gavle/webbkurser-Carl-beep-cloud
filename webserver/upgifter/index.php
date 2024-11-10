@@ -44,6 +44,10 @@ session_start()
   <input value="Tärning 5" type="submit">
 </form>
 
+<form action="dice6.php" method="get">
+  <input type="submit">
+</form>
+
 
 <!doctype html>
 <html>

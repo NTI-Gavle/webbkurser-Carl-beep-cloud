@@ -21,8 +21,21 @@ public static  function allKast()
 
 }
 
+public static function allKast2()
+{
+    foreach (Dice::$diceList as $obj) {
+        echo "Tärning " . ($obj->getThisAntal()+1). "<br>";
+    echo $obj->roll() . "<br>";
+    }
+
+}
+
 // Denna Dice specefikt    
+
+  
     protected $thisAntal =0;
+
+    protected $arrnum=0;
     protected $rolls;
    
     protected $arr;
@@ -37,26 +50,29 @@ public static  function allKast()
         Dice::$antal++;
     }
 
-    //? Fattar inte vad ska jag göra med destruktorn
-    /*
-    public function __destruct()
-    {
+    
 
-        echo "Denna tärning har blivit likviderad";
-
-    }
-    */
-
+    // Man gör en rull men det bored läggas in i en array också;
      function roll()
     {
-     return  @rand(1,$this->rolls);
+    $num = @rand(1,$this->rolls);
+    $this->arr[$this->arrnum++] = $num;
+    return$num;
     }
 
+
+    // vanlig rull
+    function roll2()
+    {
+        return @ rand(1,$this->rolls);
+    }
+
+ 
 
     function rollMultiple($times) {
         $arr = [];
         for ($i = 0; $i < $times; $i++) {
-            $arr[]=$this->roll();
+            $arr[]=$this->roll2();
         }
         $this->arr = $arr;
         return $arr;
@@ -79,6 +95,13 @@ public static  function allKast()
 
     }
    
+    // Tänkt ska räkna varje gång man gör ett enslikt rull så nästa kast hamnar på nästa plats i arrayen.
+    public function arrNum()
+    {
+        return $this->arrnum;
+      
+    }
+
 
     //Vilket antal i skapelseföljden denna tärning har.
      function getThisAntal()
