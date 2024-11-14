@@ -7,27 +7,27 @@
 
     // Static 
 
-    private static $diceList=array();
+    private static $diceList=array();   
     private static $antal = 0;
 
-public static  function allKast()
+public static function allKast()
 {
     
 
     foreach (Dice::$diceList as $obj) {
-        echo  "Tärning nummer " .($obj->getThisAntal()+1). " med ". $obj->getSidor(). " olika sidor"."<br>" ./*  $obj->roll()*/ $obj->getHistogram() . "<br>";
+        echo  "Tärning nummer " .($obj->getThisAntal()+1). " med ". $obj->getSidor(). " olika sidor"."<br>" . $obj->getHistogram() . "<br>";
     }
 
 
 }
 
-public static function allKast2()
+public static function Allkastantal($tim)
 {
-    foreach (Dice::$diceList as $obj) {
-        echo "Tärning " . ($obj->getThisAntal()+1). "<br>";
-    echo $obj->roll() . "<br>";
-    }
 
+    foreach(Dice::$diceList as $obj)
+    {
+        $obj->rollMultiple($tim);
+    }
 }
 
 // Denna Dice specefikt    
@@ -38,7 +38,9 @@ public static function allKast2()
     protected $arrnum=0;
     protected $rolls;
    
+
     protected $arr;
+
 
   
     public function __construct($rolls=6)
@@ -72,7 +74,7 @@ public static function allKast2()
     function rollMultiple($times) {
         $arr = [];
         for ($i = 0; $i < $times; $i++) {
-            $arr[]=$this->roll2();
+            $arr[]=$this->roll();
         }
         $this->arr = $arr;
         return $arr;

@@ -1,7 +1,4 @@
-<h2>Jag tycker det här är svar på fråga 8 är det så Daniel?</h2>
-<br>
-Lägg till en statisk metod för att rulla alla tärningar. Denna bör returnerar en array med resultatet.
-<br> <br> 
+
 <?php
 session_start();
 require 'ClassDice.php';
