@@ -31,11 +31,11 @@ if(isset($_POST['oga']))
 
 
 <form action=""method="post">
-    <input value="gör en tärning" name="oj" type="submit">
+    <input value="gör en tärning till" name="oj" type="submit">
 </form>
 
 <form action=""method="post">
-    <input value="tryck= bestäm att du kastar 15 gånger" name="o" type="submit">
+    <input value="tryck = bestäm att du kastar 15 gånger" name="o" type="submit">
 </form>
 
 <form action=""method="post">

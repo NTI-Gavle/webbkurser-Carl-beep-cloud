@@ -26,7 +26,7 @@ if (isset($_POST['unset'])) {
 }
 ?>
 
-
+<h3>du har en tärning vill du göra en till?</h3><br><br>
 <form action="" method="post">
     Antal Sidor: <input name="num" type="number">
     <input name="skick" value="Skapa Tärning" type="submit">

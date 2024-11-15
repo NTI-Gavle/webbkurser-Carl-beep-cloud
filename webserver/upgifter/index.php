@@ -6,17 +6,8 @@ session_start()
 
 
 ?>
-
-
-<h1>Test tärnign 1</h1>
-<br><p>Den är helt fucked kolla inte</p>
-
-<form action="dice.php" method="get">
-   Antal Rullningar: <input name="rolls" type="number">
-   <br>
-   <input value="skicka" type="submit">
-</form>
-
+<h1>KOlla längst ned</h1>
+<br><br>
 
 <h1>Test tärning 2</h1><br>
 <p>Skriver ut en tärning med antal rull och antal kast</p>
@@ -54,12 +45,8 @@ session_start()
 <form action="dice6.php" method="get">
   <input type="submit">
 </form>
-<br><br>
-<h1>tärning 7</h1><br>
-<p>Den funkar inte bara en vaker tanke än så länge</p>
-<form action="dice7.php">
-  <input type="submit">
-</form>
+<br>
+
 
 <h2> tärning 8 </h2><br>
 <p>skriv antalet kast du vill göra då hände det på 6 tärningar med olika mängd sifor</p>
@@ -71,15 +58,15 @@ session_start()
 <h1>EFter Denna rad så är allting gjorde med ClassDice2 inte ClassDice som tidigare använts</h1>
 <br><br>
 
-<h1>Den bästa varianten så kolla på den här ifall du ska betygsätta typ.</h1>
+<h1>Den bästa varianten typ.</h1>
 <form action="dice9.php" >
-  <input type="submit">
+  <input value="hoppa iväg" type="submit">
 </form>
 
 <br><br>
 <h1>gjorde en till sak</h1>
 <form action="dice10.php">
-  <input type="submit">
+  <input value="hoppa iväg" type="submit">
 </form>
 
 <!doctype html>
