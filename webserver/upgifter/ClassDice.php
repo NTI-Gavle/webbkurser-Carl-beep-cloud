@@ -47,6 +47,10 @@ public static function Allkastantal($tim)
     {
         $this->rolls = $rolls;
 
+
+
+
+
         Dice::$diceList[Dice::$antal] = $this;
         $this->thisAntal = Dice::$antal;
         Dice::$antal++;
@@ -117,7 +121,7 @@ public static function Allkastantal($tim)
         return $this->rolls;
     }
 
-    
+      
     public function getHistogram()
     {
 
