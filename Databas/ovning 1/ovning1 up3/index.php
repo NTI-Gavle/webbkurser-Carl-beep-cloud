@@ -1,6 +1,6 @@
 <?php
 include ('connecttyp.php');
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -15,15 +15,17 @@ include ('connecttyp.php');
 <body style="display:flex; justify-content:center;">
 
     <div style=" width:25%; height:25%;">
-    <div><b>Registrera dig</b></div>
+    <div><b>Loggain</b></div>
 <form action="" method="post">
     <input style="background-color:orange;" placeholder="Namn" name="namn" type="text"> <br> 
     <input style="background-color:green;" placeholder="Efternamn"  name="efternamn" type="text"><br>
     <input style="background-color:blue;" placeholder="Användarnamn"  name="användarnamn" type="text">
     <br> <input style="background-color:yellow;" placeholder="Lösenord"  name="pass" type="password"><br>
-    <input value="Registera dig!!!" type="submit">
+    <input value="Loggain!!!" type="submit">
 </form>
-<a href="index.php">Logga in </a>
+
+<a href="register.php">Registrera dig  </a>
+
     </div>
 
 </body>
@@ -33,8 +35,7 @@ include ('connecttyp.php');
 
 <?php
 
-   
-$taken = false;
+
 
 if(isset($_POST['namn'], $_POST['efternamn'] , $_POST['användarnamn'] ,$_POST['pass']))
 {
@@ -45,26 +46,16 @@ if(isset($_POST['namn'], $_POST['efternamn'] , $_POST['användarnamn'] ,$_POST['
 
     $res = $stmt->fetchAll();
     foreach ($res as $row) {
-    if ($row['Användarnamn'] == $_POST['användarnamn']) {
-        echo "Testa ett annat användarnamn någon har redan det här";
-        $taken = true;
-        break;
-    }
+    if ($row['Namn'] == $_POST['namn']&& $row['Efternamn'] == $_POST['efternamn']&&$row['Användarnamn'] == $_POST['användarnamn']&& $row['Lösenord'] == $_POST['pass'] ) {
 
-    }
-
-    if ($taken == false) {
+        $_SESSION['name'] =$row['Namn'];
         
-    
-    $sql = "INSERT INTO users (Namn, Efternamn, Användarnamn, Lösenord, Datum) VALUES (?, ?, ?, ?, ?)";
-  
-    $stmt = $dbconn->prepare($sql);
-    $stmt->execute([$_POST['namn'], $_POST['efternamn'], $_POST['användarnamn'], $_POST['pass'],date("Y-m-d H:i:s")]);
-    echo "  det fugerade tjohejsan svejnsan";
+        header("Location: welcome.php");
+    }
 
     }
-}
 
+}
 
 
 
