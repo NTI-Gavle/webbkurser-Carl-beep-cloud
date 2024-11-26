@@ -33,23 +33,37 @@ require ('connecttyp.php');
 <?php
 
    
-
+$taken = false;
 
 if(isset($_POST['namn'], $_POST['efternamn'] , $_POST['användarnamn'] ,$_POST['pass']))
 {
+
+    $sql = "SELECT * FROM users";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
+    $res = $stmt->fetchAll();
+    foreach ($res as $row) {
+    if ($row['Användarnamn'] == $_POST['användarnamn']) {
+        echo "Testa ett annat användarnamn någon har redan det här";
+        $taken = true;
+        break;
+    }
+
+    }
+
+    if ($taken == false) {
+        
+    
     $sql = "INSERT INTO users (Namn, Efternamn, Användarnamn, Lösenord, Datum) VALUES (?, ?, ?, ?, ?)";
   
     $stmt = $dbconn->prepare($sql);
     $stmt->execute([$_POST['namn'], $_POST['efternamn'], $_POST['användarnamn'], $_POST['pass'],date("Y-m-d H:i:s")]);
     echo "  det fugerade tjohejsan svejnsan";
 
-    
+    }
 }
 
-
-else{
-    echo "ERROR TYP SÅ";
-}
 
 
 
