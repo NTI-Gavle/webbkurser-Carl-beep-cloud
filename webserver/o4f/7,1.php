@@ -16,7 +16,7 @@ if(array_key_exists('button1', $_POST)) {
 }
 function slav()
 {
-$h;
+$h="";
 $ett = $_POST['ett'];
 $två = $_POST['två'];
 $tre = $_POST['tre'];
