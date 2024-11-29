@@ -60,7 +60,7 @@ if(isset($_POST['namn'], $_POST['efternamn'] , $_POST['användarnamn'] ,$_POST['
   
     $stmt = $dbconn->prepare($sql);
     $stmt->execute([$_POST['namn'], $_POST['efternamn'], $_POST['användarnamn'], $_POST['pass'],date("Y-m-d H:i:s")]);
-    echo "  det fugerade tjohejsan svejnsan";
+    header("Location: index.php");
 
     }
 }

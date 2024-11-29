@@ -49,9 +49,10 @@ function kolla()
 
     // Display the data in an HTML table
     echo "<table border='1'>";
-    echo "<tr><th>Namn</th><th>Efternamn</th><th>Användarnamn</th><th>Lösenord</th><th>Datum</th></tr>";
+    echo "<tr><th>ID</th><th>Namn</th><th>Efternamn</th><th>Användarnamn</th><th>Lösenord</th><th>Datum</th></tr>";
     foreach ($res as $row) {
         echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['id']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Namn']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Efternamn']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Användarnamn']) . "</td>";
