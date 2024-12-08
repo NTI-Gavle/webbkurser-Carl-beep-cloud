@@ -18,7 +18,7 @@ session_start();
         <div><b>Loggain</b></div>
         <form action="" method="post">
             <input style="background-color:orange;" placeholder="Namn" name="namn" type="text"> <br>
-            <input style="background-color:green;" placeholder="Efternamn" name="efternamn" type="text"><br>
+            <input style="background-color:green; " placeholder="Efternamn" name="efternamn" type="text"><br>
             <input style="background-color:blue;" placeholder="Användarnamn" name="användarnamn" type="text">
             <br> <input style="background-color:yellow;" placeholder="Lösenord" name="pass" type="password"><br>
             <input value="Loggain!!!" type="submit">
@@ -31,7 +31,18 @@ session_start();
 </body>
 
 </html>
+<style>
+    ::placeholder {
+        color: red;
+        opacity: 1;
+        /* Firefox */
+    }
 
+    ::-ms-input-placeholder {
+        /* Edge 12 -18 */
+        color: red;
+    }
+</style>
 
 <?php
 
@@ -50,14 +61,12 @@ if (isset($_POST['namn'], $_POST['efternamn'], $_POST['användarnamn'], $_POST['
             $_SESSION['name'] = $row['Namn'];
             if ($row['admin'] == 1) {
                 header("Location: adminwelcome.php");
-            exit;
+                exit;
             }
-           
-                header("Location: welcome.php");
+
+            header("Location: welcome.php");
         }
-
     }
-
 }
 
 

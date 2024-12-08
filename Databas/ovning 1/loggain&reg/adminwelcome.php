@@ -47,9 +47,8 @@ function kolla()
 
     $res = $stmt->fetchAll();
 
-    // Display the data in an HTML table
     echo "<table border='1'>";
-    echo "<tr><th>ID</th><th>Namn</th><th>Efternamn</th><th>Användarnamn</th><th>Lösenord</th><th>Datum</th></tr>";
+    echo "<tr><th>ID</th><th>Namn</th><th>Efternamn</th><th>Användarnamn</th><th>Lösenord</th><th>Datum</th><th>1=admin</th></tr>";
     foreach ($res as $row) {
         echo "<tr>";
         echo "<td>" . htmlspecialchars($row['id']) . "</td>";
@@ -58,6 +57,7 @@ function kolla()
         echo "<td>" . htmlspecialchars($row['Användarnamn']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Lösenord']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Datum']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['admin']) . "</td>";
         echo "</tr>";
     }
     echo "</table>";

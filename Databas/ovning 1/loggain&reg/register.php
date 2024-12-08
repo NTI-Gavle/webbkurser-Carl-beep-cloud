@@ -30,6 +30,17 @@ include ('connecttyp.php');
 
 </html>
 
+<style>
+
+::placeholder {
+  color: red;
+  opacity: 1;
+}
+
+::-ms-input-placeholder { 
+  color: red;
+}
+</style>
 
 <?php
 
@@ -44,7 +55,12 @@ if(isset($_POST['namn'], $_POST['efternamn'] , $_POST['användarnamn'] ,$_POST['
     $stmt->execute();
 
     $res = $stmt->fetchAll();
+
+    if (strlen($_POST['namn'])>1 && strlen($_POST['efternamn'])>1 && strlen($_POST['användarnamn'])>1 && strlen($_POST['pass'])>1) {
+         
     foreach ($res as $row) {
+         
+        
     if ($row['Användarnamn'] == $_POST['användarnamn']) {
         echo "Testa ett annat användarnamn någon har redan det här";
         $taken = true;
@@ -63,6 +79,9 @@ if(isset($_POST['namn'], $_POST['efternamn'] , $_POST['användarnamn'] ,$_POST['
     header("Location: index.php");
 
     }
+    }
+
+    else{ echo "namn,efternamn,användarnamn och lösenord måste alla vara längre än 1 bokstav";}
 }
 
 
