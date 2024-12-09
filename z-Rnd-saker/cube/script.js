@@ -1,9 +1,44 @@
+let stopp;
+let stopmove;
+
+
+
 hdivider=0;
 wdivider=0;
 first=true;
+
+num=0;
+
+function move()
+{   
+    if(stopmove == true)
+    {
+            stopmove=false;
+    }
+
+    else if (stopmove == false)
+    {
+        stopmove = true;
+    }
+
+}
+
+
+
+
+
  function start()
  {
+ stopp = false;
+ stopmove=true;
+    
+let Xaxis= document.getElementById("xaxis").value;
+let Yaxis= document.getElementById("yaxis").value;
+let Zaxis= document.getElementById("zaxis").value;
 
+console.log("X: "+Xaxis +" Y: " + Yaxis + " Z: " +Zaxis );
+
+console.log(hdivider +" " +wdivider);
     hdivider+=1;
     wdivider+=1;
 /*
@@ -14,10 +49,12 @@ first=true;
     knapp.remove();
 */
     const COLOR_BG = "black";
-    const COLOR_CUBE = "Orange";
-    const SPEED_X = 1.01;
-    const SPEED_Y = 0.01;
-    const SPEED_Z = 0.01;
+    let COLOR_CUBE = "yellow";
+    //? Dessa tre under var const innan   
+    //? gjorde det let för då kan jag ändra dem;
+    let SPEED_X = 0.11;
+    let SPEED_Y = 0.11;
+    let SPEED_Z = 0.11;
     const POINT3D = function (x, y, z) {
         this.x = x;
         this.y = y;
@@ -30,20 +67,32 @@ first=true;
     document.body.appendChild(canvas);
     var ctx = canvas.getContext("2d");
 
-    
+    /* //! dess hör ihop
     hreal = document.documentElement.clientHeight/hdivider;
     wreal = document.documentElement.clientHeight/wdivider;
-    // -22 för att knappen med start är 21,s  px i heihgt 
+     -22 för att knappen med start är 21,s  px i heihgt 
     hreal-= 22;
 
     var h = hreal;//document.documentElement.clientHeight;
     var w = wreal;//document.documentElement.clientWidth;
     canvas.height = h; 
     canvas.width = w; 
+*/
 
-    first=false;
+// todo    Det görs en kub som snurrar långsamt;
+   h= document.documentElement.clientHeight;
+   w= document.documentElement.clientWidth;
+        h=h-22;
+   canvas.height = h; 
+    canvas.width = w; 
+
+    //! ta bort fall jag vill göra flera
+    // first=false;
+
     }
 
+    //! Göra ifall jag vill kunna göra flera samtidigt
+/*
     else{
         var container = document.getElementById("container").parentElement;
         var ny = document.createElement("canvas");
@@ -60,7 +109,7 @@ first=true;
         ny.height = h; 
         ny.width = w; 
     }
-  
+  */
 
    
 
@@ -94,14 +143,79 @@ first=true;
     //animering och dåsant
     var timeDelta, timeLast = 0;
     requestAnimationFrame(loop);
+   
+
 
     function loop(timenow) {
+//! vill at farten ska öka varje snurr
+//! 0.01 var standard
+
+    
+
+    SPEED_X += Xaxis; //0.017 eller 0.01 den bästa 0,01
+    SPEED_Y += Yaxis;//0.05 eller 1.05 den bästa 0,001
+    //console.log(SPEED_Y);
+    SPEED_Z += Zaxis;//0.05 eller 1.05 den bästa 1,05
+    
+
+
+    if(stopp == false)
+    {
+        //storlek hastighet
+        if (stopmove == false) {
+            size -= 0.5;
+        }
+
+        else{
+            size =size;
+        }
+    if (size<w/25) {
+        stopp=true;
+    }
+    
+    }
+
+     if (stopp == true) {
+        //storlek hastighet
+
+        if (stopmove == false) {
+            size += 0.5;
+        }
+
+        else{
+            size =size;
+        }
+
+       if (size>w/8) {
+        stopp=false
+        }
+
+    }
+
+    
+    
+    vertices = [
+        new POINT3D(cx - size, cy - size, cz - size),
+        new POINT3D(cx + size, cy - size, cz - size),
+        new POINT3D(cx + size, cy + size, cz - size),
+        new POINT3D(cx - size, cy + size, cz - size),
+        new POINT3D(cx - size, cy - size, cz + size),
+        new POINT3D(cx + size, cy - size, cz + size),
+        new POINT3D(cx + size, cy + size, cz + size),
+        new POINT3D(cx - size, cy + size, cz + size)
+    ];
+
+        
+
+  
+
         // tid
         timeDelta = timenow - timeLast;
         timeLast = timenow;
         // backgrund
-        ctx.fillRect(0, 0, w, h);
 
+        
+        ctx.fillRect(0, 0, w, h);
         // z axis
         let angle = timeDelta * 0.001 * SPEED_Z * Math.PI * 2;
     for (let v of vertices) {
@@ -141,16 +255,17 @@ first=true;
             ctx.moveTo(vertices[edge[0]].x, vertices[edge[0]].y);
             ctx.lineTo(vertices[edge[1]].x, vertices[edge[1]].y);
             ctx.stroke();
+
+           
         }
-
+        
+        
+      
         requestAnimationFrame(loop);
+        
     }
-    setInterval(restart,2);
+} 
 
-}
+ 
 
-function restart(){
 
-    
-    
-}

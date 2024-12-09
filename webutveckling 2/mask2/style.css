@@ -1,0 +1,16 @@
+body{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: black;}
+
+.titeln{
+   font-size: 50px;
+}
+
+canvas{
+    
+    border:red 5px dotted;
+    background-color: pink;
+}

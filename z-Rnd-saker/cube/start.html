@@ -4,15 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
+    <script src="script.js" ></script>
     <link rel="stylesheet" href="style.css">
     <title>Cube</title>
 </head>
 <body>
 <div  id="divsaken" class="divsaken">
+   <input id="xaxis"  placeholder="X-axis" type="number"> 
+   <input id="yaxis" placeholder="Y-axis" type="number"> 
+   <input id="zaxis"  placeholder="Z-axis" type="number"> 
     <button id="knapp" onclick="start()"> Start</button>
+     <button onclick="move()" >move</button>
 </div>
 
-<canvas id="container"></canvas>
+<canvas id="container" width="clientWidth"></canvas>
 </body>
 </html>

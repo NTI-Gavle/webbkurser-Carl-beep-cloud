@@ -13,10 +13,10 @@ for (let index = 0; index < 5; index++) {
         400, 
         //Math.random() * 550 + 25
         300, 
-        Math.random() * 20 + 10, 
+        Math.random() * 50 + 10, 
         randomColor(),
-        Math.random() * 5 + 1, 
-        Math.random() * 5 + 1  
+        Math.random() * 25 + 1, 
+        Math.random() * 11 + 1  
     );
 }
 
@@ -27,7 +27,7 @@ function animate(){
     requestAnimationFrame(animate);
     ctx.fillStyle="white";
 
-   // ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
+    //ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
 
 for ( ball in Ball.BallList){
     Ball.BallList[ball].update();

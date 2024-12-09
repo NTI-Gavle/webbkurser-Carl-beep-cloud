@@ -1,0 +1,103 @@
+
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+let xmove = 0;
+let ymove = 0;
+
+let moveNumber = 4;
+const ball = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    radius: 5,
+    color: 'orange'
+};
+
+
+//asdhvasjhdvasjkhdvjhasvdjkhasvkdaskjdvasjkhvda
+
+function drawBall() {
+
+    requestAnimationFrame(drawBall)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.arc(ball.x += xmove,ball.y += ymove,ball.radius, 0, Math.PI * 2);
+    ctx.fillStyle = ball.color;
+    ctx.fill();
+    ctx.closePath();
+    console.log(ball.x += xmove);
+    diecheck(ball.x, ball.y);
+}
+
+
+function diecheck(x, y) {
+
+    if (x < 0) {
+        alert("you died");
+        restartProgram();
+    }
+
+    else if (x > canvas.width) {
+        alert("you died");
+        restartProgram();
+    }
+
+    else if (y> canvas.height)
+    {
+        alert("you died");
+        restartProgram(); 
+    }
+
+    else if (y< 0)
+    {
+        alert("you died");
+        restartProgram();    
+    }
+}
+
+
+
+drawBall();
+
+let onedirection = true;
+document.addEventListener("keydown", function (event) {
+
+    if (event.key === "ArrowRight" || event.key === 39) {
+        ymove = 0;
+        xmove = moveNumber;
+    }
+
+
+    if (event.key === "ArrowLeft" || event.key === 37) {
+        ymove = 0;
+        xmove = -moveNumber;
+    }
+
+
+    if (event.key === "ArrowUp" || event.key === 38) {
+
+        xmove = 0;
+        ymove = -moveNumber;
+    }
+
+
+    if (event.key === "ArrowDown" || event.key === 40) {
+        xmove = 0;
+        ymove = moveNumber;
+    }
+});
+
+
+function restartProgram() {
+
+    xmove = 0;
+    ymove = 0;
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height / 2;
+
+    cancelAnimationFrame(animationId);
+    drawBall();
+}
+
+
+
