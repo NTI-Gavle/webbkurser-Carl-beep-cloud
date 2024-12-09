@@ -1,3 +1,4 @@
+//! TIden och sådant
 let tid = document.getElementById("number");
 let tiden=0;
 
@@ -8,7 +9,13 @@ function timer()
     tiden+=1;
     tid.innerHTML="Snake du har levt i " + tiden + " sekunder";
 }
+//! TIden och sådant slutar här
 
+// todo äpplen och sådant
+Apple.updateCanvas(myCanvas);
+
+
+//? Camvas saker börjar
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
