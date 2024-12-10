@@ -153,11 +153,11 @@ console.log(hdivider +" " +wdivider);
     
 
     SPEED_X += Xaxis; //0.017 eller 0.01 den bästa 0,01
-  //  console.log("X "+SPEED_X);
+    console.log("X "+SPEED_X);
     SPEED_Y += Yaxis;//0.05 eller 1.05 den bästa 0,001
-  //  console.log("Y "+SPEED_Y);
+    console.log("Y "+SPEED_Y);
     SPEED_Z += Zaxis;//0.05 eller 1.05 den bästa 1,05
-   // console.log("Z "+SPEED_Z);
+    console.log("Z "+SPEED_Z);
 
 
     if(stopp == false)

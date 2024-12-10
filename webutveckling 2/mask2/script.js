@@ -24,10 +24,10 @@ let ymove = 0;
 
 // todo äpplen och sådant
 Apple.updateCanvas(canvas); 
-const apple  =new Apple(canvas.width-20,canvas.height-25,25,25,5,"green");
-apple.draw();
+const apple  =new Apple((canvas.width/2)+150,(canvas.height/2)-25,25,25,5,"green");
 
 // todo här slutar Apple saken nu
+
 const worm = {
     segments: [], // Array to store the worm's segments
     maxLength: 10000, // Maximum number of segments
@@ -66,6 +66,7 @@ function drawWorm() {
     // Draw all segments of the worm
     for (let i = 0; i < 15; i++) {
         const segment = worm.segments[i];
+        if(!segment) continue;
         ctx.beginPath();
 
         if (i === 0) {
@@ -79,7 +80,6 @@ function drawWorm() {
         
         //! ritar
         ctx.rect(
-         
             segment.x - worm.width / 2,
             segment.y - worm.height / 2,
             worm.width,
@@ -90,16 +90,36 @@ function drawWorm() {
         ctx.closePath();
         ctx.stroke();
     }
+    apple.draw();
 
+  
+
+  applecheck(worm.segments[0].x,worm.segments[0].y, apple.x,apple.x);
    
     diecheck(newHead.x, newHead.y);
 }
 
 function diecheck(x, y) {
+    
     if (x < 0 || x > canvas.width || y < 0 || y > canvas.height) {
         alert("you died");
         restartProgram();
     }
+}
+
+
+function applecheck(wx,wy,ax,ay){
+   
+    if(     wx >= ax - apple.radius &&
+        wx <= ax + apple.radius &&
+        wy >= ay - apple.radius &&
+        wy <= ay + apple.radius)
+    {
+        console.log("hmm");
+        apple.x += 25;
+        apple.y += 25;
+    }
+
 }
 
 document.addEventListener("keydown", function (event) {
