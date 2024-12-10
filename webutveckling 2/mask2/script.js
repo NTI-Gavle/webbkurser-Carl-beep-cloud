@@ -3,33 +3,44 @@ let tid = document.getElementById("number");
 let tiden=0;
 
 // är för setinterval på tiden
-let timern;
+let timern = null;
 function timer()
 {
     tiden+=1;
     tid.innerHTML="Snake du har levt i " + tiden + " sekunder";
 }
+
 //! TIden och sådant slutar här
 
-// todo äpplen och sådant
-Apple.updateCanvas(myCanvas);
 
 
 //? Camvas saker börjar
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
-let xmove = 0;
+let moveNumber = 4;
+let xmove = moveNumber;
 let ymove = 0;
 
-let moveNumber = 4;
+// todo äpplen och sådant
+Apple.updateCanvas(canvas); 
+const apple  =new Apple(canvas.width-20,canvas.height-25,25,25,5,"green");
+apple.draw();
+
+// todo här slutar Apple saken nu
 const worm = {
     segments: [], // Array to store the worm's segments
     maxLength: 10000, // Maximum number of segments
-    width: 15, // Width of each rectangle
-    height: 15, // Height of each rectangle
-    color: 'orange'
+    width: 16, // Width of each rectangle
+    height: 16, // Height of each rectangle
+    color: 'orange',
+    segmentgap: 20,
 };
+
+
+//! Här startar timern
+setInterval(timer,1000);
+
 
 // Initialize the worm's starting position
 worm.segments.push({ x: canvas.width / 2, y: canvas.height / 2 });
@@ -53,7 +64,7 @@ function drawWorm() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Draw all segments of the worm
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 15; i++) {
         const segment = worm.segments[i];
         ctx.beginPath();
 
@@ -65,19 +76,22 @@ function drawWorm() {
             ctx.fillStyle = worm.color;
         }
 
-        // Draw a rectangle instead of a circle
+        
+        //! ritar
         ctx.rect(
+         
             segment.x - worm.width / 2,
             segment.y - worm.height / 2,
             worm.width,
             worm.height
         );
+        
         ctx.fill();
         ctx.closePath();
         ctx.stroke();
     }
 
-    // Check for collisions
+   
     diecheck(newHead.x, newHead.y);
 }
 
@@ -107,15 +121,23 @@ document.addEventListener("keydown", function (event) {
         ymove = moveNumber;
     }
      
-   startTimer();
+
 
 });
 
-function restartProgram() {
-    xmove = 0;
-    ymove = 0;
 
+
+
+
+function restartProgram() {
+    xmove = moveNumber;
+    ymove = 0;
+    tiden =0;
+    
+    tid.innerHTML = "Snake du har levt i 0 sekunder"; // Reset timer display
     worm.segments = [{ x: canvas.width / 2, y: canvas.height / 2 }];
+   
+
 }
 
 drawWorm();
@@ -124,8 +146,4 @@ drawWorm();
 
 
 
-function startTimer() {
-    if (!timern) {
-        timern = setInterval(timer, 1000);
-    } 
-}
+
