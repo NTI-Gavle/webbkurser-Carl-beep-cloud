@@ -1,5 +1,9 @@
 class Apple{
 
+    static AppleList =[];
+    static AppleIndex=0;
+
+    static Point=0;
 
     static canvas = null;
     static context = null;
@@ -18,6 +22,9 @@ constructor(x,y,width,height,radius,color){
     this.height = height;
     this.radius = radius;
     this.color = color;
+
+    Apple.AppleList[Apple.AppleIndex]=this;
+    Apple.AppleIndex++;
 }
 
 draw(){
