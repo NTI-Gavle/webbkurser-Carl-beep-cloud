@@ -14,12 +14,10 @@ class Apple{
         Apple.context=Canvas.getContext("2d");
     }
 
-constructor(x,y,width,height,radius,color){
+constructor(x,y,radius,color){
 
     this.x = x;
     this.y = y;
-    this.width = width;
-    this.height = height;
     this.radius = radius;
     this.color = color;
 
