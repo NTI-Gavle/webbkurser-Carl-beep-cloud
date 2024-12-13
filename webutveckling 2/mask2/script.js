@@ -1,9 +1,14 @@
 function start(){
 
     let applenum = document.getElementById("applenum").value;
+    let applecolour = document.getElementById("applecolor").value;
 //! TIden och sådant
 let tid = document.getElementById("number");
 let tiden = 0;
+
+// kollar head färg och body
+let headcolor= document.getElementById("HeadSnakeColor").value;
+let snakebodycolor= document.getElementById("SnakeBody-color").value;
 
 // är för setinterval på tiden
 let timern = null;
@@ -26,7 +31,7 @@ let moveNumber = 40;  // inte mindre än 32
 let xmove = moveNumber;
 let ymove = 0;
 
-let startLength = 5;
+let startLength = 3;
 
 // todo äpplen och sådant
 
@@ -38,7 +43,7 @@ for (let index = 0; index < applenum; index++) {
     Math.floor(Math.random() * canvas.width - 5) + 5,
     Math.floor(Math.random() * canvas.height + 5) + 5,
     10,
-    "red"
+    applecolour
     );
 }
 // todo här slutar Apple saken nu
@@ -48,7 +53,7 @@ const worm = {
     maxLength: 50, // Maximum number of segments
     width: 35, // Width of each rectangle
     height: 35, // Height of each rectangle
-    color: 'orange'
+    color: snakebodycolor
 };
 
 
@@ -80,6 +85,7 @@ function update() {
     diecheck(newHead.x, newHead.y);
 }
 
+//! bestämmer hastighetetn
 setInterval(update,500);
 
 function drawWorm() {
@@ -98,7 +104,8 @@ function drawWorm() {
 
         if (i === 0) {
             // Head of the worm
-            ctx.fillStyle = "blue";
+           
+            ctx.fillStyle =headcolor ;
         } else {
             // Body of the worm
             ctx.fillStyle = worm.color;
@@ -202,6 +209,10 @@ document.addEventListener("keydown", function (event) {
 
 
 function restartProgram() {
+
+
+
+    
     xmove = moveNumber;
     ymove = 0;
     tiden = 0;
@@ -210,7 +221,8 @@ function restartProgram() {
     worm.segments = [{ x: canvas.width / 2, y: canvas.height / 2 }];
 
 }
-
+let setting = document.getElementById("settings");
+setting.remove();
 drawWorm();
 
 }
