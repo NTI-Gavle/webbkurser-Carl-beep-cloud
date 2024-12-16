@@ -86,7 +86,7 @@ function update() {
 }
 
 //! bestämmer hastighetetn
-setInterval(update,500);
+setInterval(update,250);
 
 function drawWorm() {
     requestAnimationFrame(drawWorm);
