@@ -183,24 +183,22 @@ function diecheck(x, y) {
 
 document.addEventListener("keydown", function (event) {
 
-    if (event.key === "ArrowRight" || event.key === "d") {
+    if (event.key === "ArrowRight"&& ymove !=0 || event.key === "d"&& ymove !=0) {
         ymove = 0;
         xmove = moveNumber;
     }
-    if (event.key === "ArrowLeft" || event.key === "a") {
+    if (event.key === "ArrowLeft" && ymove !=0 || event.key === "a" && ymove!=0) {
         ymove = 0;
         xmove = -moveNumber;
     }
-    if (event.key === "ArrowUp" || event.key === "w") {
+    if (event.key === "ArrowUp"&& xmove!=0 || event.key === "w"&& xmove!=0) {
         xmove = 0;
         ymove = -moveNumber;
     }
-    if (event.key === "ArrowDown" || event.key === "s") {
+    if (event.key === "ArrowDown"&& xmove!=0 || event.key === "s"&& xmove!=0) {
         xmove = 0;
         ymove = moveNumber;
     }
-
-
 
 });
 
