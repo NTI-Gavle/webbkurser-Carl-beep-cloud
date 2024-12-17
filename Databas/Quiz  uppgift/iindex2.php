@@ -1,9 +1,10 @@
 <?php
+session_start();
 //! Databasen connect typ
 require 'quizconnect.php';
 
 //! Alla sidorna med frpgor
-$questions = ['','questions2\1.php','questions2\2.php']; 
+$questions = ['','questions2\1.php','questions2\2.php','questions2\3.php']; 
 
 //! Gör att den tar question 1 först
 if (!isset($_SESSION['questionsnumber'])) {  
@@ -34,21 +35,17 @@ $aalt4 = $row['alt4'] ?? "No alt4.";
  @$correctAnswer = 'alt' . $row['correct'];
 
 //! skeiver ut vilket svar som är rätt för den här frågan
-echo $correctAnswer;
+//echo $correctAnswer;
 
 }
 
 
 
 
-//! läser in upgifterna på den här frågan och kollar om det är rätt
-if (isset($_POST['ans'])) {
-  read(); 
-  correctcheck($correctAnswer);
-}
 
 //! Kollar om det är rätt
 //? Här finns problem
+/*
 function correctcheck($correct) {
 
   if ($_POST['svar'] == $correct) {
@@ -57,10 +54,10 @@ function correctcheck($correct) {
      echo "Fel";
     
   }
-  unset($_POST['svar']);
-  unset($_POST['ans']);
 
+ 
 }
+*/
 
 ?>
 <!DOCTYPE html>
@@ -90,9 +87,16 @@ include_once $questions[$_SESSION['questionsnumber']];
 }
 
 
+//! läser in upgifterna på den här frågan och kollar om det är rätt
+if (isset($_POST['ans'])) {
+  read(); 
+ // correctcheck($correctAnswer);
+}
+
 
 //! man trycker så ökar nummret på vilen fråga med 1 och man läser in nästa fråga
 //! och man får upp nästa fråga
+
 if (isset($_POST['Next'])) {
   $_SESSION['questionsnumber']++; 
   read();
