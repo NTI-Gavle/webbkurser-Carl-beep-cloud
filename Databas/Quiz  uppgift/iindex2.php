@@ -1,15 +1,17 @@
 <?php
+//! Databasen connect typ
 require 'quizconnect.php';
 
+//! Alla sidorna med frpgor
 $questions = ['','questions2\1.php','questions2\2.php']; 
 
-
+//! Gör att den tar question 1 först
 if (!isset($_SESSION['questionsnumber'])) {  
   $_SESSION['questionsnumber'] = 1; // Start at question 1
   read();
 }
 
-// Fetch the text and alternatives with ID 1
+//! Läserin allting från fråga 1 i data basen
 function read(){
 
 global $dbconn, $questionsnumber, $ttexten, $aalt1, $aalt2, $aalt3, $aalt4, $correctAnswer;
@@ -30,23 +32,35 @@ $aalt2 = $row['alt2'] ?? "No alt2.";
 $aalt3 = $row['alt3'] ?? "No alt3.";  // kanske funkar['alt.correct']; 
 $aalt4 = $row['alt4'] ?? "No alt4.";
  @$correctAnswer = 'alt' . $row['correct'];
+
+//! skeiver ut vilket svar som är rätt för den här frågan
 echo $correctAnswer;
 
 }
 
-function correctcheck($correct) {
 
-    if ($_POST['svar'] == $correct) {
-    echo "rätt";
-    } else {
-       echo "Fel";
-      
-    }
-    unset($_POST['svar']);
-    unset($_POST['ans']);
- 
+
+
+//! läser in upgifterna på den här frågan och kollar om det är rätt
+if (isset($_POST['ans'])) {
+  read(); 
+  correctcheck($correctAnswer);
 }
 
+//! Kollar om det är rätt
+//? Här finns problem
+function correctcheck($correct) {
+
+  if ($_POST['svar'] == $correct) {
+  echo "rätt";
+  } else {
+     echo "Fel";
+    
+  }
+  unset($_POST['svar']);
+  unset($_POST['ans']);
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -69,27 +83,24 @@ function correctcheck($correct) {
 
 <?php
 
-
+//! När man startar så syns fråga 1
 if(!isset($_POST['Next']))
 {
-include $questions[$_SESSION['questionsnumber']];
+include_once $questions[$_SESSION['questionsnumber']];
 }
 
 
-if (isset($_POST['ans'])) {
-  echo $correctAnswer;
-  correctcheck($correctAnswer);
-}
 
+//! man trycker så ökar nummret på vilen fråga med 1 och man läser in nästa fråga
+//! och man får upp nästa fråga
 if (isset($_POST['Next'])) {
   $_SESSION['questionsnumber']++; 
-read();
+  read();
 
   include $questions[$_SESSION['questionsnumber']];
 
 }
 
-//include $questions[$questionsnumber];
 ?>
 <br>
 <form action="" method="post">
