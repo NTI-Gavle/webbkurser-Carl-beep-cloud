@@ -1,8 +1,12 @@
 <?php require 'quizconnect.php';
 session_start(); 
 
+
 global $correctAnswer;
 $questions = ['','questions\1.php','questions\2.php','questions\3.php','questions\slutet.php']; 
+$RAF =[];
+
+$_SESSION['RAD']=$RAF;
 
 if(!isset($_SESSION['questnum']))
 {
@@ -13,22 +17,20 @@ if (isset($_POST['ans'])) {
     $_SESSION['questnum']++;
  }
  function correctcheck($svar,$correctAnswer) {
-    echo "Svar: " . htmlspecialchars($svar) . "<br>";
-    echo "Correct Answer: " . htmlspecialchars($correctAnswer) . "<br>";
-    
+  
     if ($svar === $correctAnswer) {
-        echo "rätt";
+        $right="Du fick Rätt";
+        $RAF[$_SESSION['questnum']-1] = $right;
     } else {
-        echo "fel";
+        $Fel="Du Fick fel";
+        $RAF[$_SESSION['questnum']-1] = $Fel;
     }
 }
 
 
 
 
- if(isset($_POST['unsetbtn'])){
-    session_unset();
- }
+
 
 ?>
 
@@ -49,9 +51,7 @@ if (isset($_POST['ans'])) {
 
 <br><br><br>
 
-<form action="" method="post">
-    <input value="unset" name="unsetbtn" type="submit">
-</form>
+
 </body>
 </html>
 

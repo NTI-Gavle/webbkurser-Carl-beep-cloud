@@ -6,7 +6,8 @@ require 'quizconnect.php';
 // Fetch the text and alternatives with ID 1
 $sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";
 $stmt = $dbconn->prepare($sql);
-$id = 3; // ID to fetch
+//! istället för att ha en fil per fråga.
+$id = $_GET["q"]; // ID to fetch
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -18,6 +19,12 @@ $aalt2 = $row['alt2'] ?? "No alt2.";
 $aalt3 = $row['alt3'] ?? "No alt3.";  // kanske funkar['alt.correct']; 
 $aalt4 = $row['alt4'] ?? "No alt4.";
 $correctAnswer = 'alt' . $row['correct'];
+$_SESSION["lastcorrect"]=$correctAnswer;
+
+//? daniel försklag
+if($_SESSION["lastcorrect"]===$_POST["svar"]) {
+    $_SESSION["points"]++;
+}
 
 ?>
 
@@ -38,6 +45,8 @@ $correctAnswer = 'alt' . $row['correct'];
         <input type="radio" name="svar" value="alt2"><?php echo $row['alt2']; echo'<br>'; ?> 
         <input type="radio" name="svar" value="alt3"><?php echo $row['alt3']; echo'<br>'; ?> 
         <input type="radio" name="svar" value="alt4"><?php echo $row['alt4']; echo'<br>'; ?> 
+        //? borde använda så här istlläet för många filer.
+        <input type="hidden" name="q" value="nästafråga">
 
         <input value="Lås" name="ans" type="submit">
     </form>
