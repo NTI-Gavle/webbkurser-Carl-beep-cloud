@@ -1,20 +1,12 @@
 <?php
 require 'quizconnect.php';
 
-global $ttexten;
-global $aalt1;
-global $aalt2;
-global $aalt3;
-global $aalt4;
-global $correctAnswer;
 $questions = ['','questions2\1.php','questions2\2.php']; 
 
 
-
-if (!isset($_SESSION['intesett'])) {  
-$questionsnumber=1;
- $_SESSION['intesett'] = true;   
-read();
+if (!isset($_SESSION['questionsnumber'])) {  
+  $_SESSION['questionsnumber'] = 1; // Start at question 1
+  read();
 }
 
 // Fetch the text and alternatives with ID 1
@@ -22,9 +14,11 @@ function read(){
 
 global $dbconn, $questionsnumber, $ttexten, $aalt1, $aalt2, $aalt3, $aalt4, $correctAnswer;
 
+$id = $_SESSION['questionsnumber'];
+
+
 $sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";
 $stmt = $dbconn->prepare($sql);
-$id = $questionsnumber; // ID to fetch
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -35,13 +29,14 @@ $aalt1 = $row['alt1'] ?? "No alt1.";
 $aalt2 = $row['alt2'] ?? "No alt2.";
 $aalt3 = $row['alt3'] ?? "No alt3.";  // kanske funkar['alt.correct']; 
 $aalt4 = $row['alt4'] ?? "No alt4.";
- $correctAnswer = 'alt' . $row['correct'];
-//echo $correctAnswer;
+ @$correctAnswer = 'alt' . $row['correct'];
+echo $correctAnswer;
 
 }
 
-function correctcheck($correctAnswer) {
-    if ($_POST['svar'] == $correctAnswer) {
+function correctcheck($correct) {
+
+    if ($_POST['svar'] == $correct) {
     echo "rätt";
     } else {
        echo "Fel";
@@ -49,7 +44,7 @@ function correctcheck($correctAnswer) {
     }
     unset($_POST['svar']);
     unset($_POST['ans']);
-    unset($correctAnswer);
+ 
 }
 
 
@@ -68,27 +63,29 @@ function correctcheck($correctAnswer) {
 <!-- As a heading -->
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">Fransic Quiz dags</span>
+    <span class="navbar-brand mb-0 h1">Fransic Quiz dags Fråga</span> 
   </div>
 </nav>
 
 <?php
 
 
-
-include_once $questions[$questionsnumber];
-
+if(!isset($_POST['Next']))
+{
+include $questions[$_SESSION['questionsnumber']];
+}
 
 
 if (isset($_POST['ans'])) {
+  echo $correctAnswer;
   correctcheck($correctAnswer);
 }
 
 if (isset($_POST['Next'])) {
-  $questionsnumber++;
+  $_SESSION['questionsnumber']++; 
 read();
 
-  include_once $questions[$questionsnumber];
+  include $questions[$_SESSION['questionsnumber']];
 
 }
 
