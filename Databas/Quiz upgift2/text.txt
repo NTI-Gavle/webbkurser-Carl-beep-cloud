@@ -1,0 +1,53 @@
+var så här innan på en sak
+
+Innan
+<h3>Fråga <?php echo $_SESSION['questnum'] . " av " . $_SESSION['rowCount']; ?></h3>
+<div> <?php echo $ttexten ?> </div>
+<form style="margin-top:20px;" action="" method="post">
+    <input type="radio" name="svar" value="alt1"> <?php echo $row['alt1'];
+    echo '<br>'; ?>
+    <input type="radio" name="svar" value="alt2"><?php echo $row['alt2'];
+    echo '<br>'; ?>
+    <input type="radio" name="svar" value="alt3"><?php echo $row['alt3'];
+    echo '<br>'; ?>
+    <input type="radio" name="svar" value="alt4"><?php echo $row['alt4'];
+    echo '<br>'; ?>
+    <?php   //? borde använda så här istlläet för många filer. ?>
+
+
+    <input value="Lås" name="ans" type="submit">
+</form>
+
+
+GPT
+<h3 style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 10px;">
+    Fråga <?php echo $_SESSION['questnum'] . " av " . $_SESSION['rowCount']; ?>
+</h3>
+
+<div style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+    <?php echo $ttexten ?>
+</div>
+
+<form style="margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;" action="" method="post">
+    <div style="margin-bottom: 15px;">
+        <input type="radio" name="svar" value="alt1" id="alt1">
+        <label for="alt1" style="margin-left: 5px;"><?php echo $row['alt1']; ?></label>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <input type="radio" name="svar" value="alt2" id="alt2">
+        <label for="alt2" style="margin-left: 5px;"><?php echo $row['alt2']; ?></label>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <input type="radio" name="svar" value="alt3" id="alt3">
+        <label for="alt3" style="margin-left: 5px;"><?php echo $row['alt3']; ?></label>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <input type="radio" name="svar" value="alt4" id="alt4">
+        <label for="alt4" style="margin-left: 5px;"><?php echo $row['alt4']; ?></label>
+    </div>
+    <div style="text-align: center;">
+        <input value="Lås" name="ans" type="submit" style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #4CAF50; color: white; font-size: 16px; cursor: pointer;">
+    </div>
+</form>
+
+    

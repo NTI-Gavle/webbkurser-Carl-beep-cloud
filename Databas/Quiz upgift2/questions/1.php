@@ -1,80 +1,15 @@
 <?php
-
 require 'quizconnect.php';
 
-if (!isset($_SESSION['questnum'])) {
-    $_SESSION['questnum'] = 1;
+if (!isset($_SESSION['checkstart'])) {
+ $_SESSION['questnum']++;  
 }
-
-if (!isset($_POST['svar'])) {
-    $_POST['svar'] = "";
-}
-
-if (!isset($_SESSION['lastsvartext'])) {
-    $_SESSION['lastsvartext'] = "";
-}
-
-if (!isset($_SESSION['lastfragatext'])) {
-    $_SESSION['lastfragatext'] = "";
-}
-//? varning
-
-if (!isset($_SESSION['lastcorrecttext'])) {
-    $_SESSION['lastcorrecttext'] = "";
-}
-
-if (isset($_POST['ans'])) {
-    // $_SESSION['questnum']++;
-
-    // Store the user's answer or a default message if no answer was selected
-    $_SESSION['lastsvar'] = $_POST['svar'] ?? "No answer selected";
-
-    // Increment question number
-    $_SESSION['questnum']++;
-
-    // Save result for the current question
-    $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum'] - 1) . " var [" . $_SESSION['lastfragatext'] .
-        "] rätt svar är [" . $_SESSION['lastcorrecttext'] .
-        "] ditt svar var |" . $_SESSION['lastsvartext'];
-}
-
-//! risk
-if (!isset($_POST['lastcorrect'])) {
-    $_POST['lastcorrect'] = "";
-}
-
-if (!isset($_SESSION['lasttexten'])) {
-    $_SESSION['lasttexten'] = "";
-}
-
-if (!isset($_SESSION['lastsvar'])) {
-    $_SESSION['lastsvar'] = "";
-}
-
-
-
-//! finns bar så att en error inte ska komma när man unsetallting
-if (isset($_SESSION['lastcorrect'])) {
-    //? daniel försklag
-    if ($_SESSION["lastcorrect"] === $_POST["svar"]) {
-        $_SESSION["points"]++;
-        // echo "rätt";
-    } else {
-        if ($_POST['svar'] != "a") {
-            //echo "fel";
-        }
-    }
-}
-
-
-
 
 // Fetch the text and alternatives with ID 1
 $sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";
 $stmt = $dbconn->prepare($sql);
 //! istället för att ha en fil per fråga.
-$id = $_SESSION['questnum']; // ID to fetch
-//$id = 3;
+$id = $_SESSION['questnum'];
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -84,26 +19,58 @@ $ttexten = $row['text'] ?? "No text found.";
 $_SESSION['lasttexten'] = $ttexten;
 $aalt1 = $row['alt1'] ?? "No alt1.";
 $aalt2 = $row['alt2'] ?? "No alt2.";
-$aalt3 = $row['alt3'] ?? "No alt3.";  // kanske funkar['alt.correct']; 
+$aalt3 = $row['alt3'] ?? "No alt3.";
 $aalt4 = $row['alt4'] ?? "No alt4.";
 $correctAnswer = 'alt' . $row['correct'];
 $_SESSION["lastcorrect"] = $correctAnswer;
 
-$_SESSION['lastsvar'] = $_POST['svar'];
+
+if (!isset($_SESSION['checkstart'])) {
+   
+    ?>
+     <script>
+       console.log("hejsan");
+      document.addEventListener('DOMContentLoaded', () => {
+     let form = document.getElementById('autosubmit');
+     document.getElementById('alt1').checked = true; 
+     form.submit();
+ });
+     </script>
+     <?php
+     $_SESSION['checkstart']="a";
+ }
 
 //! kollar frågan
-if (!empty($_POST['svar'])) {
-    $_SESSION['lastfragatext'] = $row['text'];
-}
-//? varning
+$_SESSION['lastfragatext'] = $row['text'];
 
 //! kollar korrekta svaret
 $_SESSION['lastcorrecttext'] = $row['alt' . $row['correct']];
 
+//? måste lösa den här
 //! kollar ditt svar
-$_SESSION['lastsvartext'] = $row[$_POST['svar']];
+$_SESSION['lastsvartext'] = @$row[$_POST['svar']];
 
-// Debugging
+//! finns bar så att en error inte ska komma när man unsetallting
+if (isset($_SESSION['lastcorrect'])) {
+    //? daniel försklag
+    if ($_SESSION["lastcorrect"] === @$_POST["svar"]) {
+        $_SESSION["points"]++;
+        // echo "rätt";
+    } else {
+        if (@$_POST['svar'] != "a") {
+            //echo "fel";
+        }
+    }
+
+}
+
+
+//! Gör så att man inte måste trycka på knappen när raderna tagit slut
+if (!$row) {
+    $_SESSION['questnum']++;
+    $_SESSION['skip'] = true;
+}
+
 
 ?>
 
@@ -116,27 +83,57 @@ $_SESSION['lastsvartext'] = $row[$_POST['svar']];
     <title>Document</title>
 </head>
 
+<!-- //! Tack GPT för att det blev fint -->
+
 <body>
-    <h3>Fråga <?php echo $_SESSION['questnum'] . " av " . $_SESSION['rowCount']; ?></h3>
-    <div> <?php echo $ttexten ?> </div>
-    <form style="margin-top:20px;" action="" method="post">
-        <input type="radio" name="svar" value="alt1"> <?php echo $row['alt1'];
-        echo '<br>'; ?>
-        <input type="radio" name="svar" value="alt2"><?php echo $row['alt2'];
-        echo '<br>'; ?>
-        <input type="radio" name="svar" value="alt3"><?php echo $row['alt3'];
-        echo '<br>'; ?>
-        <input type="radio" name="svar" value="alt4"><?php echo $row['alt4'];
-        echo '<br>'; ?>
-        <?php   //? borde använda så här istlläet för många filer. ?>
-        <!-- <input type="hidden" name="q" value="nästafråga">-->
+    <h3 style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 10px;">
+        Fråga <?php echo $_SESSION['questnum'] . " av " . $_SESSION['rowCount']; ?>
+    </h3>
 
-        <input value="Lås" name="ans" type="submit">
+    <div
+        style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+        <?php echo $ttexten ?>
+    </div>
+
+    <form id="autosubmit"
+        style="margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;"
+        action="" method="post">
+        <div style="margin-bottom: 15px;">
+            <input type="radio" name="svar" value="alt1" id="alt1">
+            <label for="alt1" style="margin-left: 5px;"><?php echo $row['alt1']; ?></label>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <input type="radio" name="svar" value="alt2" id="alt2">
+            <label for="alt2" style="margin-left: 5px;"><?php echo $row['alt2']; ?></label>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <input type="radio" name="svar" value="alt3" id="alt3">
+            <label for="alt3" style="margin-left: 5px;"><?php echo $row['alt3']; ?></label>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <input type="radio" name="svar" value="alt4" id="alt4">
+            <label for="alt4" style="margin-left: 5px;"><?php echo $row['alt4']; ?></label>
+        </div>
+        <div style="text-align: center;">
+            <input value="Börja/Nästa" name="ans" type="submit"
+                style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #4CAF50; color: white; font-size: 16px; cursor: pointer;">
+        </div>
     </form>
-
-
 </body>
 
-
-
 </html>
+
+<?php
+
+if (isset($_POST['ans'])) {
+
+    // Save result for the current question
+    $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
+        "] rätt svar är [" . $_SESSION['lastcorrecttext'] .
+        "] ditt svar var |" . $_SESSION['lastsvartext'];
+
+    $_SESSION['questnum']++;
+}
+
+
+?>

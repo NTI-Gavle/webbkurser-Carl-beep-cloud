@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['questnum'])) {
-    $_SESSION['questnum'] = 1;
+    $_SESSION['questnum'] = 0;
 }
 
 
@@ -40,7 +40,7 @@ if (!isset($_SESSION['result'])) {
     }
 
     if (isset($_SESSION['koll'])) {
-        if ($_SESSION['questnum'] >= $_SESSION['rowCount']) {
+        if ($_SESSION['questnum'] >= $_SESSION['rowCount'] || isset($_SESSION['skip'])) {
             include 'questions/slutet.php';
         } else {
             include 'questions/1.php';
