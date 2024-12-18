@@ -11,17 +11,29 @@ if (isset($_SESSION['lastcorrect'])) {
             //echo "fel";
         } 
     }
-    $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . $_SESSION['questnum'] . " " . $_SESSION['lasttexten'] . " rätt svar är " . $_SESSION['lastcorrect'] . " ditt svar var " . $_SESSION['lastsvar'];
-
+  
 }
 
  
- echo "du fick " . $_SESSION['points'] . "av" . $_SESSION['rowCount'];
-
+ echo " <h2>du fick " . $_SESSION['points'] . " av " . $_SESSION['rowCount']. "</h2>";
+/*
  echo '<pre>';
  var_dump($_SESSION['result']);
  echo '</pre>';
+*/
 
+//! TACK GPT för en vacker utskrivning
+if (!empty($_SESSION['result'])) {
+    echo '<div style="display: flex; flex-direction: column; gap: 10px;">';
+    foreach ($_SESSION['result'] as $key => $result) {
+        echo '<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">';
+        echo "<strong>Question $key:</strong><br>$result";
+        echo '</div>';
+    }
+    echo '</div>';
+} else {
+    echo '<p>No results available yet.</p>';
+}
  
 
 if(isset($_POST['unsetbtn'])){
@@ -42,12 +54,10 @@ if(isset($_POST['unsetbtn'])){
     <title>Document</title>
 </head>
 <body>
-    <form action="" metod="post">
-        <input type="submit">
-    </form>
+    
 
-<form action="" method="post">
-    <input value="unset" name="unsetbtn" type="submit">
+<form style="margin-top:20px;" action="" method="post">
+    <input  value="unset" name="unsetbtn" type="submit">
 </form>
 
 </body>

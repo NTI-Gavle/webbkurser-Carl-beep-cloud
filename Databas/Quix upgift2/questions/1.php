@@ -2,7 +2,8 @@
 
 require 'quizconnect.php';
 
-var_dump($_SESSION);
+
+//! var_dump($_SESSION);
 
 if (!isset($_SESSION['questnum'])) {
     $_SESSION['questnum'] = 1;
@@ -13,7 +14,19 @@ if (!isset($_POST['svar'])) {
 }
 
 if (isset($_POST['ans'])) {
-    $_SESSION['questnum']++;
+   // $_SESSION['questnum']++;
+
+       // Store the user's answer or a default message if no answer was selected
+       $_SESSION['lastsvar'] = $_POST['svar'] ?? "No answer selected";
+
+       // Increment question number
+       $_SESSION['questnum']++;
+   
+       // Save result for the current question
+       $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']-1) . " " . 
+           $_SESSION['lasttexten'] . " rätt svar är " . $_SESSION['lastcorrect'] . 
+           " ditt svar var " . $_SESSION['lastsvar'];
+
 }
 
 
@@ -27,10 +40,10 @@ if (!isset($_SESSION['lasttexten'])) {
     $_SESSION['lasttexten'] = "";
 }
 
-
 if (!isset($_SESSION['lastsvar'])) {
     $_SESSION['lastsvar'] = "";
 }
+
 
 
 
@@ -44,12 +57,11 @@ if (isset($_SESSION['lastcorrect'])) {
         $_SESSION["points"]++;
         // echo "rätt";
     } else {
-        if ($_POST['svar'] != "") {
+        if ($_POST['svar'] != "a") {
             //echo "fel";
         }
     }
-    $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . $_SESSION['questnum'] . " " . $_SESSION['lasttexten'] . " rätt svar är " . $_SESSION['lastcorrect'] . " ditt svar var " . $_SESSION['lastsvar'];
-
+   
 }
 // Fetch the text and alternatives with ID 1
 $sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";
@@ -73,6 +85,8 @@ $_SESSION["lastcorrect"] = $correctAnswer;
 
 $_SESSION['lastsvar'] = $_POST['svar'];
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +101,7 @@ $_SESSION['lastsvar'] = $_POST['svar'];
 <body>
     <h3>Fråga <?php echo $_SESSION['questnum'] . " av " . $_SESSION['rowCount']; ?></h3>
     <div> <?php echo $ttexten ?> </div>
-    <form action="" method="post">
+    <form style="margin-top:20px;" action="" method="post">
         <input type="radio" name="svar" value="alt1"> <?php echo $row['alt1'];
         echo '<br>'; ?>
         <input type="radio" name="svar" value="alt2"><?php echo $row['alt2'];
