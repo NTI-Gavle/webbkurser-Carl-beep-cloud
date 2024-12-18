@@ -7,12 +7,12 @@ if (!isset($_SESSION['questnum'])) {
     $_SESSION['questnum'] = 1;
   }
 
-/*   //! bra att ha när man gör saker i programmet ifall det krashar
+   //! bra att ha när man gör saker i programmet ifall det krashar
 if (isset($_POST['unsetbtn'])) {
     session_unset();
     header("Refresh:0");
 }
-*/
+
 
 
 //? array med poäng
@@ -20,6 +20,9 @@ if (!isset($_SESSION['points'])) {
     $_SESSION['points'] = 0;
   }
 
+  if (!isset($_SESSION['result'])) {
+    $_SESSION['result'] = array();
+  }
 
 ?>
 <!DOCTYPE html>
@@ -48,11 +51,11 @@ if ($_SESSION['questnum'] >= $_SESSION['rowCount']) {
 }
 ?>
     <br><br><br>
-    <!--  //! bra att ha ifall skiten krashar
+      //! bra att ha ifall skiten krashar
     <form action="" method="post">
         <input value="unset" name="unsetbtn" type="submit">
     </form>
--->
+
 
 </body>
 
