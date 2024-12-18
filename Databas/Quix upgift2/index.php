@@ -1,18 +1,9 @@
 <?php require 'quizconnect.php';
 session_start();
-//! super riks  ta bort ifall skit krashar 
-//! tror inte den här är kopplade till den andra i 1.php
-//! enda andeldning att den finns är att en error inte ska visasa men ingen vikt för själva programmet
+
 if (!isset($_SESSION['questnum'])) {
     $_SESSION['questnum'] = 1;
   }
-/*
-   //! bra att ha när man gör saker i programmet ifall det krashar
-if (isset($_POST['unsetbtn'])) {
-    session_unset();
-    header("Refresh:0");
-}
-*/
 
 
 //? array med poäng
@@ -50,12 +41,7 @@ if ($_SESSION['questnum'] >= $_SESSION['rowCount']) {
     include 'questions/1.php'; 
 }
 ?>
-    <br><br><br>
-   <!--   //! bra att ha ifall skiten krashar
-    <form action="" method="post">
-        <input value="unset" name="unsetbtn" type="submit">
-    </form>
--->
+
 
 </body>
 

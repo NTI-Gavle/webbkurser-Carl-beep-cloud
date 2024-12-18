@@ -2,9 +2,6 @@
 
 require 'quizconnect.php';
 
-
-//! var_dump($_SESSION);
-
 if (!isset($_SESSION['questnum'])) {
     $_SESSION['questnum'] = 1;
 }
@@ -13,23 +10,29 @@ if (!isset($_POST['svar'])) {
     $_POST['svar'] = "";
 }
 
-if (isset($_POST['ans'])) {
-   // $_SESSION['questnum']++;
-
-       // Store the user's answer or a default message if no answer was selected
-       $_SESSION['lastsvar'] = $_POST['svar'] ?? "No answer selected";
-
-       // Increment question number
-       $_SESSION['questnum']++;
-   
-       // Save result for the current question
-       $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']-1) . " " . 
-           $_SESSION['lasttexten'] . " rätt svar är " . $_SESSION['lastcorrect'] . 
-           " ditt svar var " . $_SESSION['lastsvar'];
-
+if (!isset($_POST['lastsvartxt'])) {
+    $_POST['lastsvartxt'] = "";
 }
 
+if (!isset($_SESSION['lastcorrecttxt'])) {
+    $_SESSION['lastcorrecttxt'] = "";
+}
 
+if (isset($_POST['ans'])) {
+    // $_SESSION['questnum']++;
+
+    // Store the user's answer or a default message if no answer was selected
+    $_SESSION['lastsvar'] = $_POST['svar'] ?? "No answer selected";
+
+    // Increment question number
+    $_SESSION['questnum']++;
+
+    // Save result for the current question
+    $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum'] - 1) . " " .
+        $_SESSION['lastcorrecttxt'] . " rätt svar är " . $_SESSION['lastcorrect'] .
+        " ditt svar var " . $_SESSION['lastsvartxt'];
+
+}
 
 //! risk
 if (!isset($_POST['lastcorrect'])) {
@@ -46,10 +49,6 @@ if (!isset($_SESSION['lastsvar'])) {
 
 
 
-
-
-
-
 //! finns bar så att en error inte ska komma när man unsetallting
 if (isset($_SESSION['lastcorrect'])) {
     //? daniel försklag
@@ -61,8 +60,11 @@ if (isset($_SESSION['lastcorrect'])) {
             //echo "fel";
         }
     }
-   
 }
+
+
+
+
 // Fetch the text and alternatives with ID 1
 $sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";
 $stmt = $dbconn->prepare($sql);
@@ -86,6 +88,14 @@ $_SESSION["lastcorrect"] = $correctAnswer;
 $_SESSION['lastsvar'] = $_POST['svar'];
 
 
+if (!empty($_POST['svar'])) {
+    $_SESSION['lastsvartxt'] = $row[$_POST['svar']];
+}
+
+$_SESSION['lastcorrecttxt'] =$row['text'];
+
+// Debugging
+echo "Correct Answer Text: " . $_SESSION['lastcorrecttext'];
 
 ?>
 
@@ -118,5 +128,7 @@ $_SESSION['lastsvar'] = $_POST['svar'];
 
 
 </body>
+
+
 
 </html>
