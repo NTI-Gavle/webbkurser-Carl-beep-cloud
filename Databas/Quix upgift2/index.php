@@ -49,7 +49,7 @@ if (!isset($_SESSION['result'])) {
        
         ?>
         <form action="" method="post">
-            <input name="starta" value="Starta Quizet" type="submit">
+            <input name="starta" value="Starta  Fransic Quizet" type="submit">
         </form>
         <?php
     }

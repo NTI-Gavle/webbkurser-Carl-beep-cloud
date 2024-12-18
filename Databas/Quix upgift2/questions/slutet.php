@@ -3,11 +3,11 @@
 
 if (isset($_SESSION['lastcorrect'])) {
     //? daniel försklag
-    if ($_SESSION["lastcorrect"] === $_POST["svar"]) {
+    if ($_SESSION["lastcorrect"] === @$_POST["svar"]) {
         $_SESSION["points"]++;
         // echo "rätt";
            } else {
-        if ($_POST['svar'] != "") {
+        if (@$_POST['svar'] != "") {
             //echo "fel";
         } 
     }
