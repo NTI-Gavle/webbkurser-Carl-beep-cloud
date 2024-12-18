@@ -3,7 +3,7 @@
 require 'quizconnect.php';
 
 if (!isset($_SESSION['questnum'])) {
-    $_SESSION['questnum'] = 1;
+  $_SESSION['questnum'] = 1;
 }
 
 if(!isset($_POST['svar'])){
@@ -14,12 +14,18 @@ if(isset($_POST['ans']))
 {
     $_SESSION['questnum']++;
 }
+//! risk
+if(!isset($_POST['lastcorrect'])){
+    $_POST['lastcorrect']="";
+}
 
 
-//? daniel försklag
-
+//! finns bar så att en error inte ska komma när man unsetallting
+if(isset($_SESSION['lastcorrect']))
+{
+    //? daniel försklag
 if($_SESSION["lastcorrect"]===$_POST["svar"]) {
-    //  $_SESSION["points"]++;
+      $_SESSION["points"]++;
     echo "rätt";
   }
   
@@ -30,7 +36,7 @@ if($_SESSION["lastcorrect"]===$_POST["svar"]) {
       }
   }
 
-
+}
 // Fetch the text and alternatives with ID 1
 $sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";
 $stmt = $dbconn->prepare($sql);
@@ -49,11 +55,6 @@ $aalt3 = $row['alt3'] ?? "No alt3.";  // kanske funkar['alt.correct'];
 $aalt4 = $row['alt4'] ?? "No alt4.";
 $correctAnswer = 'alt' . $row['correct'];
 $_SESSION["lastcorrect"]=$correctAnswer;
-
-
-
-
-
 
 ?>
 

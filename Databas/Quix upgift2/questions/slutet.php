@@ -1,8 +1,18 @@
-<?php  echo "du är klar";
+<?php
+// ! så att sista poänget ska räknas
+if($_SESSION["lastcorrect"]===$_POST["svar"]) {
+    $_SESSION["points"]++;
+  echo "rätt";
+}
+
+  echo "du är klar";
+
+ echo "du fick " . $_SESSION['points'] . "av" . $_SESSION['rowCount'];
 
 if(isset($_POST['unsetbtn'])){
     session_unset();
     header("Refresh:0");
+
  }
 
 
