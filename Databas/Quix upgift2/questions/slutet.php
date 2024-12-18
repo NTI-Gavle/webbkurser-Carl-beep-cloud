@@ -23,6 +23,7 @@ if (isset($_SESSION['lastcorrect'])) {
 */
 
 //! TACK GPT för en vacker utskrivning
+
 if (!empty($_SESSION['result'])) {
     echo '<div style="display: flex; flex-direction: column; gap: 10px;">';
     foreach ($_SESSION['result'] as $key => $result) {

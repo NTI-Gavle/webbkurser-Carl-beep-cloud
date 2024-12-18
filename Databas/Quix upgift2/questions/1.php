@@ -13,11 +13,12 @@ if (!isset($_POST['svar'])) {
 if (!isset($_POST['lastsvartxt'])) {
     $_POST['lastsvartxt'] = "";
 }
-
+//? varning
+/*
 if (!isset($_SESSION['lastcorrecttxt'])) {
     $_SESSION['lastcorrecttxt'] = "";
 }
-
+*/
 if (isset($_POST['ans'])) {
     // $_SESSION['questnum']++;
 
@@ -29,9 +30,9 @@ if (isset($_POST['ans'])) {
 
     // Save result for the current question
     $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum'] - 1) . " " .
-        $_SESSION['lastcorrecttxt'] . " rätt svar är " . $_SESSION['lastcorrect'] .
-        " ditt svar var " . $_SESSION['lastsvartxt'];
-
+         " rätt svar är " . $_SESSION['lastcorrect'] .
+        " ditt svar var " . $_SESSION['lastsvar'];
+// $_SESSION['lastcorrect'] to correcttext    $_SESSION['lastsvartext']
 }
 
 //! risk
@@ -91,12 +92,13 @@ $_SESSION['lastsvar'] = $_POST['svar'];
 if (!empty($_POST['svar'])) {
     $_SESSION['lastsvartxt'] = $row[$_POST['svar']];
 }
-
+//? varning
+/*
 $_SESSION['lastcorrecttxt'] =$row['text'];
 
 // Debugging
 echo "Correct Answer Text: " . $_SESSION['lastcorrecttext'];
-
+*/
 ?>
 
 <!DOCTYPE html>
