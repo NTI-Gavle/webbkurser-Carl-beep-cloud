@@ -1,9 +1,18 @@
 <?php
 require 'quizconnect.php';
 
-if (!isset($_SESSION['checkstart'])) {
- $_SESSION['questnum']++;  
+
+ /*
+if (isset($_POST['ans'])) {
+
+    // Save result for the current question
+    $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
+        "] rätt svar är [" . $_SESSION['lastcorrecttext'] .
+        "] ditt svar var |" . $_SESSION['lastsvartext'];
+        $_SESSION['questnum']++;
+        echo var_dump( $_SESSION['result']);
 }
+*/
 
 // Fetch the text and alternatives with ID 1
 $sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";
@@ -25,20 +34,9 @@ $correctAnswer = 'alt' . $row['correct'];
 $_SESSION["lastcorrect"] = $correctAnswer;
 
 
-if (!isset($_SESSION['checkstart'])) {
-   
-    ?>
-     <script>
-       console.log("hejsan");
-      document.addEventListener('DOMContentLoaded', () => {
-     let form = document.getElementById('autosubmit');
-     document.getElementById('alt1').checked = true; 
-     form.submit();
- });
-     </script>
-     <?php
-     $_SESSION['checkstart']="a";
- }
+
+
+
 
 //! kollar frågan
 $_SESSION['lastfragatext'] = $row['text'];
@@ -50,19 +48,24 @@ $_SESSION['lastcorrecttext'] = $row['alt' . $row['correct']];
 //! kollar ditt svar
 $_SESSION['lastsvartext'] = @$row[$_POST['svar']];
 
+
+
 //! finns bar så att en error inte ska komma när man unsetallting
 if (isset($_SESSION['lastcorrect'])) {
     //? daniel försklag
     if ($_SESSION["lastcorrect"] === @$_POST["svar"]) {
         $_SESSION["points"]++;
-        // echo "rätt";
+         echo "rätt";
     } else {
-        if (@$_POST['svar'] != "a") {
-            //echo "fel";
-        }
+        
+            echo "fel";
+        
     }
-
+   
 }
+
+
+
 
 
 //! Gör så att man inte måste trycka på knappen när raderna tagit slut
@@ -131,9 +134,8 @@ if (isset($_POST['ans'])) {
     $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
         "] rätt svar är [" . $_SESSION['lastcorrecttext'] .
         "] ditt svar var |" . $_SESSION['lastsvartext'];
-
-    $_SESSION['questnum']++;
+        $_SESSION['questnum']++;
+      
 }
-
-
+echo var_dump( $_SESSION['result']);
 ?>

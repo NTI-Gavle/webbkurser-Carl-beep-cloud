@@ -50,4 +50,34 @@ GPT
     </div>
 </form>
 
+
+
+
+
+
+
+
+
+
+
+
+if (!isset($_SESSION['checkstart'])) {
+ $_SESSION['questnum']++;  
+}
+
+
+if (!isset($_SESSION['checkstart'])) {
+   
+    ?>
+     <script>
+       console.log("hejsan");
+      document.addEventListener('DOMContentLoaded', () => {
+     let form = document.getElementById('autosubmit');
+     document.getElementById('alt4').checked = true; 
+     form.submit();
+ });
+     </script>
+     <?php
+     $_SESSION['checkstart']="a";
+ }
     
