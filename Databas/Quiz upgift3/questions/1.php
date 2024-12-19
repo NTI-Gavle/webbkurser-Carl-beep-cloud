@@ -7,7 +7,7 @@ require 'quizconnect.php';
 if (isset($_POST['ans'])) {
 
    // echo $_SESSION['lastcorrect'] . "  " . $_POST['svar'];
-    if ($_SESSION['lastcorrect'] == $_POST['svar']) {
+    if ($_SESSION['lastcorrect'] == @$_POST['svar']) {
         $_SESSION['points']++;
     }
     
@@ -18,15 +18,13 @@ if (isset($_POST['ans'])) {
     $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
         "] rätt svar är [" . $_SESSION['lastcorrecttext'] .
         "] ditt svar var |" . 
-        $_SESSION['quiz'][$_SESSION['questnum']][$_POST['svar']];
+        @$_SESSION['quiz'][$_SESSION['questnum']][@$_POST['svar']];
         $_SESSION['questnum']++;
     
         
 }
 
 
-
-// Fetch the text and alternatives with ID 1
 $sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";
 $stmt = $dbconn->prepare($sql);
 //! istället för att ha en fil per fråga.
