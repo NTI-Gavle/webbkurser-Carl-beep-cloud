@@ -1,4 +1,10 @@
 <?php
+
+if(isset($_POST['unsetbtn'])){
+    session_unset();
+    header("Refresh:0");
+
+ }
 // ! så att sista poänget ska räknas
 if (isset($_SESSION['lastcorrect'])) {
     //? daniel försklag
@@ -38,11 +44,7 @@ if (!empty($_SESSION['result'])) {
 }
  
 
-if(isset($_POST['unsetbtn'])){
-    session_unset();
-    header("Refresh:0");
 
- }
 
 
 

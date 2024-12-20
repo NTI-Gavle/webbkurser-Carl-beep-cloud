@@ -1,4 +1,11 @@
 <?php
+
+if(isset($_POST['unsetbtn'])){
+
+    session_unset();
+    header("Refresh:0");
+   
+ }  
 // ! så att sista poänget ska räknas
 if (isset($_SESSION['lastcorrect'])) {
     //? daniel försklag
@@ -15,7 +22,8 @@ if (isset($_SESSION['lastcorrect'])) {
 //! gör så att den sista frågan läggs in
 if (empty($_SESSION['result'][$_SESSION['questnum']])) {
     $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
-        "] rätt svar är [" . $_SESSION['lastcorrecttext'] . "] ditt svar var |" . $_SESSION['lastsvartext'];
+        "] rätt svar är [" . $_SESSION['lastcorrecttext'] . "] ditt svar var |"
+         . @$_SESSION['quiz'][$_SESSION['questnum']][@$_POST['svar']];;
 }
 
 
@@ -38,11 +46,7 @@ if (!empty($_SESSION['result'])) {
 }
  
 
-if(isset($_POST['unsetbtn'])){
-    session_unset();
-    header("Refresh:0");
 
- }
 
 
 
