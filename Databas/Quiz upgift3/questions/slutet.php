@@ -17,8 +17,8 @@ if (isset($_SESSION['lastcorrect'])) {
             //echo "fel";
         } 
     }
-  
 }
+
 //! gör så att den sista frågan läggs in
 if (empty($_SESSION['result'][$_SESSION['questnum']])) {
     $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
