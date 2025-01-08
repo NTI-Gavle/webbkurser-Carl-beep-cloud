@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php require 'quizconnect.php';
 session_start();
 
@@ -46,9 +47,12 @@ if (!isset($_SESSION['result'])) {
       } else {
        
         ?>
+            <div class="quiz-container">
+        <h1>Quiz</h1>
         <form action="" method="post">
-            <input name="starta" value="Starta  Fransic Quizet" type="submit">
+            <input name="starta" value="Start Fransic Quizet" type="submit">
         </form>
+    </div>
         <?php
     }
         ?>

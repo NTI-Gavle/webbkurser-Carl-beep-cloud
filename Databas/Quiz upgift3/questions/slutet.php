@@ -8,7 +8,7 @@ if(isset($_POST['unsetbtn'])){
  }  
 // ! så att sista poänget ska räknas
 if (isset($_SESSION['lastcorrect'])) {
-    //? daniel försklag
+    //? daniel försklagw
     if ($_SESSION["lastcorrect"] === @$_POST["svar"]) {
         $_SESSION["points"]++;
         // echo "rätt";

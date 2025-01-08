@@ -2,9 +2,10 @@
 <?php require 'quizconnect.php';
 session_start();
 
-
 if (!isset($_SESSION['questnum'])) {
+    $_SESSION['rownum'] =100;
     $_SESSION['questnum'] = 1;
+   
 }
 
 
@@ -27,6 +28,7 @@ if (!isset($_SESSION['result'])) {
 </head>
 <body>
     <?php
+    //! fixar ett nummer för quiz 1 Det om Fransic. Nummret är antal frågor.
     if (!isset($_SESSION['rowCount'])) {
         $sql = "SELECT COUNT(*) as totalRows FROM quizbas";
         $stmt = $dbconn->prepare($sql);
@@ -34,14 +36,31 @@ if (!isset($_SESSION['result'])) {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $_SESSION['rowCount'] = $result['totalRows'] ?? 0;
     }
+//!  Quiz 2 antal frågor nummer
+    if (!isset($_SESSION['rowCount2'])) {
+        $sql = "SELECT COUNT(*) as totalRows FROM quizbas2";
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute();
+        $result2 = $stmt->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['rowCount2'] = $result2['totalRows'] ?? 0;
+    }
 
+    //! kollar quiz 1 knapp
     if (isset($_POST['starta'])) {
+        $_SESSION['rownum'] = $_SESSION['rowCount'];
         $_SESSION['koll'] = "";
+      
+    }
+ //! kollar quiz 2 knapp
+    if (isset($_POST['starta2'])) {
+        $_SESSION['rownum'] = $_SESSION['rowCount2'];
+        $_SESSION['koll2'] = "";
+      
     }
 
 
-    if (isset($_SESSION['koll'])) {
-        if ($_SESSION['questnum'] >= $_SESSION['rowCount'] || isset($_SESSION['skip'])) {
+    if (isset($_SESSION['koll'])|| isset($_SESSION['koll2'])) {
+        if ($_SESSION['questnum'] >=  $_SESSION['rownum']  || isset($_SESSION['skip'])) {
             include 'questions/slutet.php';
         } else {
             include 'questions/1.php';
@@ -56,7 +75,12 @@ if (!isset($_SESSION['result'])) {
         </form>
     </div>
         <br>
-        
+        <div class="quiz-container">
+        <h1>Quiz 2</h1>
+        <form action="" method="post">
+            <input name="starta2" value="Det andra quizet" type="submit">
+        </form>
+    </div>
        
         <?php
     }

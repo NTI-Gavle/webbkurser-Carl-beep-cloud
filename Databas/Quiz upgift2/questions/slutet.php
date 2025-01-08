@@ -42,11 +42,6 @@ if (!empty($_SESSION['result'])) {
 } else {
     echo '<p>No results available yet.</p>';
 }
- 
-
-
-
-
 
 ?>
 
@@ -60,8 +55,26 @@ if (!empty($_SESSION['result'])) {
 <body>
     
 
-<form style="margin-top:20px;" action="" method="post">
-    <input  value="unset" name="unsetbtn" type="submit">
+
+<form style="margin-top: 20px; text-align: center;" action="" method="post">
+    <input 
+        value="Unset" 
+        name="unsetbtn" 
+        type="submit" 
+        style="
+            background-color: #ff6347; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            transition: transform 0.2s, box-shadow 0.2s;"
+        onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 10px rgba(0, 0, 0, 0.15)';" 
+        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';"
+    >
 </form>
 
 </body>

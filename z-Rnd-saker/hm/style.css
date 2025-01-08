@@ -1,0 +1,33 @@
+.container{
+    display:flex;
+    justify-content: center;
+
+}
+
+.box{
+    width: 50%;
+    border: black solid 2px;
+}
+
+.boxheader{
+    display: flex;
+    justify-content: center;
+}
+
+
+.prof{
+    width: 20%;
+    margin-left: 10%;
+}
+
+
+.tex{
+    font-size:35px;
+}
+
+.pic{
+    width:50%;
+    border:solid black 2px;
+    border-width: 50%;
+    
+}

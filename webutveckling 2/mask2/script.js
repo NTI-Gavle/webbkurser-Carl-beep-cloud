@@ -10,6 +10,12 @@ let tiden = 0;
 let headcolor= document.getElementById("HeadSnakeColor").value;
 let snakebodycolor= document.getElementById("SnakeBody-color").value;
 
+// kollar hastighets numret
+let speed = document.getElementById("speed").value;
+if(speed<=0){
+    speed=1;
+}
+
 // är för setinterval på tiden
 let timern = null;
 function timer() {
@@ -40,8 +46,8 @@ for (let index = 0; index < applenum; index++) {
 
 
     new Apple(
-    Math.floor(Math.random() * canvas.width - 5) + 5,
-    Math.floor(Math.random() * canvas.height + 5) + 5,
+    Math.floor(Math.random() * canvas.width - 5) + 35,
+    Math.floor(Math.random() * canvas.height + 5) + 35,
     10,
     applecolour
     );
@@ -84,9 +90,9 @@ function update() {
 
     diecheck(newHead.x, newHead.y);
 }
-
+let startspeed = 2000;
 //! bestämmer hastighetetn
-setInterval(update,250);
+setInterval(update,startspeed/speed);
 
 function drawWorm() {
     requestAnimationFrame(drawWorm);
@@ -143,8 +149,8 @@ function drawWorm() {
     worm.segments[0].y + worm.height > apple.y - buffer
 ) {
     
-    apple.x = Math.floor(Math.random() * (canvas.width - apple.radius) + 5);
-    apple.y = Math.floor(Math.random() * (canvas.height - apple.radius) + 5);
+    apple.x = Math.floor(Math.random() * (canvas.width - apple.radius) + 25);
+    apple.y = Math.floor(Math.random() * (canvas.height - apple.radius) + 25);
     console.log("");
     Apple.Point++;
     worm.maxLength=startLength*(Apple.Point+1);
@@ -180,26 +186,34 @@ function diecheck(x, y) {
     }
 }
 
-
 document.addEventListener("keydown", function (event) {
-
-    if (event.key === "ArrowRight"&& ymove !=0 || event.key === "d"&& ymove !=0) {
-        ymove = 0;
-        xmove = moveNumber;
-    }
-    if (event.key === "ArrowLeft" && ymove !=0 || event.key === "a" && ymove!=0) {
-        ymove = 0;
-        xmove = -moveNumber;
-    }
-    if (event.key === "ArrowUp"&& xmove!=0 || event.key === "w"&& xmove!=0) {
-        xmove = 0;
-        ymove = -moveNumber;
-    }
-    if (event.key === "ArrowDown"&& xmove!=0 || event.key === "s"&& xmove!=0) {
-        xmove = 0;
-        ymove = moveNumber;
+    if (event.key === "ArrowRight" || event.key === "d") {
+        if (xmove !== -moveNumber) { 
+            ymove = 0;
+            xmove = moveNumber;
+        }
     }
 
+    if (event.key === "ArrowLeft" || event.key === "a") {
+        if (xmove !== moveNumber) {
+            ymove = 0;
+            xmove = -moveNumber;
+        }
+    }
+
+    if (event.key === "ArrowUp" || event.key === "w") {
+        if (ymove !== moveNumber) { 
+            xmove = 0;
+            ymove = -moveNumber;
+        }
+    }
+
+    if (event.key === "ArrowDown" || event.key === "s") {
+        if (ymove !== -moveNumber) { 
+            xmove = 0;
+            ymove = moveNumber;
+        }
+    }
 });
 
 
@@ -208,14 +222,11 @@ document.addEventListener("keydown", function (event) {
 
 function restartProgram() {
 
-
-
-    
     xmove = moveNumber;
     ymove = 0;
     tiden = 0;
     Apple.Point =0;
-    tid.innerHTML = "Snake du har levt i 0 sekunder" + "<br>" + " dina poäng är: " + Apple.Point; // Reset timer display
+    tid.innerHTML = "Snake du har levt i 0 sekunder" + "<br>" + " dina poäng är: " + Apple.Point; 
     worm.segments = [{ x: canvas.width / 2, y: canvas.height / 2 }];
 
 }

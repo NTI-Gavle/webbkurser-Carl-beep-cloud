@@ -12,6 +12,11 @@ class Cube {
         // Merge user options with defaults
         this.settings = { ...defaults, ...options };
 
+            for (let index = 0; index < array.length; index++) {
+                const element = array[index];
+                
+            }
+
         // Create canvas
         this.container = document.getElementById(containerId) || document.body;
         this.canvas = document.createElement("canvas");

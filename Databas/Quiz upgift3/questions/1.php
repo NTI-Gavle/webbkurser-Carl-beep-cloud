@@ -24,8 +24,14 @@ if (isset($_POST['ans'])) {
         
 }
 
-
+if(isset($_SESSION['koll'])){
 $sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";
+}
+
+if(isset($_SESSION['koll2'])){
+$sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas2 WHERE id = :id";
+}
+
 $stmt = $dbconn->prepare($sql);
 //! istället för att ha en fil per fråga.
 $id = $_SESSION['questnum'];
@@ -45,10 +51,6 @@ $_SESSION["lastcorrect"] = $correctAnswer;
 
 $_SESSION["quiz"][$id]=$row;
 
-
-
-
-
 //! kollar frågan
 $_SESSION['lastfragatext'] = $row['text'];
 
@@ -65,12 +67,9 @@ if (!$row) {
     $_SESSION['skip'] = true;
 }
 
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,7 +80,9 @@ if (!$row) {
 
 <body>
     <h3 style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 10px;">
-        Fråga <?php echo $_SESSION['questnum'] . " av " . $_SESSION['rowCount']; ?>
+        Fråga <?php echo $_SESSION['questnum'] . " av ";  
+        if(isset($_SESSION['koll'])){ echo $_SESSION['rowCount'];}
+            if(isset($_SESSION['koll'])){ echo $_SESSION['rowCount2']; } ?>
     </h3>
 
     <div
@@ -116,18 +117,3 @@ if (!$row) {
 </body>
 
 </html>
-
-<?php
-/*
-if (isset($_POST['ans'])) {
-
-    // Save result for the current question
-    $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
-        "] rätt svar är [" . $_SESSION['lastcorrecttext'] .
-        "] ditt svar var |" . $_SESSION['lastsvartext'];
-        $_SESSION['questnum']++;
-    echo var_dump( $_SESSION['result']);      
-}
-
-*/
-?>
