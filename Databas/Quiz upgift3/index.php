@@ -8,7 +8,6 @@ if (!isset($_SESSION['questnum'])) {
    
 }
 
-
 //? array med poäng
 if (!isset($_SESSION['points'])) {
     $_SESSION['points'] = 0;
@@ -36,7 +35,8 @@ if (!isset($_SESSION['result'])) {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $_SESSION['rowCount'] = $result['totalRows'] ?? 0;
     }
-//!  Quiz 2 antal frågor nummer
+
+    //!  Quiz 2 antal frågor nummer
     if (!isset($_SESSION['rowCount2'])) {
         $sql = "SELECT COUNT(*) as totalRows FROM quizbas2";
         $stmt = $dbconn->prepare($sql);
@@ -49,15 +49,13 @@ if (!isset($_SESSION['result'])) {
     if (isset($_POST['starta'])) {
         $_SESSION['rownum'] = $_SESSION['rowCount'];
         $_SESSION['koll'] = "";
-      
-    }
- //! kollar quiz 2 knapp
-    if (isset($_POST['starta2'])) {
-        $_SESSION['rownum'] = $_SESSION['rowCount2'];
-        $_SESSION['koll2'] = "";
-      
     }
 
+    //! kollar quiz 2 knapp
+    if (isset($_POST['starta2'])) {
+        $_SESSION['rownum'] = $_SESSION['rowCount2'];
+        $_SESSION['koll2'] = ""; 
+    }
 
     if (isset($_SESSION['koll'])|| isset($_SESSION['koll2'])) {
         if ($_SESSION['questnum'] >=  $_SESSION['rownum']  || isset($_SESSION['skip'])) {
@@ -66,7 +64,7 @@ if (!isset($_SESSION['result'])) {
             include 'questions/1.php';
         }
       } else {
-       
+               
         ?>
        <div class="quiz-container">
         <h1>Quiz</h1>
@@ -83,10 +81,7 @@ if (!isset($_SESSION['result'])) {
     </div>
        
         <?php
-    }
-
-
-        ?>
+    }?>
 
 </body>
 

@@ -1,37 +1,24 @@
 <?php
 require 'quizconnect.php';
 
-
-
- 
 if (isset($_POST['ans'])) {
 
    // echo $_SESSION['lastcorrect'] . "  " . $_POST['svar'];
     if ($_SESSION['lastcorrect'] == @$_POST['svar']) {
         $_SESSION['points']++;
     }
-    
 
-//echo $_SESSION['points'];
-
-    // Save result for the current question
+    //echo $_SESSION['points'];
+    // Sparar det som du väljer och liknande
     $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
         "] rätt svar är [" . $_SESSION['lastcorrecttext'] .
         "] ditt svar var |" . 
         @$_SESSION['quiz'][$_SESSION['questnum']][@$_POST['svar']];
-        $_SESSION['questnum']++;
-    
-        
+        $_SESSION['questnum']++;       
 }
 
-if(isset($_SESSION['koll'])){
-$sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";
-}
-
-if(isset($_SESSION['koll2'])){
-$sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas2 WHERE id = :id";
-}
-
+if(isset($_SESSION['koll'])){$sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";}
+if(isset($_SESSION['koll2'])){$sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas2 WHERE id = :id";}
 $stmt = $dbconn->prepare($sql);
 //! istället för att ha en fil per fråga.
 $id = $_SESSION['questnum'];
@@ -79,18 +66,15 @@ if (!$row) {
 <!-- //! Tack GPT för att det blev fint -->
 
 <body>
-   
     <h3 style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 10px;">
         Fråga <?php echo $_SESSION['questnum'] . " av ";  
         if(isset($_SESSION['koll'])){ echo $_SESSION['rowCount'];}
             if(isset($_SESSION['koll2'])){ echo $_SESSION['rowCount2']; } ?>
     </h3>
-
     <div
         style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
         <?php echo $ttexten ?>
     </div>
-
     <form id="autosubmit"
         style="margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;"
         action="" method="post">
@@ -116,5 +100,4 @@ if (!$row) {
         </div>
     </form>
 </body>
-
 </html>

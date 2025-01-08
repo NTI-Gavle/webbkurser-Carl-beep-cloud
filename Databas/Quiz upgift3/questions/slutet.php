@@ -45,14 +45,8 @@ if (!empty($_SESSION['result'])) {
 } else {
     echo '<p>No results available yet.</p>';
 }
- 
-
-
-
-
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
