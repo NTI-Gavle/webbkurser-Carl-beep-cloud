@@ -111,7 +111,7 @@ if (!$row) {
             <label for="alt4" style="margin-left: 5px;"><?php echo $row['alt4']; ?></label>
         </div>
         <div style="text-align: center;">
-            <input value="Börja/Nästa" name="ans" type="submit"
+            <input value="Nästa" name="ans" type="submit"
                 style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #4CAF50; color: white; font-size: 16px; cursor: pointer;">
         </div>
     </form>
