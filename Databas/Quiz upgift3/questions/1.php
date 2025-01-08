@@ -79,10 +79,11 @@ if (!$row) {
 <!-- //! Tack GPT för att det blev fint -->
 
 <body>
+   
     <h3 style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 10px;">
         Fråga <?php echo $_SESSION['questnum'] . " av ";  
         if(isset($_SESSION['koll'])){ echo $_SESSION['rowCount'];}
-            if(isset($_SESSION['koll'])){ echo $_SESSION['rowCount2']; } ?>
+            if(isset($_SESSION['koll2'])){ echo $_SESSION['rowCount2']; } ?>
     </h3>
 
     <div
