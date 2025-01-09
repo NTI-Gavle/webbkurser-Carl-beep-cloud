@@ -70,7 +70,7 @@ if (!$row) {
         Fråga <?php echo $_SESSION['questnum'] . " av ";  
         if(isset($_SESSION['koll'])){ echo $_SESSION['rowCount'];}
             if(isset($_SESSION['koll2'])){ echo $_SESSION['rowCount2']; } ?>
-    </h3>
+     </h3>
     <div
         style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
         <?php echo $ttexten ?>

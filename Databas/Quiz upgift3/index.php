@@ -50,7 +50,7 @@ if (!isset($_SESSION['result'])) {
         $_SESSION['rownum'] = $_SESSION['rowCount'];
         $_SESSION['koll'] = "";
     }
-
+    
     //! kollar quiz 2 knapp
     if (isset($_POST['starta2'])) {
         $_SESSION['rownum'] = $_SESSION['rowCount2'];
@@ -67,16 +67,16 @@ if (!isset($_SESSION['result'])) {
                
         ?>
        <div class="quiz-container">
-        <h1>Quiz</h1>
+        <h1>Fransic Bacon & comapny quiz: <?php echo $_SESSION['rowCount'] ?> Frågor</h1>
         <form action="" method="post">
-            <input name="starta" value="Start Fransic Quizet" type="submit">
+            <input name="starta" value="Start" type="submit">
         </form>
     </div>
         <br>
         <div class="quiz-container">
-        <h1>Quiz 2</h1>
+        <h1>Random frågor quiz: <?php echo $_SESSION['rowCount2'] ?> Frågor</h1>
         <form action="" method="post">
-            <input name="starta2" value="Det andra quizet" type="submit">
+            <input name="starta2" value="Start" type="submit">
         </form>
     </div>
        
