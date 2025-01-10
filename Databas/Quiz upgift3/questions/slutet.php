@@ -29,7 +29,7 @@ if (empty($_SESSION['result'][$_SESSION['questnum']])) {
 
 echo '<div style="margin: 20px auto; text-align: center; border: 2px solid #4CAF50; border-radius: 10px; padding: 20px; background-color: #f0f9f0; width: fit-content;">';
 echo '<h2 style="margin: 0; color: #4CAF50; font-family: Arial, sans-serif; font-size: 24px;">Du fick ' . $_SESSION['points'] . ' av '; if(isset($_SESSION['koll'])){ echo $_SESSION['rowCount'];}
-if(isset($_SESSION['koll2'])){ echo $_SESSION['rowCount2']; }  '</h2>';
+if(isset($_SESSION['koll2'])){ echo $_SESSION['rowCount2']; } if(isset($_SESSION['koll3'])){ echo $_SESSION['rowCount3']; }    '</h2>';
 echo '</div>';
 
 //! TACK GPT för en vacker utskrivning

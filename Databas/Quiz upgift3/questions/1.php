@@ -17,6 +17,7 @@ if (isset($_POST['ans'])) {
         $_SESSION['questnum']++;       
 }
 
+
 if(isset($_SESSION['koll'])){$sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas WHERE id = :id";}
 if(isset($_SESSION['koll2'])){$sql = "SELECT text, alt1, alt2, alt3, alt4, correct FROM quizbas2 WHERE id = :id";}
 $stmt = $dbconn->prepare($sql);
