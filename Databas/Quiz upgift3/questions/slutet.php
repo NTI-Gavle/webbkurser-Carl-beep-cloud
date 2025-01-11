@@ -6,6 +6,8 @@ if(isset($_POST['unsetbtn'])){
     header("Refresh:0");
    
  }  
+
+ if(isset($_SESSION['koll']) || isset($_SESSION['koll2'])){
 // ! så att sista poänget ska räknas
 if (isset($_SESSION['lastcorrect'])) {
     //? daniel försklagw
@@ -26,6 +28,41 @@ if (empty($_SESSION['result'][$_SESSION['questnum']])) {
          . @$_SESSION['quiz'][$_SESSION['questnum']][@$_POST['svar']];;
 }
 
+ }
+
+ if(isset($_SESSION['koll3'])){
+
+    if (isset($_POST['svar'])) {
+        // Get the selected answer ID
+        $selectedAnswerID = $_POST['svar'];
+    
+        // Fetch the text of the selected answer
+        $selectedAnswerText = null;
+        foreach ($_SESSION['quiz'][$_SESSION['questnum']] as $alternative) {
+            if ($alternative['id'] == $selectedAnswerID) {
+                $selectedAnswerText = $alternative['alt'];
+                break;
+            }
+        }
+    
+        // Store the text of the selected answer in the session
+        $_SESSION['selectedanswertext'] = $selectedAnswerText;
+    }
+
+
+    if($_SESSION['correctcheck'] == 1){
+        $_SESSION['points']++;
+    }
+
+    //! gör så att den sista frågan läggs in
+if (empty($_SESSION['result'][$_SESSION['questnum']])) {
+    $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
+        "] rätt svar är [" . $_SESSION['lastcorrecttext'] . "] ditt svar var |"
+         . $_SESSION['selectedanswertext'];
+
+ }
+
+ }
 
 echo '<div style="margin: 20px auto; text-align: center; border: 2px solid #4CAF50; border-radius: 10px; padding: 20px; background-color: #f0f9f0; width: fit-content;">';
 echo '<h2 style="margin: 0; color: #4CAF50; font-family: Arial, sans-serif; font-size: 24px;">Du fick ' . $_SESSION['points'] . ' av '; if(isset($_SESSION['koll'])){ echo $_SESSION['rowCount'];}

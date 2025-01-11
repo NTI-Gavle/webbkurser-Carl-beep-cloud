@@ -2,28 +2,40 @@
 require 'quizconnect.php';
 
 if (isset($_POST['ans'])) {
-    $selectedAnswer = $_POST['svar'] ?? null;
 
-    if (isset($_SESSION['quiz'][$_SESSION['questnum']])) {
+
+    if (isset($_POST['svar'])) {
+        // Get the selected answer ID
+        $selectedAnswerID = $_POST['svar'];
+    
+        // Fetch the text of the selected answer
+        $selectedAnswerText = null;
         foreach ($_SESSION['quiz'][$_SESSION['questnum']] as $alternative) {
-            if ($alternative['id'] == $selectedAnswer && $alternative['correct'] == 0) {
-                $_SESSION['points']++;
+            if ($alternative['id'] == $selectedAnswerID) {
+                $selectedAnswerText = $alternative['alt'];
                 break;
             }
         }
+    
+        // Store the text of the selected answer in the session
+        $_SESSION['selectedanswertext'] = $selectedAnswerText;
     }
+    if($_SESSION['correctcheck'] == 1){
+        $_SESSION['points']++;
+    }
+
 
     $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
         "] rätt svar är [" . $_SESSION['lastcorrecttext'] .
         "] ditt svar var |" . 
-        @$_SESSION['quiz'][$_SESSION['questnum']][@$_POST['svar']];
+        @$_SESSION['selectedanswertext'];
     $_SESSION['questnum']++;       
 }
 
-// SQL query to fetch question and alternatives
-$sql = "SELECT id, alt, questions_id, correct 
-        FROM alternativ 
-        WHERE questions_id = :id";
+$sql = "SELECT q.text AS question_text, a.id, a.alt, a.correct 
+        FROM questions q
+        JOIN alternativ a ON q.id = a.questions_id
+        WHERE q.id = :id";
 
 try {
     $stmt = $dbconn->prepare($sql);
@@ -50,14 +62,20 @@ try {
     $correctAnswer = null;
 
     // Assuming all rows share the same question text
-    $ttexten = $rows[0]['questions_id'] ?? "No question text found.";
+    $ttexten = $rows[0]['question_text'] ?? "No question text found.";
 
     foreach ($rows as $row) {
         $alternatives[$row['id']] = $row['alt'];
         if ($row['correct']) {
             $correctAnswer = $row['id'];
+
+            //ny
+            $_SESSION['correctcheck'] = $row['correct'];
         }
     }
+
+    //! ny
+ @$_SESSION['selectedanswertext'];
 
     $_SESSION['lasttexten'] = $ttexten;
     $_SESSION['lastcorrect'] = $correctAnswer;
