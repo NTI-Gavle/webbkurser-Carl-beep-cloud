@@ -54,12 +54,12 @@ if (empty($_SESSION['result'][$_SESSION['questnum']])) {
     
         // Store the text of the selected answer in the session
         $_SESSION['selectedanswertext'] = $selectedAnswerText;
-   
+
+        if($_SESSION['correctcheck'] == 1){
+            $_SESSION['points']++;
+        }   
     }
 
-    if($_SESSION['correctcheck'] == 1){
-        $_SESSION['points']++;
-    }
 
 
 
@@ -67,7 +67,7 @@ if (empty($_SESSION['result'][$_SESSION['questnum']])) {
 if (empty($_SESSION['result'][$_SESSION['questnum']])) {
     $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
         "] rätt svar är [" . $_SESSION['lastcorrecttext'] . "] ditt svar var |"
-         . $_SESSION['selectedanswertext'];
+         . @$_SESSION['selectedanswertext'];
 
  }
 

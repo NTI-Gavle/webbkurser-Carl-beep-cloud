@@ -28,14 +28,13 @@ if (isset($_POST['ans'])) {
         // Store the text of the selected answer in the session
         $_SESSION['selectedanswertext'] = $selectedAnswerText;
 
-      
+        if($_SESSION['correctcheck'] == 1){
+        
+            $_SESSION['points']++;
+        }      
        
     }
 
-    if($_SESSION['correctcheck'] == 1){
-        
-        $_SESSION['points']++;
-    }
    
 
 
