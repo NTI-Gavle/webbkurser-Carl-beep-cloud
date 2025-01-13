@@ -5,9 +5,17 @@ if (isset($_POST['ans'])) {
 
 
     if (isset($_POST['svar'])) {
+      
         // Get the selected answer ID
         $selectedAnswerID = $_POST['svar'];
     
+        if ($selectedAnswerID == $_SESSION['lastcorrect']) {
+            $_SESSION['correctcheck'] = 1; // Correct answer
+        } else {
+            $_SESSION['correctcheck'] = 0; // Incorrect answer
+        }
+
+
         // Fetch the text of the selected answer
         $selectedAnswerText = null;
         foreach ($_SESSION['quiz'][$_SESSION['questnum']] as $alternative) {
@@ -19,10 +27,16 @@ if (isset($_POST['ans'])) {
     
         // Store the text of the selected answer in the session
         $_SESSION['selectedanswertext'] = $selectedAnswerText;
+
+      
+       
     }
+
     if($_SESSION['correctcheck'] == 1){
+        
         $_SESSION['points']++;
     }
+   
 
 
     $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
@@ -61,7 +75,7 @@ try {
     $alternatives = [];
     $correctAnswer = null;
 
-    // Assuming all rows share the same question text
+   
     $ttexten = $rows[0]['question_text'] ?? "No question text found.";
 
     foreach ($rows as $row) {

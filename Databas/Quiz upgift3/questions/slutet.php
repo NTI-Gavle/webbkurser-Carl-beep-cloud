@@ -36,6 +36,13 @@ if (empty($_SESSION['result'][$_SESSION['questnum']])) {
         // Get the selected answer ID
         $selectedAnswerID = $_POST['svar'];
     
+
+        if ($selectedAnswerID == $_SESSION['lastcorrect']) {
+            $_SESSION['correctcheck'] = 1; // Correct answer
+        } else {
+            $_SESSION['correctcheck'] = 0; // Incorrect answer
+        }
+
         // Fetch the text of the selected answer
         $selectedAnswerText = null;
         foreach ($_SESSION['quiz'][$_SESSION['questnum']] as $alternative) {
@@ -47,12 +54,14 @@ if (empty($_SESSION['result'][$_SESSION['questnum']])) {
     
         // Store the text of the selected answer in the session
         $_SESSION['selectedanswertext'] = $selectedAnswerText;
+   
     }
-
 
     if($_SESSION['correctcheck'] == 1){
         $_SESSION['points']++;
     }
+
+
 
     //! gör så att den sista frågan läggs in
 if (empty($_SESSION['result'][$_SESSION['questnum']])) {
