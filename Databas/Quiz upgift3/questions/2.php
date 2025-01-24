@@ -35,8 +35,6 @@ if (isset($_POST['ans'])) {
        
     }
 
-   
-
 
     $_SESSION['result'][$_SESSION['questnum']] = "Fråga " . ($_SESSION['questnum']) . " var [" . $_SESSION['lastfragatext'] .
         "] rätt svar är [" . $_SESSION['lastcorrecttext'] .
