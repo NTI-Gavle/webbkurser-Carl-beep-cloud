@@ -7,7 +7,7 @@ function randomColor() {
     return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
 }
 
-for (let index = 0; index < 5; index++) {
+for (let index = 0; index < 75; index++) {
     new Ball(
         //Math.random() * 750 + 25
         400, 
@@ -27,7 +27,7 @@ function animate(){
     requestAnimationFrame(animate);
     ctx.fillStyle="white";
 
-    //ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
+    ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
 
 for ( ball in Ball.BallList){
     Ball.BallList[ball].update();

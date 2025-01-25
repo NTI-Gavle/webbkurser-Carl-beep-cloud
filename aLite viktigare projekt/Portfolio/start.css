@@ -1,0 +1,184 @@
+body{background-color: lightgrey !important; }
+
+/*! carousel item slidern från bootstrap ändring */
+
+.carousel-caption h5 {
+    color: black;
+}
+
+.carousel-caption p {
+    color: black;
+}
+
+
+
+/*! slut på carousel ändring  */
+
+/*! Delen med texten och en bild */
+.main-info-container {
+border-bottom: 5px solid grey;
+  }
+  
+  .language {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+background-color: black;
+  }
+
+  .div-box {
+    padding: 10px; 
+    text-align: center; 
+    width: 50%;
+
+  }
+  
+  .language a img {
+    height: auto;
+    width:50%;
+    transition: 0.3s;
+  }
+
+  .language a:hover img {
+    opacity: 0.2;
+  }
+
+  .just-text{
+    
+    background-color: black;
+    color: white;
+    font-size:25px;
+    margin:0px;
+    padding: 1%;
+  }
+
+.textandpicture{
+    display:flex;
+   
+}
+
+.textandpicture:first-child{
+    width: 50%;
+} 
+
+
+.textandpicture:nth-child(2){
+    width:auto;
+    display: flex;
+    justify-content: center;
+    background-color: LIGHTGREY;
+} 
+/*? hur är dessa två inte samma*/
+
+.borde-vara-samma-som-classen-över-i-css{
+    background-color: LIGHTGREY;   
+}
+
+
+
+.picture-container{
+   text-align: center;
+   background-color: lightgrey;
+}
+
+.picture-container img {
+    height: auto;
+    width: 525px;
+}
+
+.picture-container h3 {
+    margin: 0px;
+}
+
+
+/*! Rekomenderade projekt */
+
+/*! titeln */
+.projekt-small-titel{
+    border-bottom: 5px grey solid;
+    text-align: center;
+    color: lightgrey;
+    background-color: black;
+}
+
+.projekt-list{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    border-bottom: 5px grey solid;
+}
+
+.projekt-list div{
+     margin-top:25px;
+     margin-bottom:25px;
+}
+
+
+
+
+/*! Bootstrap ändringar på card */
+
+.card-change{
+  border:4px solid yellow !important;
+  background-color: black !important; 
+}
+
+
+.card-img-top-change{
+  border-bottom: 2px solid orange  !important;
+  height: 65% !important;
+  width: 100%;
+}
+
+.card-body-change h5{
+color: white !important;
+}
+
+
+.card-body-change p{
+  color: white !important;
+  }
+
+
+@media (max-width: 1300px) {
+
+.textandpicture{
+display: block;
+}
+.picture-container img {
+    height: auto;
+    width: 80%;
+}
+
+}
+
+
+  @media (max-width: 880px) {
+
+    .just-text{
+        font-size:18px; 
+      }
+
+      .projekt-list {
+        display: flex;
+        justify-content: center; 
+        flex-wrap: wrap; 
+        align-items: center;
+      }
+    
+      .projekt-list div {
+        margin: 15px;
+        width: 100%; 
+        max-width: 18rem;
+      }
+      
+      .card-change {
+        width: 100%; 
+      }
+
+    
+
+  }  
+
+
+ 

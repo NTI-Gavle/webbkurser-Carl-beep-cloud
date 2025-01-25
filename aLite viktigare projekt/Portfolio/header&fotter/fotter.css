@@ -1,6 +1,13 @@
+body{
+    padding: 0px;
+    margin: 0px;
+  }
+  
+
 .footer-container {
-    background-color: lightgrey;
-    color: #fff;
+    border-top:3px solid grey;
+    background-color: black ;
+    color: lightgrey;
     padding: 20px 40px;
     font-family: Arial, sans-serif;
 }
@@ -11,8 +18,8 @@
 
 .footer-container h4 {
     margin-bottom: 10px;
-    font-size: 18px;
-    border-bottom: 2px solid black;
+    font-size: 35px;
+    border-bottom: 2px solid grey;
     padding-bottom: 5px;
 }
 
@@ -26,23 +33,25 @@
 }
 
 .footer-container ul li a {
-    color: black;
+    color: yellow;
     text-decoration: none;
     transition: color 0.3s;
+    font-size: 24px;
 }
 
 .footer-container ul li a:hover {
-    color: darkgrey;
+    color: darkblue;
 }
 
 .footer-container p {
     margin: 5px 0;
+    color: yellow;
 }
 
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
-    font-size: 14px;
-    border-top: 1px solid #444;
+    font-size: 24px;
+    border-top: 2px solid grey;
     padding-top: 10px;
 }

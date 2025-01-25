@@ -1,0 +1,85 @@
+body{
+  padding: 0px;
+  margin: 0px;
+}
+
+.hide-class{
+  display: none !important;
+}
+
+.header-container {
+    position:relative;
+    display: flex;
+    justify-content: space-between; 
+    width: 100%; 
+    border: 5px solid grey; 
+  }
+  
+  .headerbox {
+    flex: 1;
+    text-align: center; 
+    border-left: 3px solid grey; 
+    padding: 10px;
+    color:black;
+    font-size: 35px;
+    background-color: white;
+    transition-duration: 0.5s;
+    text-decoration-line: none;
+  }
+
+  .headerbox:hover {
+    color:white;
+    background-color: darkgray;
+  }
+  
+  .headerbox:first-child {
+    border-left: none; 
+  }
+
+  .selected-headerbox {
+
+    flex: 1;
+    text-align: center; 
+    border-left: 3px solid grey; 
+    padding: 10px;
+    font-size:45;
+    color:white;
+    font-size: 25px;
+    background-color: darkgrey;
+    text-decoration: none;
+    transition-duration: 0.5s;
+  }
+
+ 
+/*! Händer när den ska vara fixed*/
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+}
+
+  @media (max-width: 550px) {
+    .headerbox{
+      display:none;
+
+    }
+
+  .hide-class{
+  display: flex !important;
+  text-align: center !important;
+  font-size: 120% !important;
+  align-items: center !important;
+  margin-left:2% !important;
+
+  }
+
+    .selected-headerbox{
+      width:90%;
+    }
+ 
+  
+  }

@@ -1,0 +1,104 @@
+body{background-color: lightgrey !important; }
+
+.image-container {
+    position: relative;
+    text-align: center;
+    width: 100%; 
+}
+
+.image-container img {
+    width: 100%;
+    height: auto; 
+}
+
+.image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: Yellow;
+    font-size: 125px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+}
+
+/*! Korten och dens container */
+
+
+.projekt-list{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    border-bottom: 5px grey solid;
+    border-top: 5px solid grey;
+}
+
+.projekt-list div{
+    height: auto;
+     margin-top:25px;
+     margin-bottom:25px;
+}
+
+
+
+
+/*! Bootstrap ändringar på card */
+.card-change{
+    border:4px solid yellow !important;
+    background-color: black !important; 
+}
+
+
+.card-img-top-change{
+    border-bottom: 2px solid orange  !important;
+    height: 65% !important;
+    width: 100%;
+}
+
+.card-body-change h5{
+color: white !important;
+}
+
+
+.card-body-change p{
+    color: white !important;
+    }
+
+@media (max-width: 1200px){
+    .projekt-list {
+        display: flex;
+        justify-content: center; 
+        flex-wrap: wrap; 
+        align-items: center;
+      }
+    
+      .projekt-list div {
+        margin: 15px;
+        width: 100%; 
+        max-width: 18rem;
+      }
+      
+      .card-change {
+        width: 100%; 
+      }
+}
+
+@media (max-width: 880px) {
+    
+    .image-text{font-size:100px;}
+   
+}
+
+
+@media (max-width: 690px) {
+
+    .image-text{font-size:75px;}
+    
+}
+
+
+@media (max-width: 450px) {
+
+    .image-text{font-size:50px;}
+    
+}
