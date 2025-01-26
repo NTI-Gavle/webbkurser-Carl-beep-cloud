@@ -12,7 +12,7 @@ body {
 
 /*! Del 1 Vänstra sidan */
 .about-container-part-1{
-    width: 50%;
+    width: 60%;
 }
 
 
@@ -66,13 +66,128 @@ body {
     font-size: 25px;
 }
 
+.social-media-container p {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left:8%;
+    width: 80%  ;
+   font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
 
 
 /*! Del 2  Högra sidan*/
 
 .about-container-part-2{
-    width: 50%;
+    width: 40%;
 }
+
+.about-container-part-2 div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    height: auto;
+    width: 60%;
+    border-radius: 50%;
+    border:dotted 4px blue;
+}
+
+/*! Nu om komentarer*/
+
+
+.commentarer-rubrik{
+    text-align: center;
+border-top: 3px solid grey;
+border-bottom: 3px solid grey;
+background-color: black;
+color: yellow;
+
+}
+
+.commentarer-rubrik h3 {
+    font-size: 225%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.commentarer{
+display: flex;
+    width: 100%;
+    height: auto;
+    background-color: black;
+}
+
+.test-comentar{
+    width: 25%;
+    background-color: Grey;
+    border: yellow solid 2px;
+    margin: 2%;
+}
+
+.test-comentar h4 {
+    margin-left: 10%;
+    color: white;
+}
+
+.test-comentar p {
+    margin-left: 10%;
+    color: white;
+}
+
+
+
+/* !  Form */
+
+.form-container{
+ background-color: black;
+ padding: 20px;
+        width: 50%;
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        border: 3px dotted orange;
+}
+
+.form-container form{
+margin-left: 10%;
+color: orange;
+font-family: Arial, sans-serif;
+font-size: 16px;
+}
+
+.form-container form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.form-container form input {
+    width: 90%;
+    padding: 10px;
+    border: 2px solid yellow;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+}
+
+.form-container form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: orange;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
 
 
 @media (max-width:1400px) {
@@ -87,6 +202,21 @@ body {
 }
 
 @media (max-width:1300px) {
+
+    .about-container{
+        display: block;
+    }
+
+    .about-container-part-1{
+        width: 100%;
+    }
+    .about-container-part-2{
+        border-top: 5px Grey solid;
+        width: 100%;
+    }
+
+
+
     .social-media-container h2 {
       
         font-size: 25px;

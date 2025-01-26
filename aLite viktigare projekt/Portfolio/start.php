@@ -1,3 +1,5 @@
+<?php session_start(); 
+require "databas-connect.php"?>
 <!DOCTYPE html>
 <html lang="en">
 
