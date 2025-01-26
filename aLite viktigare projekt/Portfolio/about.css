@@ -1,6 +1,13 @@
 body {background-color: black !important;}
 
 
+/*todo JS KLASS */
+
+.hidden{
+    display: none !important;
+}
+
+
 .about-container {
     background-color: black;
     display: flex;
@@ -25,7 +32,7 @@ body {background-color: black !important;}
 
 
 .social-media-container {
-  /*  border: solid 2px yellow; */
+ 
     width: 80%;
     margin-left: 16%;
 }
@@ -38,7 +45,14 @@ body {background-color: black !important;}
 }
 .social-media-atag-container{
     transition: 0.5s;
+
 }
+
+/*! Det ska inte vara en lite blå linie*/
+.social-media-atag-container a{
+    text-decoration: none;
+}
+
 
 .social-media {
     margin-left: 8%;
@@ -97,8 +111,7 @@ body {background-color: black !important;}
     border:dotted 4px blue;
 }
 
-/*! Nu om komentarer*/
-
+/*! Nu komentarer*/
 
 .commentarer-rubrik{
     text-align: center;
@@ -117,35 +130,42 @@ color: yellow;
 
 .commentarer{
 display: flex;
-flex-wrap: wrap;  /* Allow items to wrap to the next row when needed */
-justify-content: flex-start;  /* Align items to the left */
-gap: 2%;  /* Space between the items */
+flex-wrap: wrap;
+justify-content: flex-start;  
+gap: 2%;  
 margin-left: 5%;
     width: 90%;
     height: auto;
     background-color: black;
 }
 
-.test-comentar{
-    margin-left: 5%;
-    margin-right: 5%;
-    flex: 1 1 22%; 
-    background-color: Grey;
-    border: yellow solid 2px;
-    margin: 2%;
-    margin: 10px 0;   
+
+.test-comentar {
+    margin: 20px auto;
+    max-width: 400px; 
+    background-color: #444; 
+    border: 2px solid #FFD700;
+    padding: 20px; 
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px black; 
+    overflow: hidden; 
 }
 
 .test-comentar h4 {
-    margin-left: 10%;
-    color: white;
+    color: white; 
+    margin-top: 0; 
+    margin-bottom: 10px; 
 }
 
+.test-comentar h4:first-child{
+    text-decoration: underline;
+    text-decoration-color: darkorange;
+}
 .test-comentar p {
-    margin-left: 10%;
     color: white;
+    line-height: 1.6; 
+    margin-bottom: 0;
 }
-
 
 
 /* !  Form */
@@ -156,7 +176,7 @@ margin-left: 5%;
         width: 50%;
         margin: auto;
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 10px black;
        
 }
 
@@ -220,8 +240,6 @@ font-size: 16px;
         width: 100%;
     }
 
-
-
     .social-media-container h2 {
       
         font-size: 25px;
@@ -235,6 +253,12 @@ font-size: 16px;
 
 @media (max-width:880px) {
 
+    .under-rubrik{
+        font-size: 45px;
+    }
+    .social-media-image {
+        width: 250px;
+    }
 
     .social-media-container h2 {
         font-size: 20px;
@@ -259,6 +283,7 @@ font-size: 16px;
     .social-media-rubrik {
         font-size:25px;
     }
+
 }
 
 @media (max-width:400px) {
