@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="apple.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="WIN_20231213_11_20_43_Pro.jpg">
+    <title>Snake</title>
+</head>
+
+<body>
+    <div style="color: white;">
+        <div class="titeln" style="color: white;" id="number" value="0">Snake du har levt i 0 sekunder <br> dina poäng
+            är: 0</div>
+        <div class="canvas-conatiner">
+
+            <canvas id="myCanvas" width="800" height="800">
+
+            </canvas>
+
+        </div>
+        <div id="settings" style="color: white" ;>
+            <button onclick="start()"> start</button> 
+            Apples: <input id="applenum" value="5" type="number" placeholder="Antal apples"> 
+                Apple-colour <input id="applecolor" value="red" type="text" placeholder="Apple-colour">
+            Snake-Head-color <input id="HeadSnakeColor" value="blue" type="text" placeholder="SnakeHead-color"> <br>
+            Snake-Body-color <input id="SnakeBody-color" value="orange"  type="text" placeholder="Snake-Body-Color">  
+            Speed: Heigher number faster speed <input id="speed" value="12" placeholder="8" type="number">
+            </div>
+    </div>
+
+</body>
+
+</html>
+
+<!-- Jag borde fixa att man kan trycka upp sen åt motsattahål du åkte från och krocka i dig sjäv och dö.
+      Man kan också fixa att så att man kan ställa in farten -->

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" ></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Cube</title>
+</head>
+<body>
+<div  id="divsaken" class="divsaken" style="color: white;">
+ X-axis:  <input id="xaxis" value="0.1"  placeholder="X-axis" type="number"> 
+ Y-axis  <input id="yaxis"   value="0.0001" placeholder="Y-axis" type="number"> 
+ Z-axis  <input id="zaxis"   value="2"  placeholder="Z-axis" type="number"> 
+    <button id="knapp" onclick="start()"> Start</button>
+     <button onclick="move()" >move</button>
+</div>
+
+<canvas id="container" width="clientWidth"></canvas>
+</body>
+</html>

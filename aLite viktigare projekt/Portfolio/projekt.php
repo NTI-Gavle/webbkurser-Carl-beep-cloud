@@ -44,7 +44,7 @@ require "databas-connect.php" ?>
                 <h5 class="card-title">JS-snake Game gjort med en dator</h5>
                 <p class="card-text">Det är ett riktigt coolt snake spel. Det krävdes år och dagar av arbete att göra
                     klart detta spel</p>
-                <a href="#" class="btn btn-primary">Ladda ner</a>
+                <a href="Projekt-link\JS\map-snake\mask2\index.html" target="blank" class="btn btn-primary">Testa</a>
             </div>
         </div>
 
@@ -54,7 +54,7 @@ require "databas-connect.php" ?>
             <div class="card-body  card-body-change">
                 <h5 class="card-title">En cub gjort i JS som snurrar</h5>
                 <p class="card-text">Man kan ställa in hur mycket cuben rör sig och i vilka riktningar det kan bli ganska häftigt</p>
-                <a href="#" class="btn btn-primary">Ladda ner</a>
+                <a href="Projekt-link\JS\map-cub\index.html" target="blank" class="btn btn-primary">Testa</a>
             </div>
         </div>
 
@@ -64,7 +64,7 @@ require "databas-connect.php" ?>
             <div class="card-body  card-body-change">
                 <h5 class="card-title">Massa Bollar gjorda i JS som studsar</h5>
                 <p class="card-text">Det stutsar så sjukt mycket man tappar räkningen ifall man försöker räkna på antal stuts helt sjukt!</p>
-                <a href="#" class="btn btn-primary">Ladda ner</a>
+                <a href="Projekt-link\JS\map-bollar\bollar\index.html" target="blank" class="btn btn-primary">Testa</a>
             </div>
         </div>
     </div>
