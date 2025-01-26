@@ -2,21 +2,13 @@
 require "databas-connect.php";
 
 if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
-    
-    if(strlen($_POST['nam'])<2 ||  strlen($_POST['age'])<1|| strlen($_POST['comment'])<5)
-    {
-       ?>
-        <script>//show();
-            alert("Det funkar inte");</script>
-       <?php
-             //? header("Location: about.php#write-comment");
-    }
 
-    else{
+    if (strlen($_POST['nam']) < 2 || strlen($_POST['age']) < 1 || strlen($_POST['comment']) < 5) {
+       
+     /*   //? header("Location: about.php#write-comment"); */
+    } else {
 
-        ?>
-        <script>dontshow();</script>
-        <?php
+      
 
         $stmt = $dbconn->prepare("INSERT INTO komen (namn, age, texten) VALUES (?, ?, ?)");
         $stmt->execute([$_POST['nam'], $_POST['age'], $_POST['comment']]);
@@ -59,7 +51,7 @@ if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
 
 <body>
     <?php include "header&fotter/header.html" ?>
-   
+
     <div class="about-container">
 
         <div class="about-container-part-1">
@@ -75,20 +67,24 @@ if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
                 </div>
 
                 <div class="social-media-atag-container">
-                    <a href="https://www.instagram.com/fransicbaconfan/" target="blank" class="social-media"> <img class="social-media-image" target="blank"
-                            src="Social-media-logo-folder\insta-logo.png" alt=""> </a>
+                    <a href="https://www.instagram.com/fransicbaconfan/" target="blank" class="social-media"> <img
+                            class="social-media-image" target="blank" src="Social-media-logo-folder\insta-logo.png"
+                            alt=""> </a>
 
-                    <a href="https://im.qq.com/index/" class="social-media" target="blank"> <img class="social-media-image" target="blank"
-                            src="Social-media-logo-folder\qq-logo.png" alt=""> </a>
+                    <a href="https://im.qq.com/index/" class="social-media" target="blank"> <img
+                            class="social-media-image" target="blank" src="Social-media-logo-folder\qq-logo.png" alt="">
+                    </a>
 
-                    <a href="https://telegram.org/" class="social-media" target="blank"> <img class="social-media-image" target="blank"
-                            src="Social-media-logo-folder\telegram-logo.png" alt=""> </a>
+                    <a href="https://telegram.org/" class="social-media" target="blank"> <img class="social-media-image"
+                            target="blank" src="Social-media-logo-folder\telegram-logo.png" alt=""> </a>
 
-                    <a href="https://www.wechat.com/" class="social-media" target="blank"> <img class="social-media-image" target="blank"
-                            src="Social-media-logo-folder\we-chat-logo.png" alt=""> </a>
+                    <a href="https://www.wechat.com/" class="social-media" target="blank"> <img
+                            class="social-media-image" target="blank" src="Social-media-logo-folder\we-chat-logo.png"
+                            alt=""> </a>
 
-                    <a href="https://x.com/BenjaminDousa?mx=2" class="social-media" target="blank"> <img class="social-media-image" target="blank"
-                            src="Social-media-logo-folder\x-logo.png" alt=""> </a>
+                    <a href="https://x.com/BenjaminDousa?mx=2" class="social-media" target="blank"> <img
+                            class="social-media-image" target="blank" src="Social-media-logo-folder\x-logo.png" alt="">
+                    </a>
                 </div>
                 <h2>E-Post: Tjingtjong@gmail.com</h2>
 
@@ -150,9 +146,10 @@ if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
 
             <button type="submit">Skicka</button>
         </form>
-        <div id="alerten" class="alert alert-dark hidden"  role="alert">
-  A simple dark alert—check it out!
-</div>
+        <div id="alerten"   class="hidden" role="alert">
+            A simple dark alert—check it out!
+        </div>
+        <button onclick="check()"> sadasd</button>
     </div>
 
     <?php include "header&fotter/fotter.html" ?>
@@ -161,3 +158,5 @@ if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
 
 
 </html>
+
+<!-- onclick="check()" -->

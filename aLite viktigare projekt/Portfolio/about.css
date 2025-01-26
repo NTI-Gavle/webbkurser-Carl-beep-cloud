@@ -4,7 +4,14 @@ body {background-color: black !important;}
 /*todo JS KLASS */
 
 .hidden{
-    display: none !important;
+    display: none;
+}
+
+.showTheHidden{
+    display: block;
+    border:solid 5px white;
+    width: 100%;
+    color: Yellow;
 }
 
 

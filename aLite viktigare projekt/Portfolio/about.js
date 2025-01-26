@@ -4,20 +4,37 @@ let projekt = document.getElementById("projekt");
 let om = document.getElementById("om");
 
 start.classList = "headerbox";
-projekt.classList="headerbox";
-om.classList="selected-headerbox";
+projekt.classList = "headerbox";
+om.classList = "selected-headerbox";
 
-
+function check(){
 
 let diven = document.getElementById("alerten");
 
+let inpnamn = document.getElementById("name");
+let inpage = document.getElementById("age");
+let inpcomment = document.getElementById("comment");
 
-function show(){
+if (inpnamn.value.length < 2 && inpage.value.length < 1 && inpcomment.value.length < 5) {
+    show();
+}
+
+
+else {
+    dontshow();
+}
+
+
+function show() {
+    console.log("del1");
     diven.classList.remove("hidden");
-    diven.classList.add("alert", "alert-dark");
+    diven.classList.add("showTheHidden");
 }
 
-function dontshow(){
+function dontshow() {
+    console.log("del2");
     diven.classList.add("hidden");
-    diven.classList.remove("alert", "alert-dark");
+    diven.classList.remove("showTheHidden");
 }
+
+ }
