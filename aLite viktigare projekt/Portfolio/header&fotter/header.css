@@ -1,6 +1,7 @@
 body{
   padding: 0px;
   margin: 0px;
+  z-index: 100;
 }
 
 .hide-class{
@@ -73,8 +74,8 @@ body{
   text-align: center !important;
   font-size: 120% !important;
   align-items: center !important;
-  margin-left:2% !important;
-
+  /*margin-left:2% !important; */
+background-color: lightgrey !important;
   }
 
     .selected-headerbox{

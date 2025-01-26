@@ -29,15 +29,80 @@ require "databas-connect.php" ?>
 <body>
 <?php include "header&fotter/header.html" ?>
 
+  
+<div class="image-container">
+        <img src="Bilder/JS-kod.png" alt="A descriptive text">
+        <div class="image-text">Java Script</div>
+    </div>
+
+
+    <div class="projekt-list">
+
+        <div class="card card-change" style="border:2px solid orange; width: 18rem;">
+            <img src="Bilder/snake.png" class="card-img-top card-img-top-change" alt="...">
+            <div class="card-body card-body-change">
+                <h5 class="card-title">JS-snake Game gjort med en dator</h5>
+                <p class="card-text">Det är ett riktigt coolt snake spel. Det krävdes år och dagar av arbete att göra
+                    klart detta spel</p>
+                <a href="#" class="btn btn-primary">Ladda ner</a>
+            </div>
+        </div>
+
+
+        <div class="card card-change" style="width: 18rem;">
+            <img src="Bilder/JS-2.png" class="card-img-top card-img-top-change" alt="...">
+            <div class="card-body  card-body-change">
+                <h5 class="card-title">En cub gjort i JS som snurrar</h5>
+                <p class="card-text">Man kan ställa in hur mycket cuben rör sig och i vilka riktningar det kan bli ganska häftigt</p>
+                <a href="#" class="btn btn-primary">Ladda ner</a>
+            </div>
+        </div>
+
+
+        <div class="card card-change" style="width: 18rem;">
+            <img src="Bilder/JS-3.png" class="card-img-top card-img-top-change" alt="...">
+            <div class="card-body  card-body-change">
+                <h5 class="card-title">Massa Bollar gjorda i JS som studsar</h5>
+                <p class="card-text">Det stutsar så sjukt mycket man tappar räkningen ifall man försöker räkna på antal stuts helt sjukt!</p>
+                <a href="#" class="btn btn-primary">Ladda ner</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="image-container">
+        <img src="Bilder/php-kod.png" alt="A descriptive text">
+        <div class="image-text">PHP:Hypertext Preprocessor projekt</div>
+    </div>
+
+    <div class="projekt-list">
+
+        <div class="card card-change" style="border:2px solid orange; width: 18rem;">
+            <img src="Bilder/php-1.png" class="card-img-top card-img-top-change" alt="...">
+            <div class="card-body card-body-change">
+                <h5 class="card-title">Ett PHP Quiz</h5>
+                <p class="card-text">Det är 3 quiz som man kan köra och man kan få alla rätt om man vet mycket</p>
+                <a href="#" class="btn btn-primary">Ladda ner</a>
+            </div>
+        </div>
+
+
+        <div class="card card-change" style="width: 18rem;">
+            <img src="Bilder/php-2.png" class="card-img-top card-img-top-change" alt="...">
+            <div class="card-body  card-body-change">
+                <h5 class="card-title"> En galen Class i php</h5>
+                <p class="card-text">Det var helt sjuka egensakaper den här klassen hade man tappar nästan tårna</p>
+                <a href="#" class="btn btn-primary">Ladda ner</a>
+            </div>
+        </div>
+    </div>
+
+
     <div class="image-container">
         <img src="Bilder/html-css.png" alt="A descriptive text">
         <div class="image-text">Html & Css projekt</div>
     </div>
-    <!--
-    <div class="under-rubrik">
-        <h2> Html Projekten </h2>
-    </div>
--->
+
     <div class="projekt-list">
 
         <div class="card card-change" style="border:2px solid orange; width: 18rem;">
@@ -77,72 +142,6 @@ require "databas-connect.php" ?>
             </div>
         </div>
 
-    </div>
-
-    <div class="image-container">
-        <img src="Bilder/php-kod.png" alt="A descriptive text">
-        <div class="image-text">PHP:Hypertext Preprocessor projekt</div>
-    </div>
-
-    <div class="projekt-list">
-
-        <div class="card card-change" style="border:2px solid orange; width: 18rem;">
-            <img src="Bilder/php-1.png" class="card-img-top card-img-top-change" alt="...">
-            <div class="card-body card-body-change">
-                <h5 class="card-title">Ett PHP Quiz</h5>
-                <p class="card-text">Det är 3 quiz som man kan köra och man kan få alla rätt om man vet mycket</p>
-                <a href="#" class="btn btn-primary">Ladda ner</a>
-            </div>
-        </div>
-
-
-        <div class="card card-change" style="width: 18rem;">
-            <img src="Bilder/php-2.png" class="card-img-top card-img-top-change" alt="...">
-            <div class="card-body  card-body-change">
-                <h5 class="card-title"> En galen Class i php</h5>
-                <p class="card-text">Det var helt sjuka egensakaper den här klassen hade man tappar nästan tårna</p>
-                <a href="#" class="btn btn-primary">Ladda ner</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <img src="Bilder/JS-kod.png" alt="A descriptive text">
-        <div class="image-text">Java Script</div>
-    </div>
-
-
-    <div class="projekt-list">
-
-        <div class="card card-change" style="border:2px solid orange; width: 18rem;">
-            <img src="Bilder/snake.png" class="card-img-top card-img-top-change" alt="...">
-            <div class="card-body card-body-change">
-                <h5 class="card-title">JS-snake Game gjort med en dator</h5>
-                <p class="card-text">Det är ett riktigt coolt snake spel. Det krävdes år och dagar av arbete att göra
-                    klart detta spel</p>
-                <a href="#" class="btn btn-primary">Ladda ner</a>
-            </div>
-        </div>
-
-
-        <div class="card card-change" style="width: 18rem;">
-            <img src="Bilder/JS-2.png" class="card-img-top card-img-top-change" alt="...">
-            <div class="card-body  card-body-change">
-                <h5 class="card-title">En cub gjort i JS som snurrar</h5>
-                <p class="card-text">Man kan ställa in hur mycket cuben rör sig och i vilka riktningar det kan bli ganska häftigt</p>
-                <a href="#" class="btn btn-primary">Ladda ner</a>
-            </div>
-        </div>
-
-
-        <div class="card card-change" style="width: 18rem;">
-            <img src="Bilder/JS-3.png" class="card-img-top card-img-top-change" alt="...">
-            <div class="card-body  card-body-change">
-                <h5 class="card-title">Massa Bollar gjorda i JS som studsar</h5>
-                <p class="card-text">Det stutsar så sjukt mycket man tappar räkningen ifall man försöker räkna på antal stuts helt sjukt!</p>
-                <a href="#" class="btn btn-primary">Ladda ner</a>
-            </div>
-        </div>
     </div>
    
     <div class="image-container">

@@ -1,26 +1,16 @@
-<?php session_start(); 
-require "databas-connect.php"; 
+<?php session_start();
+require "databas-connect.php";
 
-if (isset($_POST['namn']) && isset($_POST['age']) && isset($_POST['comment'])) {
-    $name = htmlspecialchars($_POST['namn']);
-    $age = intval($_POST['age']);
-    $comment = htmlspecialchars($_POST['comment']);
-
-    try {
-        $stmt = $dbconn->prepare("INSERT INTO komen (namn, age, text) VALUES (:name, :age, :text)");
-        $stmt->bindParam(':namn', $name);
-        $stmt->bindParam(':age', $age);
-        $stmt->bindParam(':text', $comment);
-        $stmt->execute(); 
-
+if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
+    
+  
+        $stmt = $dbconn->prepare("INSERT INTO komen (namn, age, texten) VALUES (?, ?, ?)");
+        $stmt->execute([$_POST['nam'], $_POST['age'], $_POST['comment']]);
         session_unset();
-        header("Location: about.php");
+        header("Location: about.php#comment-section");
         exit;
-    } catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
-    }
-} else {
-    echo "Form data is not set.";
+ 
+
 }
 
 ?>
@@ -105,14 +95,16 @@ if (isset($_POST['namn']) && isset($_POST['age']) && isset($_POST['comment'])) {
         <h3> Komentarer </h3>
     </div>
 
-    <div class="commentarer">
-<?php
-    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-        $name = htmlspecialchars($row['namn']); 
-        $age = htmlspecialchars($row['age']); 
-        $text = htmlspecialchars($row['text']);
+    <div class="commentarer" id="comment-section">
+        <?php
+        $query = $dbconn->query("SELECT * FROM komen");
 
-        echo "
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $name = htmlspecialchars($row['namn']);
+            $age = htmlspecialchars($row['age']);
+            $text = htmlspecialchars($row['texten']);
+
+            echo "
         <div class='test-comentar'>
             <h4>$name</h4>
             
@@ -120,8 +112,8 @@ if (isset($_POST['namn']) && isset($_POST['age']) && isset($_POST['comment'])) {
             <p>$text</p>
         </div>
         ";
-    }
-    ?>
+        }
+        ?>
     </div>
 
     <div class="commentarer-rubrik">
@@ -132,13 +124,13 @@ if (isset($_POST['namn']) && isset($_POST['age']) && isset($_POST['comment'])) {
 
         <form action="" method="post">
             <label for="name">Namn:</label>
-            <input name="namn" type="text" id="name" placeholder="Skriv ditt namn"> <br>
+            <input name="nam" type="text" id="name" placeholder="Skriv ditt namn"> <br>
 
             <label for="age">Ålder:</label>
             <input name="age" type="number" id="age" placeholder="Skriv din ålder"> <br>
 
             <label for="comment">Kommentar:</label>
-            <input  name="comment" type="text" id="comment" placeholder="Skriv en kommentar"> <br>
+            <input name="comment" type="text" id="comment" placeholder="Skriv en kommentar"> <br>
 
             <button type="submit">Skicka</button>
         </form>

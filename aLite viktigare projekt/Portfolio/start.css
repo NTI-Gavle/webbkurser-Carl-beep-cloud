@@ -37,6 +37,7 @@ background-color: black;
     height: auto;
     width:50%;
     transition: 0.3s;
+    border-radius: 50%;
   }
 
   .language a:hover img {

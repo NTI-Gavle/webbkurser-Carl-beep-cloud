@@ -1,5 +1,5 @@
+/*
 
-/*//! måste ta en tit tpå det här
 const header = document.getElementById("toBeFixed");
 
 const observer = new IntersectionObserver(

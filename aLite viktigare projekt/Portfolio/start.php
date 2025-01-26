@@ -27,7 +27,7 @@ require "databas-connect.php"?>
 </head>
 
 <body>
-<!-- Jag måste fixa att En av carden blir lite mindre vid 880; -->
+
 
     <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-indicators">
