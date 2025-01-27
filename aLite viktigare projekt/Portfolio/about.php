@@ -5,7 +5,8 @@ if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
 
     if (strlen($_POST['nam']) < 2 || strlen($_POST['age']) < 1 || strlen($_POST['comment']) < 5) {
        
-     /*   //? header("Location: about.php#write-comment"); */
+       
+    
     } else {
 
       
@@ -134,7 +135,7 @@ if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
 
     <div class="form-container" id="write-comment">
 
-        <form action="" method="post">
+        <form id="type-form" action="" method="post">
             <label for="name">Namn:</label>
             <input name="nam" type="text" id="name" placeholder="Skriv ditt namn"> <br>
 
@@ -146,10 +147,11 @@ if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
 
             <button type="submit">Skicka</button>
         </form>
-        <div id="alerten"   class="hidden" role="alert">
+        <div id="alerten" onclick="check()"   class="hidden" role="alert">
             A simple dark alert—check it out!
         </div>
-        <button onclick="check()"> sadasd</button>
+   
+        
     </div>
 
     <?php include "header&fotter/fotter.html" ?>
@@ -158,5 +160,3 @@ if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
 
 
 </html>
-
-<!-- onclick="check()" -->
