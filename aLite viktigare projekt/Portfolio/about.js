@@ -7,6 +7,9 @@ start.classList = "headerbox";
 projekt.classList = "headerbox";
 om.classList = "selected-headerbox";
 
+let headerBox = document.getElementById("toBeFixed");
+headerBox.classList = "header-container";
+
 function check(){
 
 let diven = document.getElementById("alerten");

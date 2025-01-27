@@ -165,8 +165,8 @@ margin-left: 5%;
 }
 
 .test-comentar h4:first-child{
-    text-decoration: underline;
-    text-decoration-color: darkorange;
+    text-decoration: underline 5px;
+    text-decoration-color: black;
 }
 .test-comentar p {
     color: white;
