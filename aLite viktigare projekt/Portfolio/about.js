@@ -1,4 +1,5 @@
 
+//! Gör så att  Rätt div i Headern får rätt css
 let start = document.getElementById("start");
 let projekt = document.getElementById("projekt");
 let om = document.getElementById("om");
@@ -12,7 +13,8 @@ headerBox.classList = "header-container";
 
 
 
-
+//! Stoppar php från att köras så kollar ifall allating stämmer innan php skickar formuläret
+//! Visar en alert ifall det inte är korrekt och php körs inte
 const registration = document.getElementById("type-form");
 
 registration.addEventListener("submit", function (event) {
@@ -24,7 +26,7 @@ registration.addEventListener("submit", function (event) {
     let inpnamn = document.getElementById("name");
     let inpage = document.getElementById("age");
     let inpcomment = document.getElementById("comment");
-let str = "";
+    let str = "";
     if (inpnamn.value.length < 2 || inpage.value.length < 1 || inpcomment.value.length < 5) {
         if (inpnamn.value.length < 2){
                 str += "Name must be longer then 1 letter" + "<br>";
