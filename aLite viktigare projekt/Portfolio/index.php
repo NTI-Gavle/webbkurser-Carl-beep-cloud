@@ -109,7 +109,7 @@ require "databas-connect.php"?>
 
             <div class="borde-vara-samma-som-classen-över-i-css">
                 <div class="picture-container">
-                    <img src="Bilder/glad3arigslav.png" alt="">
+                    <img src="Bilder/glad3arigslav.png" alt="Bild på 3årigslav">
                     <h3>3årigslav fast glad</h3>
                 </div>
             </div>

@@ -70,21 +70,21 @@ if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
                 <div class="social-media-atag-container">
                     <a href="https://www.instagram.com/fransicbaconfan/" target="blank" class="social-media"> <img
                             class="social-media-image" target="blank" src="Social-media-logo-folder\insta-logo.png"
-                            alt=""> </a>
+                            alt="instagram"> </a>
 
                     <a href="https://im.qq.com/index/" class="social-media" target="blank"> <img
-                            class="social-media-image" target="blank" src="Social-media-logo-folder\qq-logo.png" alt="">
+                            class="social-media-image" target="blank" src="Social-media-logo-folder\qq-logo.png" alt="qq">
                     </a>
 
                     <a href="https://telegram.org/" class="social-media" target="blank"> <img class="social-media-image"
-                            target="blank" src="Social-media-logo-folder\telegram-logo.png" alt=""> </a>
+                            target="blank" src="Social-media-logo-folder\telegram-logo.png" alt="telegram"> </a>
 
                     <a href="https://www.wechat.com/" class="social-media" target="blank"> <img
                             class="social-media-image" target="blank" src="Social-media-logo-folder\we-chat-logo.png"
-                            alt=""> </a>
+                            alt="wechat"> </a>
 
-                    <a href="https://x.com/BenjaminDousa?mx=2" class="social-media" target="blank"> <img
-                            class="social-media-image" target="blank" src="Social-media-logo-folder\x-logo.png" alt="">
+                    <a href="https://x.com" class="social-media" target="blank"> <img
+                            class="social-media-image" target="blank" src="Social-media-logo-folder\x-logo.png" alt="x">
                     </a>
                 </div>
                 <h2>E-Post: Tjingtjong@gmail.com</h2>
@@ -99,7 +99,7 @@ if (isset($_POST['nam']) && isset($_POST['age']) && isset($_POST['comment'])) {
 
         <div class="about-container-part-2">
             <div>
-                <img class="profile-img" src="Bilder/smart3arigslav.jpg" alt="">
+                <img class="profile-img" src="Bilder/smart3arigslav.jpg" alt="Bild-på-slaven">
             </div>
         </div>
     </div>
