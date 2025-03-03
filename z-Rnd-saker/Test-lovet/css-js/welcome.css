@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mycontainer {
+    display: grid;
+    grid-template-columns: 20% 60% 20%; /* Left - Center - Right */
+    height: auto;
+    min-height: 250px; /* Full height */
+    width: 100vw;
+}
+
+.leftside {
+    background-color: black;
+
+}
+
+.center {
+   background-color: gray;
+}
+
+.rightside {
+    background-color: black;
+}
+
