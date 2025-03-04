@@ -1,0 +1,168 @@
+body{
+    background-color: #333 !important;
+}
+
+
+/* //! CSS FÖR ALERT */
+.hidden{
+    display: none;
+}
+
+.showTheHidden{
+
+display: block;
+width: 100%;
+max-width: 600px; 
+margin: 1rem auto;
+padding: 1rem 1.5rem;
+border: 3px solid #f8f9fa;
+background-color: #212529;
+color: #ffc107; 
+border-radius: 8px; 
+font-size: 1rem; 
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+text-align: center;
+}
+
+/* //! slut på alert */
+
+.my-mega-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.my-container{
+    display: block;
+        min-width: 65%;
+}
+
+.text-container{
+    display: flex;
+    justify-content: center;
+}
+
+.my-container > .text-container> h1{
+color: orange;
+font-size: 250%;
+}
+
+/* ! själva formens css  */
+
+.form-container{
+    background-color: black;
+    padding: 20px;
+           width: 50%;
+           margin: auto;
+           border-radius: 10px;
+           box-shadow: 0 4px 10px black;
+          
+   }
+   
+   .form-container form {
+   margin-left: 10% ;
+   color: orange;
+   font-family: Arial, sans-serif;
+   font-size: 16px;
+   }
+   
+   .form-container form label {
+       display: block;
+       margin-top: 15px;
+       margin-bottom: 5px;
+
+   }
+   
+   .form-container form input {
+       width: 90%;
+       padding: 10px; 
+       border: 2px solid yellow;
+       border-radius: 5px;
+       background-color: black;
+       color: white;
+   }
+   
+   .form-container form button {
+       margin-top: 20px;
+       padding: 10px 20px; 
+       background-color: orange;
+       color: black;
+       border: none;
+       border-radius: 5px;
+       cursor: pointer;
+       font-weight: bold;
+       transition: 0.5s;
+   }
+
+   .form-container form button:hover {
+opacity: 0.5;
+   }
+
+
+   /*//! GÅ till Registrara i loggin */
+
+   .reg-btn {
+    margin-top: 15%;
+    min-width: 65% !important;
+    background-color:  black !important;
+    color: white !important;
+        font-size: 140% !important;
+   transition: 0.5s;
+    }
+
+   .reg-btn:hover{
+    opacity: 0.5;
+   }
+
+
+   .go-back-container > a> button{
+    margin-left:30%;
+
+    margin-top: 20px;
+       padding: 10px 20px; 
+       border: 3px solid orange !important;
+       background-color: darkorange;
+       color: black;
+       border: none;
+       border-radius: 5px;
+       cursor: pointer;
+       font-weight: bold;
+       transition: 0.5s;
+   }
+
+   .go-back-container >a > button:hover {
+
+    opacity: 0.5;
+   }
+
+   
+@media (max-width: 900px) {
+
+    
+.my-container{
+    display: block;
+        min-width: 100%;
+}
+
+.form-container{
+    width:65%;
+}
+
+}
+
+@media (max-width: 650px) {
+  
+.my-container > .text-container> h1{
+    font-size: 200%;
+    }
+}
+
+
+@media (max-width: 400px) {
+  
+    .my-container > .text-container> h1{
+        font-size: 150%;
+        }
+    }
+
