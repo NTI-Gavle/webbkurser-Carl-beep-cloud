@@ -1,5 +1,7 @@
 <?php require 'connect.php';
-session_start(); ?>
+session_start();
+include 'cookieholder.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,7 +87,7 @@ session_start(); ?>
 
 <?php
 
-print_r($_POST);
+
 
 if (isset($_POST['name']) && isset($_POST['pass'])) {
 
@@ -98,7 +100,15 @@ if (isset($_POST['name']) && isset($_POST['pass'])) {
         if ($row['name'] == $_POST['name'] && $row['pass'] == $_POST['pass']) {
 
             $_SESSION['name'] = $row['name'];
-            if ($row['admin'] == 1) {
+
+            if(isset($_POST['cbox'])){
+
+                $expiry = time() + (30 * 24 * 60 * 60); // 30 days
+                setcookie('name', $_POST['name'], $expiry, "/"); 
+                setcookie('lastname', $row['lastname'] ?? '', $expiry, "/");
+            }
+
+            if ($row['bool'] == 1) {
                 header("Location: adminwelcome.php");
                 exit;
             }

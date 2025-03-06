@@ -1,15 +1,17 @@
 <?php require 'connect.php';
-session_start(); ?>
+session_start();
+include 'cookieholder.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-     <!--    //! headern no-headern  -->
-     <link rel="stylesheet" href="yes-loggin/yes-loggin-header.css">
+    <!--    //! headern no-headern  -->
+    <link rel="stylesheet" href="yes-loggin/yes-loggin-header.css">
 
     <!--    //! basen som typ alla kommer ha  -->
     <link rel="stylesheet" href="css-js/bas.css">
@@ -25,29 +27,32 @@ session_start(); ?>
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <title>Document</title>
+    <title>Fransic Chat</title>
 </head>
-<body style="background-color:pink;">
-<?php include "yes-loggin/yes-loggin-header.html"; ?>
+
+<body>
+    <?php include "yes-loggin/yes-loggin-header.html"; ?>
 
 
-<div class="mycontainer">
+    <div class="mycontainer">
 
 
-<div class="leftside"></div>
+        <div class="leftside"></div>
 
-<div class="center">
+        <div class="center">
 
+            <h1 style="color:orange; text-decoration:underline blue solid;">Hejsan <?php echo $_SESSION['name'] ?></h1>
 
+            
 
-</div>
-
-
-<div class="rightside"></div>
-</div>
+        </div>
 
 
-<h1>Hejsan <?php  echo $_SESSION['name'] ?></h1>
-    
+        <div class="rightside"></div>
+    </div>
+
+
+
 </body>
+
 </html>

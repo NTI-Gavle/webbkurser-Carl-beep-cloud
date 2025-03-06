@@ -1,5 +1,8 @@
 <?php require 'connect.php';
-session_start(); ?>
+session_start();
+include 'cookiecheck.php';
+include 'cookieholder.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
