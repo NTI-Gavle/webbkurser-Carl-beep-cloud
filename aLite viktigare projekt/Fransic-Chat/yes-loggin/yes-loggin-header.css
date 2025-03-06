@@ -1,29 +1,27 @@
-
-
 .navbar-box-holder {
 
     padding: 0px !important;
-    margin:0px !important;
+    margin: 0px !important;
 }
 
-.navbar-box{
+.navbar-box {
 
-   color: orange !important;
+    color: orange !important;
     height: auto !important;
-    margin:0 !important;
- background-color: #333 !important;
-  font-family: Arial, sans-serif;
-    
+    margin: 0 !important;
+    background-color: #333 !important;
+    font-family: Arial, sans-serif;
+
 }
 
 
 .image-and-text-holder {
-display: flex !important;
-align-items: center !important;
-width: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 50% !important;
 }
 
-.image-and-text-holder :last-child{
+.image-and-text-holder :last-child {
     padding-left: 1% !important;
     color: orange;
     font-size: 3vw !important;
@@ -31,62 +29,95 @@ width: 50% !important;
 
 }
 
-.image-class{
+.image-class {
     width: 10% !important;
     border-radius: 50% !important;
 
 }
 
-/* knappen */
+/* ProfilBild delen */
 
-.my-button-changes{
-    margin-right: 4% !important;
-    padding:0.5% 1% !important;
-    font-size:1.2vw !important;
-    padding: 0.6% 0.9% !important; 
-    border-radius: 5px !important;
-    transition: all 0.3s;
+.mydropdown{
+    position: relative;
+    display: inline-block;
+    right: auto;
+    width: 10%;
 }
 
+.prof-image {
+    width: 50% !important;
+    border-radius: 50% !important;
+    height: auto;
+
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
 
 @media (max-width:1100px) {
 
-    .my-button-changes{
-        font-size:2.2vw !important;
+    .my-button-changes {
+        font-size: 2.2vw !important;
     }
-    
+
+    .image-class {
+        width: 24% !important;
     }
+
+
+    .mydropdown{
+       
+        width: 25%;
+    }
+
+}
 
 
 @media (max-width:900px) {
 
-    .image-class{
+    .image-class {
         width: 24% !important;
     }
-    
-    .image-and-text-holder :last-child{
+
+
+    .mydropdown{
+       
+        width: 25%;
+    }
+ 
+
+    .image-and-text-holder :last-child {
         font-size: 4vw !important;
     }
 
-    .my-button-changes{
-        font-size:3.2vw !important;
+    .my-button-changes {
+        font-size: 3.2vw !important;
     }
-    
-    }
+
+}
 
 
 @media (max-width:600px) {
 
-.image-class{
-    width: 40% !important;
-}
+    .image-class {
+        width: 40% !important;
+    }
 
-.image-and-text-holder :last-child{
-    font-size: 6vw !important;
-}
+    .mydropdown{
+       
+        width: 40%;
+        display: flex;
+        justify-content: right;
+    }
+    
 
-.my-button-changes{
-    font-size:4.8vw !important;
-}
+    .image-and-text-holder :last-child {
+        font-size: 6vw !important;
+    }
+
+    .my-button-changes {
+        font-size: 4.8vw !important;
+    }
 
 }
