@@ -1,6 +1,6 @@
-<?php require 'connect.php';
+<?php require 'Cookies&Connect/connect.php';
 session_start();
-include 'cookieholder.php'; ?>
+include 'Cookies&Connect/cookieholder.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">

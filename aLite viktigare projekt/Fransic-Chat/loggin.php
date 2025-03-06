@@ -1,7 +1,7 @@
-<?php require 'connect.php';
+<?php require 'Cookies&Connect/connect.php';
 session_start();
-include 'cookieholder.php'
-?>
+include 'Cookies&Connect/cookieholder.php'
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +46,7 @@ include 'cookieholder.php'
                     <label for="cbox">Remeber login</label>
 
                     <div class="cboxfiller">
-                    <input name="cbox" type="checkbox" id="cbox" class="cbox">
+                        <input name="cbox" type="checkbox" id="cbox" class="cbox">
                     </div>
 
                     <button type="submit">Skicka</button>
@@ -61,7 +61,8 @@ include 'cookieholder.php'
 
 
             <div class="text-container">
-                <a href="register.php"> <button type="button" class="btn btn-warning reg-btn">Go To Register</button> </a>
+                <a href="register.php"> <button type="button" class="btn btn-warning reg-btn">Go To Register</button>
+                </a>
             </div>
 
             <div class="go-back-container">
@@ -79,10 +80,11 @@ include 'cookieholder.php'
     </div>
 
 
-
 </body>
 
 </html>
+
+
 
 
 <?php
@@ -100,11 +102,15 @@ if (isset($_POST['name']) && isset($_POST['pass'])) {
         if ($row['name'] == $_POST['name'] && $row['pass'] == $_POST['pass']) {
 
             $_SESSION['name'] = $row['name'];
+            $_SESSION['lastname'] = $row['lastname'];
+            $_SESSION['age'] = $row['age'];
+            $_SESSION['date'] = $row['date'];
 
-            if(isset($_POST['cbox'])){
+
+            if (isset($_POST['cbox'])) {
 
                 $expiry = time() + (30 * 24 * 60 * 60); // 30 days
-                setcookie('name', $_POST['name'], $expiry, "/"); 
+                setcookie('name', $_POST['name'], $expiry, "/");
                 setcookie('lastname', $row['lastname'] ?? '', $expiry, "/");
             }
 
@@ -114,12 +120,22 @@ if (isset($_POST['name']) && isset($_POST['pass'])) {
             }
 
             header("Location: welcome.php");
-           
+
         }
+
+
+
     }
+
+    $loginFailed = true;
+    ?>
+    <script>
+        //! FRÅGA DANIEL IFALL MAN FÅR GÖRA SÅ HÄR!!!!
+        localStorage.setItem("loginFailed", "true");
+    </script>
+    <?php
+
+
 }
-
-
-
 
 ?>

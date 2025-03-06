@@ -41,9 +41,9 @@ width: 50% !important;
 
 .my-button-changes{
     margin-right: 4% !important;
-    padding:0.5% 1% !important;
+    padding:1% 6% !important;
     font-size:1.2vw !important;
-    padding: 0.6% 0.9% !important; 
+     
     border-radius: 5px !important;
     transition: all 0.3s;
 }
