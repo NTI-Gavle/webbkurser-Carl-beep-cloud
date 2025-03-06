@@ -55,6 +55,40 @@
     display: block;
 }
 
+/*! Utseende på dropdown menun */
+
+/* Custom Dropdown Styling */
+.my-change {
+    background-color: black !important;  
+    border: 2px solid yellow !important; 
+    padding: 10px 0 !important; 
+    min-width: 125px !important; 
+    width: 100% !important;
+    font-size: 125% !important;
+}
+
+
+.my-change .dropdown-item {
+    color: orange !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    display: block;
+    padding: 8px 15px !important;
+    border-bottom: 1px solid grey !important; 
+}
+
+
+.my-change .dropdown-item:last-child {
+    border-bottom: none !important;
+}
+
+
+.my-change .dropdown-item:hover {
+    background-color: #222 !important; /* Darker background on hover */
+    color: white !important; /* White text on hover */
+}
+
+
 @media (max-width:1100px) {
 
     .my-button-changes {
@@ -91,9 +125,7 @@
         font-size: 4vw !important;
     }
 
-    .my-button-changes {
-        font-size: 3.2vw !important;
-    }
+ 
 
 }
 
@@ -116,8 +148,30 @@
         font-size: 6vw !important;
     }
 
-    .my-button-changes {
-        font-size: 4.8vw !important;
+  
+
+}
+
+
+@media (max-width:400px) {
+
+
+    .image-class {
+        width: 60% !important;
     }
+
+    .mydropdown{
+       
+        width: 40%;
+        display: flex;
+        justify-content: right;
+    }
+    
+
+    .image-and-text-holder :last-child {
+        font-size: 6vw !important;
+    }
+
+   
 
 }

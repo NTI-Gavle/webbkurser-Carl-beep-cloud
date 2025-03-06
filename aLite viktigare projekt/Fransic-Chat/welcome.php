@@ -27,8 +27,26 @@ session_start(); ?>
 
     <title>Document</title>
 </head>
-<body>
+<body style="background-color:pink;">
 <?php include "yes-loggin/yes-loggin-header.html"; ?>
+
+
+<div class="mycontainer">
+
+
+<div class="leftside"></div>
+
+<div class="center">
+
+
+
+</div>
+
+
+<div class="rightside"></div>
+</div>
+
+
 <h1>Hejsan <?php  echo $_SESSION['name'] ?></h1>
     
 </body>
