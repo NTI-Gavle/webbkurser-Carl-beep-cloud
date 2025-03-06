@@ -1,3 +1,5 @@
+<?php require 'connect.php';
+session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +38,14 @@
                     <input name="name" type="text" id="name" placeholder="Skriv ditt namn"> <br>
 
 
-                    <label for="password">Password:</label>
-                    <input name="password" type="password" id="password" placeholder="Password"> <br>
+                    <label for="pass">Password:</label>
+                    <input name="pass" type="password" id="pass" placeholder="Password"> <br>
+
+                    <label for="cbox">Remeber login</label>
+
+                    <div class="cboxfiller">
+                    <input name="cbox" type="checkbox" id="cbox" class="cbox">
+                    </div>
 
                     <button type="submit">Skicka</button>
 
@@ -73,3 +81,35 @@
 </body>
 
 </html>
+
+
+<?php
+
+print_r($_POST);
+
+if (isset($_POST['name']) && isset($_POST['pass'])) {
+
+    $sql = "SELECT * FROM users";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
+    $res = $stmt->fetchAll();
+    foreach ($res as $row) {
+        if ($row['name'] == $_POST['name'] && $row['pass'] == $_POST['pass']) {
+
+            $_SESSION['name'] = $row['name'];
+            if ($row['admin'] == 1) {
+                header("Location: adminwelcome.php");
+                exit;
+            }
+
+            header("Location: welcome.php");
+           
+        }
+    }
+}
+
+
+
+
+?>

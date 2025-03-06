@@ -1,14 +1,15 @@
 <?php require 'connect.php';
 session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
      <!--    //! headern no-headern  -->
-     <link rel="stylesheet" href="no-loggin/no-loggin-header.css">
+     <link rel="stylesheet" href="yes-loggin/yes-loggin-header.css">
 
     <!--    //! basen som typ alla kommer ha  -->
     <link rel="stylesheet" href="css-js/bas.css">
@@ -24,36 +25,11 @@ session_start(); ?>
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <title>Fransic Chat</title>
+    <title>Document</title>
 </head>
-
 <body>
-<?php 
-include "no-loggin/no-loggin-header.html";
-?>
-
-
-
-    <div class="mycontainer">
-
-
-        <div class="leftside"></div>
-
-        <div class="center">
-
-
-        <div class="boxen">
-            <h2>You need to loogin to get access to this material </h2>
-             <a href="loggin.php"> <button class=" my-loggin-btn"> Loggin </button></a>
-        </div>
-
-
-        </div>
-
-
-        <div class="rightside"></div>
-    </div>
-
+<?php include "yes-loggin/yes-loggin-header.html"; ?>
+<h1>Hejsan <?php  echo $_SESSION['name'] ?></h1>
+    
 </body>
-
 </html>

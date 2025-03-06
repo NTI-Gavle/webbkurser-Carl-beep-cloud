@@ -1,3 +1,6 @@
+<?php require 'connect.php';
+session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,13 +39,13 @@
                     <input name="name" type="text" id="name" placeholder="Skriv ditt namn"> <br>
 
                     <label for="lastname">Last-Name:</label>
-                    <input name="lastname" type="password" id="lastname" placeholder="Last-Name"> <br>
+                    <input name="lastname" type="text" id="lastname" placeholder="Last-Name"> <br>
 
                     <label for="age">Age:</label>
                     <input name="age" type="number" id="age" placeholder="Age"> <br>
 
-                    <label for="password">Password:</label>
-                    <input name="password" type="password" id="password" placeholder="Password"> <br>
+                    <label for="pass">Password:</label>
+                    <input name="pass" type="password" id="pass" placeholder="Password"> <br>
 
                     <button type="submit">Register</button>
 
@@ -69,3 +72,47 @@
 </body>
 
 </html>
+
+<?php
+
+   
+//! $taken = false;
+
+if(isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['pass']) && isset($_POST['age']))
+{
+/*
+    $sql = "SELECT * FROM users";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
+    $res = $stmt->fetchAll();
+
+ 
+         
+    foreach ($res as $row) {
+         
+     /*   
+    if ($row['namn'] == $_POST['namn'] && $row['latname'] == $_POST['lastname']) {
+        echo "Testa ett annat ";
+        $taken = true;
+        break;
+    }
+
+    }
+
+    if ($taken == false) {
+        
+    */
+    $sql = "INSERT INTO users (name, lastname, age, pass) VALUES (?, ?, ?, ?)";
+  
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$_POST['name'], $_POST['lastname'], $_POST['age'], $_POST['pass']]);
+    header("Location: loggin.php");
+
+   //! }
+    
+
+ 
+}
+
+?>

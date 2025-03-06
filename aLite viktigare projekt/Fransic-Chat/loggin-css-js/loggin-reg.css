@@ -82,6 +82,14 @@ font-size: 250%;
        background-color: black;
        color: white;
    }
+
+   .cbox{
+    width: 10% !important;
+   }
+ 
+   .cboxfiller{
+    width: 90%;
+   }
    
    .form-container form button {
        margin-top: 20px;

@@ -3,14 +3,20 @@
 
 const registration = document.getElementById("type-form");
 
+
+
 registration.addEventListener("submit", function (event) {
 
-    event.preventDefault();
+    //! event.preventDefault();
 
+    registration.onsubmit();
+
+    /*
+//! Måste fixa senare måste kolla så att det fungerar först
     let diven = document.getElementById("alerten");
 
     let inpnamn = document.getElementById("name");
-    let inpassword = document.getElementById("password");4
+    let inpassword = document.getElementById("pass");4
 
     let str = "Du skrev fel ifall du inte har ett ett konto registrera dig";
 
@@ -19,14 +25,14 @@ registration.addEventListener("submit", function (event) {
     
 
 
-
+  //? Måste ha en if för att köra denna
 /*
     else {
         dontshow();
         registration.submit();
     }
 */
-
+/*
     function show() {
        
         diven.classList.remove("hidden");
@@ -39,6 +45,6 @@ registration.addEventListener("submit", function (event) {
         diven.classList.remove("showTheHidden");
     }
 
-
+*/
 
 });
