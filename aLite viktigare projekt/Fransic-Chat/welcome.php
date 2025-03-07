@@ -4,6 +4,7 @@ include 'Cookies&Connect/cookieholder.php';
 
 if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 
+    //! Detta 2 gör ingen är mäst för syns skull
     $_SESSION['lastname'];
     $_SESSION['name'];
 
@@ -52,7 +53,7 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
     <!--  //! Basen för när man är inloggad -->
     <link rel="stylesheet" href="yes-loggin/yes-loggin-bas.css">
     <!--    //! basen som typ alla kommer ha  -->
-    <link rel="stylesheet" href="css-js/bas.css">
+    <link rel="stylesheet" href="bas/bas.css">
 
     <!-- //! är inuti själva bas men css separat för den här filen -->
     <link rel="stylesheet" href="no-loggin/no-loggin-bas.css">
@@ -71,82 +72,10 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 <body>
     <?php include "yes-loggin/yes-loggin-header.html"; ?>
 
-
-    <div class="mycontainer">
-
-
-        <div class="leftside"></div>
-
-        <div class="center">
-
-            <div class="center-container">
-                <div class="my-input-container">
-                    <h1 style="color:orange;"><?php echo $_SESSION['name'] . " " . $_SESSION['lastname']; ?> </h1>
-                </div>
-                <div class="my-input-container">
-
-                    <form action="" method="post">
-                        <input type="text" id="comment" placeholder="Write a comment" name="comment">
-                        <input type="submit">
-                    </form>
-                </div>
-
-
-                <?php
-
-                $query = $dbconn->query("SELECT * FROM comments ORDER BY DATE DESC");
-
-                $query = $dbconn->query("
-               SELECT comments.*, users.name, users.lastname, users.age 
-               FROM comments
-               JOIN users ON comments.userId = users.id
-               ORDER BY comments.date DESC
-           ");
-
-
-                while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-
-                    $commentname = htmlspecialchars($row['name']);
-                    $commentlastname = htmlspecialchars($row['lastname']);
-                    $commentage = htmlspecialchars($row['age']);
-
-                    $commentcomment = htmlspecialchars($row['comment']);
-                    $commentdate = htmlspecialchars($row['date']);
-
-                    
-
-                //! Göra så att man kan radera sina egna commentarer
-                //?    if($row['name'] != $)
-
-                    echo "
-               <div class='test-comentar'>
-                   <h4>$commentname $commentlastname</h4>
-                   <h5>$commentdate</h5>
-
-                   
-                   <h4>Age: $commentage</h4>
-                   <p>$commentcomment</p>
-               </div>
-               ";
-
-                }
-
-                ?>
-
-            </div>
-
-        </div>
-
-
-        <div class="rightside"></div>
-    </div>
+    <?php include "bas/comment-bas.php"; ?>
 
 
 
 </body>
 
 </html>
-
-<?php
-
-//! ifall jag ctrl f5 så skickas den senaste kommentaren igen!!

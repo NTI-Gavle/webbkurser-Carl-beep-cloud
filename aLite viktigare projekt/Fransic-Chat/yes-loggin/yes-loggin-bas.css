@@ -59,6 +59,11 @@ display: block;
     overflow: hidden; 
 }
 
+/*! Egen komentar */
+.my-test-comentar{
+    border: 2px solid green !important;
+}
+
 .test-comentar h4 {
     color: white; 
     margin-top: 0; 
@@ -69,6 +74,14 @@ display: block;
     text-decoration: underline 5px;
     text-decoration-color: black;
 }
+
+/*! Egen komentar */
+.my-test-comentar h4:first-child{
+    text-decoration: underline 5px;
+    text-decoration-color: green !important;
+}
+
+
 .test-comentar p {
     color: white;
     line-height: 1.6; 
