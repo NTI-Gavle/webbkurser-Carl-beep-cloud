@@ -1,6 +1,42 @@
 <?php require 'Cookies&Connect/connect.php';
 session_start();
-include 'Cookies&Connect/cookieholder.php'; ?>
+include 'Cookies&Connect/cookieholder.php';
+
+if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
+
+    $_SESSION['lastname'];
+    $_SESSION['name'];
+
+    if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
+
+        $_SESSION['name'] = $_COOKIE['name'];
+        $_SESSION['lastname'] = $_COOKIE['lastname'];
+    }
+
+    $name = $_SESSION['name'];
+    $lastname = $_SESSION['lastname'];
+
+    $sql = "SELECT id FROM users Where name = ? And lastname = ?";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$name, $lastname]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        $userId = $user['id'];
+
+        $comment = $_POST['comment'];
+
+        $sql = "INSERT INTO comments (comment, userId, date) VALUES (?, ?, NOW())";
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute([$comment, $userId]);
+    }
+    header("refresh: 1");
+    $_POST['comment'] = "";
+    unset($_POST['comment']);
+}
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,43 +80,56 @@ include 'Cookies&Connect/cookieholder.php'; ?>
         <div class="center">
 
             <div class="center-container">
-                <h1 style="color:orange; text-decoration:underline blue solid;">Hejsan <?php echo $_SESSION['name'] ?>
-                </h1>
-
                 <div class="my-input-container">
+                    <h1 style="color:orange;"><?php echo $_SESSION['name'] . " " . $_SESSION['lastname']; ?> </h1>
+                </div>
+                <div class="my-input-container">
+
                     <form action="" method="post">
                         <input type="text" id="comment" placeholder="Write a comment" name="comment">
                         <input type="submit">
                     </form>
                 </div>
 
-                <?php  
-                 $query = $dbconn->query("SELECT * FROM comments");
 
-                 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                     $commentname = htmlspecialchars($row['name']);
-                     $commentlastname = htmlspecialchars($row['lastname']);
-                     $commentage = htmlspecialchars($row['age']);
-                     $commentcomment = htmlspecialchars($row['comment']);
-                     $commentdate = htmlspecialchars($row['date']);
-         /*
-                     echo "
-                 <div class='test-comentar'>
-                     <h4>$commentname</h4>
-                     <h3>$commentlastname</h3>
-                     
-                     <h4>Age: $age</h4>
-                     <p>$commentcomment</p>
-                 </div>
-                 ";
-                 */
-                 }
+                <?php
+
+                $query = $dbconn->query("SELECT * FROM comments ORDER BY DATE DESC");
+
+                $query = $dbconn->query("
+               SELECT comments.*, users.name, users.lastname, users.age 
+               FROM comments
+               JOIN users ON comments.userId = users.id
+               ORDER BY comments.date DESC
+           ");
+
+
+                while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+
+                    $commentname = htmlspecialchars($row['name']);
+                    $commentlastname = htmlspecialchars($row['lastname']);
+                    $commentage = htmlspecialchars($row['age']);
+
+                    $commentcomment = htmlspecialchars($row['comment']);
+                    $commentdate = htmlspecialchars($row['date']);
+
+                    echo "
+               <div class='test-comentar'>
+                   <h4>$commentname  $commentage $commentlastname</h4>
+                   <h5>$commentdate</h5>
+
+                   
+                   <h4>Age:</h4>
+                   <p>$commentcomment</p>
+               </div>
+               ";
+
+                }
 
                 ?>
 
-
-
             </div>
+
         </div>
 
 
@@ -95,35 +144,4 @@ include 'Cookies&Connect/cookieholder.php'; ?>
 
 <?php
 
-if (isset($_POST['comment'])) {
-
-    $_SESSION['lastname'];
-    $_SESSION['name'];
-
-    if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
-
-        $_SESSION['name'] = $_COOKIE['name'];
-        $_SESSION['lastname'] = $_COOKIE['lastname'];
-    }
-
-    $name = $_SESSION['name'];
-    $lastname = $_SESSION['lastname'];
-
-    $sql = "SELECT id FROM users Where name = ? And lastname = ?";
-    $stmt = $dbconn->prepare($sql);
-    $stmt->execute([$name, $lastname]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($user) {
-        $userId = $user['id'];
-
-        $comment = $_POST['comment'];
-
-        $sql = "INSERT INTO comments (comment, userId, date) VALUES (?, ?, NOW())";
-        $stmt = $dbconn->prepare($sql);
-        $stmt->execute([$comment, $userId]);
-    }
-    unset($_POST['comment']);
-}
-
-?>
+//! ifall jag ctrl f5 så skickas den senaste kommentaren igen!!

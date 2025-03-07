@@ -23,7 +23,7 @@ body {
 .center {
     height: 100%;
     background-color: black;
-    display: flex;
+    /*display: flex; */
     justify-content: center;
 }
 
