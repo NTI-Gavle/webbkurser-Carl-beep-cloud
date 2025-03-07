@@ -56,13 +56,13 @@ session_start(); ?>
 
             </div>
 
- 
+
 
             <div class="text-container">
-            <a href="loggin.php"> <button type="button" class="btn btn-warning reg-btn"> Go to logg in</button> </a>
+                <a href="loggin.php"> <button type="button" class="btn btn-warning reg-btn"> Go to logg in</button> </a>
             </div>
 
-           
+
 
         </div>
     </div>
@@ -75,44 +75,46 @@ session_start(); ?>
 
 <?php
 
-   
-//! $taken = false;
 
-if(isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['pass']) && isset($_POST['age']))
-{
-/*
+$taken = false;
+
+if (isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['pass']) && isset($_POST['age'])) {
+
     $sql = "SELECT * FROM users";
     $stmt = $dbconn->prepare($sql);
     $stmt->execute();
-
     $res = $stmt->fetchAll();
 
- 
-         
     foreach ($res as $row) {
-         
-     /*   
-    if ($row['namn'] == $_POST['namn'] && $row['latname'] == $_POST['lastname']) {
-        echo "Testa ett annat ";
-        $taken = true;
-        break;
-    }
+
+
+        if ($row['name'] == $_POST['name'] && $row['lastname'] == $_POST['lastname']) {
+            $taken = true;
+
+            ?>
+            <script>
+                localStorage.setItem("regFailed", "true");
+            </script>
+            <?php
+
+            break;
+        }
 
     }
 
     if ($taken == false) {
-        
-    */
-    $sql = "INSERT INTO users (name, lastname, age, pass, date) VALUES (?, ?, ?, ?, NOW())";
-  
-    $stmt = $dbconn->prepare($sql);
-    $stmt->execute([$_POST['name'], $_POST['lastname'], $_POST['age'], $_POST['pass']]);
-    header("Location: loggin.php");
 
-   //! }
-    
 
- 
+        $sql = "INSERT INTO users (name, lastname, age, pass, date) VALUES (?, ?, ?, ?, NOW())";
+
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute([$_POST['name'], $_POST['lastname'], $_POST['age'], $_POST['pass']]);
+        header("Location: loggin.php");
+
+    }
+
+
+
 }
 
 ?>

@@ -113,6 +113,11 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
                     $commentcomment = htmlspecialchars($row['comment']);
                     $commentdate = htmlspecialchars($row['date']);
 
+                    
+
+                //! Göra så att man kan radera sina egna commentarer
+                //?    if($row['name'] != $)
+
                     echo "
                <div class='test-comentar'>
                    <h4>$commentname $commentlastname</h4>

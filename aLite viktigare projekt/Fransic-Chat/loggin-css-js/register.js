@@ -42,8 +42,6 @@ registration.addEventListener("submit", function (event) {
     
 
 
-
-
     else {
         dontshow();
         registration.submit();
@@ -65,3 +63,26 @@ registration.addEventListener("submit", function (event) {
 
 
 });
+
+
+
+
+if (localStorage.getItem("regFailed") === "true") {
+    alertshower();
+    localStorage.removeItem("regFailed");
+}
+
+
+function alertshower(){
+
+    let diven = document.getElementById("alerten");
+
+    let str = "En annan har redan det där namnet och efternamnet";
+        console.log("hejsan");
+        diven.innerHTML = str;
+        diven.classList.remove("hidden");
+        diven.classList.add("showTheHidden"); 
+}
+
+
+
