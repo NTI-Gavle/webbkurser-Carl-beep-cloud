@@ -20,7 +20,7 @@
 
         <?php
 
-        $query = $dbconn->query("SELECT * FROM comments ORDER BY DATE DESC");
+       //! $query = $dbconn->query("SELECT * FROM comments ORDER BY DATE DESC");
 
         $query = $dbconn->query("
        SELECT comments.*, users.name, users.lastname, users.age 
