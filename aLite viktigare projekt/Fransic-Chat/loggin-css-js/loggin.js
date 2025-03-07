@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+
 function alertshower(){
 
     let diven = document.getElementById("alerten");

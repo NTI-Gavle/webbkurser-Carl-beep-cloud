@@ -16,3 +16,32 @@ display: block;
     font-weight: 400;
     border:orange 3px solid;
 }
+
+/* //! är för kommentarerna man ser */
+
+.test-comentar {
+    margin: 20px auto;
+    max-width: 400px; 
+    background-color: #444; 
+    border: 2px solid #FFD700;
+    padding: 20px; 
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px black; 
+    overflow: hidden; 
+}
+
+.test-comentar h4 {
+    color: white; 
+    margin-top: 0; 
+    margin-bottom: 10px; 
+}
+
+.test-comentar h4:first-child{
+    text-decoration: underline 5px;
+    text-decoration-color: black;
+}
+.test-comentar p {
+    color: white;
+    line-height: 1.6; 
+    margin-bottom: 0;
+}

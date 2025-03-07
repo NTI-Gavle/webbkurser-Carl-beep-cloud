@@ -44,14 +44,41 @@ include 'Cookies&Connect/cookieholder.php'; ?>
         <div class="center">
 
             <div class="center-container">
-            <h1 style="color:orange; text-decoration:underline blue solid;">Hejsan <?php echo $_SESSION['name'] ?></h1>
-            
-            <div class="my-input-container">
-            <form action="" metod="post">
-                <input type="text" id="comment" placeholder="Write a comment" name="comment">
-                <input type="submit">
-            </form>
-            </div>
+                <h1 style="color:orange; text-decoration:underline blue solid;">Hejsan <?php echo $_SESSION['name'] ?>
+                </h1>
+
+                <div class="my-input-container">
+                    <form action="" method="post">
+                        <input type="text" id="comment" placeholder="Write a comment" name="comment">
+                        <input type="submit">
+                    </form>
+                </div>
+
+                <?php  
+                 $query = $dbconn->query("SELECT * FROM comments");
+
+                 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                     $commentname = htmlspecialchars($row['name']);
+                     $commentlastname = htmlspecialchars($row['lastname']);
+                     $commentage = htmlspecialchars($row['age']);
+                     $commentcomment = htmlspecialchars($row['comment']);
+                     $commentdate = htmlspecialchars($row['date']);
+         /*
+                     echo "
+                 <div class='test-comentar'>
+                     <h4>$commentname</h4>
+                     <h3>$commentlastname</h3>
+                     
+                     <h4>Age: $age</h4>
+                     <p>$commentcomment</p>
+                 </div>
+                 ";
+                 */
+                 }
+
+                ?>
+
+
 
             </div>
         </div>
@@ -66,33 +93,35 @@ include 'Cookies&Connect/cookieholder.php'; ?>
 
 </html>
 
-<?php  
+<?php
 
-if(isset($_POST['comment'])){
+if (isset($_POST['comment'])) {
 
     $_SESSION['lastname'];
     $_SESSION['name'];
-/*
-    if(!isset($_SESSION['name']) || !isset($_SESSION['lastname']) )
-    {
-    
-        $_SESSION['lastname'];
-        $_SESSION['name'];
 
+    if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
+
+        $_SESSION['name'] = $_COOKIE['name'];
+        $_SESSION['lastname'] = $_COOKIE['lastname'];
     }
-*/
-    $sql = "SELECT id FROM users WHERE name = ? AND lastname = ?";
+
+    $name = $_SESSION['name'];
+    $lastname = $_SESSION['lastname'];
+
+    $sql = "SELECT id FROM users Where name = ? And lastname = ?";
     $stmt = $dbconn->prepare($sql);
     $stmt->execute([$name, $lastname]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        $user_id = $user['id'];
+        $userId = $user['id'];
 
-        // Insert the comment along with the user ID
-        $sql = "INSERT INTO comments (user_id, comment, date) VALUES (?, ?, NOW())";
+        $comment = $_POST['comment'];
+
+        $sql = "INSERT INTO comments (comment, userId, date) VALUES (?, ?, NOW())";
         $stmt = $dbconn->prepare($sql);
-        $stmt->execute([$user_id, $_POST['comment']]);
+        $stmt->execute([$comment, $userId]);
     }
     unset($_POST['comment']);
 }
