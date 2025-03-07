@@ -13,7 +13,6 @@ if (!isset($_COOKIE['lastname'])) {
 
 if(isset($_POST['loggout-btn']))
 {
-
     cookiedestoryer();
 }
 

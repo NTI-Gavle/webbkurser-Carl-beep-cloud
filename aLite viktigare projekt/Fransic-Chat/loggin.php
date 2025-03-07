@@ -49,7 +49,7 @@ include 'Cookies&Connect/cookieholder.php'
                         <input name="cbox" type="checkbox" id="cbox" class="cbox">
                     </div>
 
-                    <button type="submit">Skicka</button>
+                    <button type="submit">Logga in</button>
 
                 </form>
                 <div id="alerten" onclick="check()" class="hidden" role="alert">
@@ -130,7 +130,6 @@ if (isset($_POST['name']) && isset($_POST['pass'])) {
     $loginFailed = true;
     ?>
     <script>
-        //! FRÅGA DANIEL IFALL MAN FÅR GÖRA SÅ HÄR!!!!
         localStorage.setItem("loginFailed", "true");
     </script>
     <?php

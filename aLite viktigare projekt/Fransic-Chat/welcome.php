@@ -13,6 +13,8 @@ include 'Cookies&Connect/cookieholder.php'; ?>
     <!--    //! headern no-headern  -->
     <link rel="stylesheet" href="yes-loggin/yes-loggin-header.css">
 
+    <!--  //! Basen för när man är inloggad -->
+    <link rel="stylesheet" href="yes-loggin/yes-loggin-bas.css">
     <!--    //! basen som typ alla kommer ha  -->
     <link rel="stylesheet" href="css-js/bas.css">
 
@@ -41,10 +43,17 @@ include 'Cookies&Connect/cookieholder.php'; ?>
 
         <div class="center">
 
+            <div class="center-container">
             <h1 style="color:orange; text-decoration:underline blue solid;">Hejsan <?php echo $_SESSION['name'] ?></h1>
-
             
+            <div class="my-input-container">
+            <form action="" metod="post">
+                <input type="text" id="comment" placeholder="Write a comment" name="comment">
+                <input type="submit">
+            </form>
+            </div>
 
+            </div>
         </div>
 
 
@@ -56,3 +65,36 @@ include 'Cookies&Connect/cookieholder.php'; ?>
 </body>
 
 </html>
+
+<?php  
+
+if(isset($_POST['comment'])){
+
+    $_SESSION['lastname'];
+    $_SESSION['name'];
+/*
+    if(!isset($_SESSION['name']) || !isset($_SESSION['lastname']) )
+    {
+    
+        $_SESSION['lastname'];
+        $_SESSION['name'];
+
+    }
+*/
+    $sql = "SELECT id FROM users WHERE name = ? AND lastname = ?";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$name, $lastname]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        $user_id = $user['id'];
+
+        // Insert the comment along with the user ID
+        $sql = "INSERT INTO comments (user_id, comment, date) VALUES (?, ?, NOW())";
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute([$user_id, $_POST['comment']]);
+    }
+    unset($_POST['comment']);
+}
+
+?>
