@@ -115,11 +115,11 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 
                     echo "
                <div class='test-comentar'>
-                   <h4>$commentname  $commentage $commentlastname</h4>
+                   <h4>$commentname $commentlastname</h4>
                    <h5>$commentdate</h5>
 
                    
-                   <h4>Age:</h4>
+                   <h4>Age: $commentage</h4>
                    <p>$commentcomment</p>
                </div>
                ";
