@@ -24,12 +24,36 @@ if ($user) {
     $username = htmlspecialchars($user['name']);
     $userlastname = htmlspecialchars($user['lastname']);
     $userage = htmlspecialchars($user['age']);
-    //!    $usercomment = htmlspecialchars($user['comment']);
+  
+   //!  $usercomment = htmlspecialchars($user['comment']);
+    
     $userdate = htmlspecialchars($user['date']);
+
 
 }
 
-?>
+if(isset($_POST['save-desc']))
+{
+   
+    $sql = "SELECT id FROM users Where name = ? And lastname = ?";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$name, $lastname]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        $userId = $user['id'];
+
+        $desc = $_POST['save-desc'];
+
+        $sql = "UPDATE users SET description = ? WHERE id = ?";
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute([$desc, $userId]);
+    }
+    header("refresh: 1");
+    unset($_POST['save-desc']);
+}
+
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,25 +95,57 @@ if ($user) {
 
             <div class="info-img-container">
                 <div class="img-container">
-                    <img src="bilder/pierre4.png" alt="oj">
+                    <img src="bilder/smart.jpg" alt="oj">
                 </div>
 
                 <div class="info-container">
 
                     <ul>
-                        <li><u><h1> Name: <?php echo $username; ?></h1></u></li>
-                        <li><u><h1> Lastname: <?php echo $userlastname; ?></h1></u></li>
-                        <li><u><h1> Age: <?php echo $userage; ?></h1></u></li>
+                        <li><u>
+                                <h1> Name: <?php echo $username; ?></h1>
+                            </u></li>
+                        <li><u>
+                                <h1> Lastname: <?php echo $userlastname; ?></h1>
+                            </u></li>
+                        <li><u>
+                                <h1> Age: <?php echo $userage; ?></h1>
+                            </u></li>
                     </ul>
 
                 </div>
             </div>
             <div class="desc-container">
-                <textarea class="description" name="" id="" cols="30" rows="5"> tjoehoehsan</textarea>
+                <textarea class="description" name="" id="" cols="30"
+                    rows="5"> Vill du skriva en beskrivning? </textarea>
+                <form action="" method="post">
+                        <button name="save-desc" type="submit" class="btn btn-warning">Save</button>
+                </form>
             </div>
         </div>
 
         <div class="about-container-part-2">
+            <div class="stats-container">
+
+                <div class="stats">
+
+                    <h3>Följer</h3>
+                    <div> 12 </div>
+                </div>
+
+                <div class="stats">
+
+                    <h3>Följare</h3>
+                    <div> 15 </div>
+                </div>
+
+                <div class="stats">
+
+                    <h3>Chats</h3>
+                    <div> 27 </div>
+                </div>
+
+            </div>
+
 
         </div>
     </div>

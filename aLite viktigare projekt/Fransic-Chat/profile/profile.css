@@ -1,93 +1,192 @@
-
 .about-container {
     background-color: black;
     display: flex;
-    color: orange;
+    color: yellow;
+    padding: 20px;
+    border: 2px solid orange;
 }
-
-
 
 /*! Del 1 Vänstra sidan */
-.about-container-part-1{
-    width: 60%;
-   
+.about-container-part-1 {
+    width: 80%;
 }
 
-.info-img-container{
+.info-img-container {
     display: flex;
 }
 
-.img-container{
+.img-container {
     width: 50%;
-    background-color: yellow;
+    background-color: black;
+    padding: 10px;
 }
 
-.img-container > img{
-    border:solid 3px blue;
+.img-container>img {
+    max-width: 350px;
+    max-height: 341px;
+    border: solid 3px orange;
     border-radius: 50%;
     margin-top: 5%;
     margin-left: 15%;
     margin-bottom: 2%;
-  
 }
 
-.info-container{
+.info-container {
     width: 50%;
     display: block;
-    background-color: green;
-
+    background-color: black;
 }
 
-.info-container > ul > li{
-
- 
+.info-container>ul>li {
+    font-size: 1.5vw;
+    color: yellow;
 }
 
-.info-container > ul > li> u >h1{
-
-margin-top: 2vw;    
+.info-container>ul>li>u>h1 {
+    margin-top: 3vw;
+    color: orange;
 }
 
-.desc-container{
+.desc-container {
     width: 100%;
-  
-}
-.description{
-width: 60%;
-margin-left: 10%;
+    display: flex;
 }
 
+.desc-container > form{
+    display: flex;
+    align-items: end;
+    margin-left: 4%;
+}
 
+/*//! Boot strap sak */
+.btn-warning {
+    align-items: center;
+    background-color: darkgray !important;  /* Orange background */
+    color: black !important;  /* Black text */
+    border: 2px solid gray !important;  /* Yellow border */
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
 
+.btn-warning:hover {
+    background-color: gray !important;  /* Yellow background on hover */
+    color: black !important;  /* Black text */
+    border-color: blue !important;  /* Orange border */
+}
 
+.description {
+    width: 60%;
+    margin-left: 10%;
+    background-color: black;
+    color: yellow;
+    border: 2px solid orange;
+}
 
-/*! Del 2  Högra sidan*/
-
-.about-container-part-2{
+/*! Del 2 Högra sidan */
+.about-container-part-2 {
     width: 40%;
 }
 
-.about-container-part-2 div{
+.stats-container {
+    background-color: black;
+    margin-top: 25%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    border: 2px solid orange;
+    padding: 10px;
 }
 
+.stats>h3 {
+    color: orange;
+}
 
+.stats>div {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5vw;
+    color: yellow;
+}
 
-@media (max-width:1300px) {
-
-    .about-container{
+@media (max-width: 1300px) {
+    .about-container {
         display: block;
     }
 
-    .about-container-part-1{
+    .about-container-part-1 {
         width: 100%;
     }
-    .about-container-part-2{
-        border-top: 5px Grey solid;
+
+    .about-container-part-2 {
         width: 100%;
+    }
+
+    .stats-container {
+        margin: 0;
+        margin-top: 1.5vw;
+    }
+}
+
+
+@media (max-width: 950px) {
+    .info-img-container {
+        display: block;
+    }
+
+    .info-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .info-container>ul {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 0;
+        list-style: none;
+    }
+
+    .info-container>ul>li {
+        display: flex;
+        align-items: center;
+        margin: 15px 10px;
+        font-size: 1.2vw;
+    }
+
+    .info-container>ul>li>u>h1 {
+        margin: 0;
+        white-space: nowrap;
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 850px) {
+    .stats>div {
+        font-size: 4.5vw;
+    }
+}
+
+@media (max-width: 650px) {
+
+
+    .img-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .img-container>img {
+        margin-left: 0;
+        margin-top: 5%;
+        margin-bottom: 2%;
+
+        max-width: 300px;
+        max-height: 300px;
+
     }
 
 }
-
