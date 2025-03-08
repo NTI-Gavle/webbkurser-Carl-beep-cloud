@@ -8,7 +8,7 @@ body {
 .mycontainer {
     display: grid;
     grid-template-columns: 20% 60% 20%;
-   height:100vh; 
+   height:100%; 
     min-height: 250px;
     width: 100%;
     

@@ -149,20 +149,7 @@ if(isset($_POST['save-desc']))
         </div>
     </div>
 
-
-    <div class="mycontainer">
-
-
-        <div class="leftside"></div>
-
-        <div class="center">
-
-        </div>
-
-
-        <div class="rightside"></div>
-    </div>
-
+<?php include 'bas/comment-bas.php'; ?>
 </body>
 
 </html>

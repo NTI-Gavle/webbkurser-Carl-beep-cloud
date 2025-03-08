@@ -16,22 +16,32 @@ registration.addEventListener("submit", function (event) {
 
     let str = "";
 
-    if (inpnamn.value.length < 2 || inplastname.value.length < 1 || inppass.value.length < 3 || inpage.value < 1) {
-        if (inpnamn.value.length < 2){
-                str += "Name must be longer then 1 letter" + "<br>";
+    if (inpnamn.value.length < 2 || inplastname.value.length < 1 || inppass.value.length < 3 || inpage.value < 1 || inpnamn.value.length > 6 || inplastname.value.length > 6 || inpage.value.length > 3) {
+        if (inpnamn.value.length < 2) {
+            str += "Name must be longer then 1 letter" + "<br>";
         }
 
-        if(inplastname.value.length<5)
-        {
+        if (inpnamn.value.length > 6) {
+            str += "Name must be shorter then 7 letter" + "<br>";
+        }
+
+        if (inplastname.value.length < 1) {
             str += "Last Name must be longer then 1 letters" + "<br>";
         }
 
-        if(inpage.value < 1){
-            str+= "You need to be older then 0 years old" + "<br>";
+        if (inplastname.value.length > 6) {
+            str += "Last Name must be shorter then 7 letters" + "<br>";
         }
 
-        if(inppass.value.length < 3)
-        {
+        if (inpage.value < 1) {
+            str += "You need to be older then 0 years old" + "<br>";
+        }
+
+        if (inpage.value.length > 3) {
+            str += "Your age cant be longer then 3 nummbers" + "<br>";
+        }
+
+        if (inppass.value.length < 3) {
             str += "Your password need to be longer then 3 letters" + "<br>";
         }
 
@@ -39,7 +49,7 @@ registration.addEventListener("submit", function (event) {
         diven.innerHTML = str;
         show();
     }
-    
+
 
 
     else {
@@ -49,13 +59,13 @@ registration.addEventListener("submit", function (event) {
 
 
     function show() {
-       
+
         diven.classList.remove("hidden");
         diven.classList.add("showTheHidden");
     }
 
     function dontshow() {
-     
+
         diven.classList.add("hidden");
         diven.classList.remove("showTheHidden");
     }
@@ -73,15 +83,15 @@ if (localStorage.getItem("regFailed") === "true") {
 }
 
 
-function alertshower(){
+function alertshower() {
 
     let diven = document.getElementById("alerten");
 
     let str = "En annan har redan det där namnet och efternamnet";
-        console.log("hejsan");
-        diven.innerHTML = str;
-        diven.classList.remove("hidden");
-        diven.classList.add("showTheHidden"); 
+    console.log("hejsan");
+    diven.innerHTML = str;
+    diven.classList.remove("hidden");
+    diven.classList.add("showTheHidden");
 }
 
 

@@ -55,7 +55,6 @@
 .desc-container > form{
     display: flex;
     align-items: end;
-   
     width: 100%;
 }
 
@@ -189,6 +188,17 @@
         max-width: 300px;
         max-height: 300px;
 
+    }
+
+   
+
+
+}
+
+@media (max-width: 360px) {
+
+    .info-container>ul>li>u>h1 {
+       font-size: 5vw !important;
     }
 
 }

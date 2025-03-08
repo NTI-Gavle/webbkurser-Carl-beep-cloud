@@ -104,7 +104,7 @@ if (isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['pass']) 
 
     if ($taken == false) {
 
-
+        
         $sql = "INSERT INTO users (name, lastname, age, pass, date) VALUES (?, ?, ?, ?, NOW())";
 
         $stmt = $dbconn->prepare($sql);
