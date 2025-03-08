@@ -149,7 +149,7 @@ if(isset($_POST['save-desc']))
         </div>
     </div>
 
-<?php include 'bas/comment-bas.php'; ?>
+<?php include 'bas/my-comments-bas.php'; ?>
 </body>
 
 </html>

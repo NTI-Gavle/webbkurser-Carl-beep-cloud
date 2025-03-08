@@ -46,7 +46,7 @@ include "no-loggin/no-loggin-header.html";
 
 
         <div class="boxen">
-            <h2>You need to loogin to get access to this material </h2>
+            <h2>You need to loggin to get access to this material </h2>
              <a href="loggin.php"> <button class=" my-loggin-btn"> Loggin </button></a>
         </div>
 

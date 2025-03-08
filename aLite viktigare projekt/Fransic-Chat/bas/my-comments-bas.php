@@ -52,16 +52,6 @@
 
             //! Göra så att man kan radera sina egna commentarer
             if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
-                echo "
-       <div class='test-comentar'>
-           <h4>$commentname $commentlastname</h4>
-           <h5>$commentdate</h5>
-
-           
-           <h4>Age: $commentage</h4>
-           <p>$commentcomment</p>
-       </div>
-       ";
 
             }
 

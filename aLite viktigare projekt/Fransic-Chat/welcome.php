@@ -55,8 +55,6 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
     <!--    //! basen som typ alla kommer ha  -->
     <link rel="stylesheet" href="bas/bas.css">
 
-    <!-- //! är inuti själva bas men css separat för den här filen -->
-    <link rel="stylesheet" href="no-loggin/no-loggin-bas.css">
 
 
     <!--    //! Bootstrap  -->
