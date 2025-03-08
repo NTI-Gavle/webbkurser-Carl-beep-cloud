@@ -1,24 +1,22 @@
-
-
-.center-container{
-display: block;
+.center-container {
+    display: block;
 }
 
-.my-input-container{
+.my-input-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
-}   
+}
 
-.my-input-container > form{
+.my-input-container>form {
     display: flex;
     gap: 8px;
     width: 80%;
     justify-content: center;
 }
 
-.my-input-container > form > :first-child{
+.my-input-container>form> :first-child {
     border: 3px solid orange;
     border-radius: 8px;
     padding: 8px;
@@ -29,7 +27,7 @@ display: block;
     width: 40%;
 }
 
-.my-input-container > form :last-child{
+.my-input-container>form :last-child {
     font-weight: 600;
     border: 3px solid orange;
     border-radius: 12px;
@@ -41,7 +39,7 @@ display: block;
     width: 20%;
 }
 
-.my-input-container > form :last-child:hover {
+.my-input-container>form :last-child:hover {
     background-color: white;
     color: orange;
 }
@@ -50,33 +48,33 @@ display: block;
 
 .test-comentar {
     margin: 20px auto;
-    max-width: 400px; 
-    background-color: #444; 
+    max-width: 400px;
+    background-color: #444;
     border: 2px solid #FFD700;
-    padding: 20px; 
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 4px 4px 8px black; 
-    overflow: hidden; 
+    box-shadow: 4px 4px 8px black;
+    overflow: hidden;
 }
 
 /*! Egen komentar */
-.my-test-comentar{
+.my-test-comentar {
     border: 2px solid green !important;
 }
 
 .test-comentar h4 {
-    color: white; 
-    margin-top: 0; 
-    margin-bottom: 10px; 
+    color: white;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
-.test-comentar h4:first-child{
+.test-comentar h4:first-child {
     text-decoration: underline 5px;
     text-decoration-color: black;
 }
 
 /*! Egen komentar */
-.my-test-comentar h4:first-child{
+.my-test-comentar h4:first-child {
     text-decoration: underline 5px;
     text-decoration-color: green !important;
 }
@@ -84,26 +82,56 @@ display: block;
 
 .test-comentar p {
     color: white;
-    line-height: 1.6; 
+    line-height: 1.6;
     margin-bottom: 0;
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    white-space: normal; 
 }
 
+.my-test-comentar>form {}
 
-@media (max-width:400px) {
-    .my-input-container > form{
-    display: block;
-    }
 
-    .my-input-container > form > :first-child{
+.kill-button-class {
+    font-weight: 600;
+    border: 3px solid green;
+    border-radius: 12px;
+    padding: 8px 12px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 40%;
+}
+
+.kill-button-class:hover {
+    background-color: green;
+    color: black;
+    border-color: white;
+}
+
+@media (max-width:650px) {
+    .kill-button-class {
         width: 80%;
     }
-    
-    .my-input-container > form :last-child{
-        margin-top:10px;
+
+}
+
+@media (max-width:400px) {
+    .my-input-container>form {
+        display: block;
+    }
+
+    .my-input-container>form> :first-child {
+        width: 80%;
+    }
+
+    .my-input-container>form :last-child {
+        margin-top: 10px;
         width: 40%;
     }
 
-    .test-comentar{
+    .test-comentar {
         width: 80%;
     }
 

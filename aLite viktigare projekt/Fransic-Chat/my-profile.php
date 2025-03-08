@@ -30,9 +30,8 @@ if ($user) {
 }
 
 //! Är för att spara en desciption på din users databas
-if(isset($_POST['save-desc']))
-{
-   
+if (isset($_POST['save-desc'])) {
+
     $sql = "SELECT id FROM users Where name = ? And lastname = ?";
     $stmt = $dbconn->prepare($sql);
     $stmt->execute([$name, $lastname]);
@@ -51,7 +50,63 @@ if(isset($_POST['save-desc']))
     unset($_POST['save-desc']);
 }
 
-?> 
+
+//todo GLÖMM INTE DETTA NU AJABAJA 
+//? Göra så man kan radera komentarer
+//? borde fixa en separat fil för det
+//! KOMMR BRHÖVA ANÄVDAS BÅDE HÄR OCH I welcome.php
+if (isset($_POST['kill-btn'])) {
+
+    $TheCommentsId = $_POST['kill-btn'];
+
+    $sql = "DELETE FROM comments WHERE id = ?";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$TheCommentsId]);
+
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    unset($_POST['kill-btn']);
+    exit();
+}
+
+//todo GLÖMM INTE DETTA NU AJABAJA 
+//? Göra så man kan radera komentarer
+//? borde fixa en separat fil för det
+//! KOMMR BRHÖVA ANÄVDAS BÅDE HÄR OCH I welcome.php
+if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
+
+    //! Detta 2 gör ingen är mäst för syns skull
+    $_SESSION['lastname'];
+    $_SESSION['name'];
+
+    if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
+
+        $_SESSION['name'] = $_COOKIE['name'];
+        $_SESSION['lastname'] = $_COOKIE['lastname'];
+    }
+
+    $name = $_SESSION['name'];
+    $lastname = $_SESSION['lastname'];
+
+    $sql = "SELECT id FROM users Where name = ? And lastname = ?";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$name, $lastname]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        $userId = $user['id'];
+
+        $comment = $_POST['comment'];
+
+        $sql = "INSERT INTO comments (comment, userId, date) VALUES (?, ?, NOW())";
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute([$comment, $userId]);
+    }
+    header("refresh: 1");
+    $_POST['comment'] = "";
+    unset($_POST['comment']);
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -113,11 +168,11 @@ if(isset($_POST['save-desc']))
                 </div>
             </div>
             <div class="desc-container">
-                
+
                 <form action="" method="post">
-                <textarea class="description" name="desc" id="" cols="30"
-                    rows="5"> <?php echo $userdesc; ?> </textarea>
-                <button name="save-desc" type="submit" class="btn btn-warning">Save</button>
+                    <textarea class="description" name="desc" id="" cols="30"
+                        rows="5"> <?php echo $userdesc; ?> </textarea>
+                    <button name="save-desc" type="submit" class="btn btn-warning">Save</button>
                 </form>
             </div>
         </div>
@@ -149,7 +204,7 @@ if(isset($_POST['save-desc']))
         </div>
     </div>
 
-<?php include 'bas/my-comments-bas.php'; ?>
+    <?php include 'bas/my-comments-bas.php'; ?>
 </body>
 
 </html>

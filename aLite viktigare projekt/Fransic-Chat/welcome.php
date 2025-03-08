@@ -2,6 +2,15 @@
 session_start();
 include 'Cookies&Connect/cookieholder.php';
 
+
+
+
+
+
+//todo GLÖMM INTE DETTA NU AJABAJA 
+//? Göra så man kan radera komentarer
+//? borde fixa en separat fil för det
+//! KOMMR BRHÖVA ANÄVDAS BÅDE HÄR OCH I my-profile.php
 if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 
     //! Detta 2 gör ingen är mäst för syns skull

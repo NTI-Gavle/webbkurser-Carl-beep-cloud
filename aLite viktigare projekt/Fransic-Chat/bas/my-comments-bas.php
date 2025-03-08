@@ -1,83 +1,91 @@
 <div class="mycontainer">
 
 
-<div class="leftside"></div>
+    <div class="leftside"></div>
 
-<div class="center">
+    <div class="center">
 
-    <div class="center-container">
-        <div class="my-input-container">
-            <h1 style="color:orange;"><?php echo $_SESSION['name'] . " " . $_SESSION['lastname']; ?> </h1>
-        </div>
-        <div class="my-input-container">
+        <div class="center-container">
+            <div class="my-input-container">
+                <h1 style="color:orange;"><?php echo $_SESSION['name'] . " " . $_SESSION['lastname']; ?> </h1>
+            </div>
+            <div class="my-input-container">
 
-            <form action="" method="post">
-                <input type="text" id="comment" placeholder="Write a comment" name="comment">
-                <input type="submit">
-            </form>
-        </div>
+                <form action="" method="post">
+                    <input type="text" id="comment" placeholder="Write a comment" name="comment">
+                    <input type="submit">
+                </form>
+            </div>
 
 
-        <?php
-
-       //! $query = $dbconn->query("SELECT * FROM comments ORDER BY DATE DESC");
-
-        $query = $dbconn->query("
-       SELECT comments.*, users.name, users.lastname, users.age 
+            <?php
+            $query = $dbconn->query("
+       SELECT comments.*,  users.name, users.lastname, users.age 
        FROM comments
        JOIN users ON comments.userId = users.id
        ORDER BY comments.date DESC
    ");
 
 
-        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
-            $commentname = htmlspecialchars($row['name']);
-            $commentlastname = htmlspecialchars($row['lastname']);
-            $commentage = htmlspecialchars($row['age']);
+                $commentname = htmlspecialchars($row['name']);
+                $commentlastname = htmlspecialchars($row['lastname']);
+                $commentage = htmlspecialchars($row['age']);
 
-            $commentcomment = htmlspecialchars($row['comment']);
-            $commentdate = htmlspecialchars($row['date']);
+                $commentcomment = htmlspecialchars($row['comment']);
+                $commentdate = htmlspecialchars($row['date']);
 
-            //! Detta 2 gör ingen är mäst för syns skull
-            $_SESSION['lastname'];
-            $_SESSION['name'];
+                //todo  TA med den här
+                $commentId = htmlspecialchars($row['id']);
 
-            if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
+                //! Detta 2 gör ingen är mäst för syns skull
+                $_SESSION['lastname'];
+                $_SESSION['name'];
 
-                $_SESSION['name'] = $_COOKIE['name'];
-                $_SESSION['lastname'] = $_COOKIE['lastname'];
-            }
+                if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
+
+                    $_SESSION['name'] = $_COOKIE['name'];
+                    $_SESSION['lastname'] = $_COOKIE['lastname'];
+                }
 
 
-            //! Göra så att man kan radera sina egna commentarer
-            if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
+                //! Göra så att man kan radera sina egna commentarer
+                if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
 
-            }
+                }
 
-            //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
-            else {
-                echo "
+                //todo  TA med den här
+            
+                //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
+                else {
+                    echo "
             <div class='test-comentar my-test-comentar'>
                 <h4>$commentname $commentlastname </h4>
                 <h5>$commentdate</h5>
 
                 
                 <h4>Age: $commentage</h4>
-                <p>$commentcomment</p>
+                <p>$commentcomment</p> 
+                <form action='' method='post'>
+                <button class='kill-button-class' type='submit' name='kill-btn' value='$commentId'> KILL COMMENT </button>
+                </form>
             </div>
             ";
 
+                }
+
             }
 
-        }
+           
 
-        ?>
+
+            ?>
+
+        </div>
 
     </div>
 
-</div>
 
-
-<div class="rightside"></div>
+    <div class="rightside"></div>
 </div>
