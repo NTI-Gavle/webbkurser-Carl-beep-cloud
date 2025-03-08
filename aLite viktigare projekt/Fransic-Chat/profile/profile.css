@@ -55,7 +55,8 @@
 .desc-container > form{
     display: flex;
     align-items: end;
-    margin-left: 4%;
+   
+    width: 100%;
 }
 
 /*//! Boot strap sak */
@@ -69,6 +70,7 @@
     padding: 10px 20px;
     border-radius: 8px;
     transition: all 0.3s ease-in-out;
+    margin-left: 4%;
 }
 
 .btn-warning:hover {

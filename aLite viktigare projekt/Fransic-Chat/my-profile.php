@@ -14,7 +14,7 @@ if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
 $name = $_SESSION['name'];
 $lastname = $_SESSION['lastname'];
 
-$sql = "SELECT id, name, lastname, age, date FROM users Where name = ? And lastname = ?";
+$sql = "SELECT id, name, lastname, age, date, description FROM users Where name = ? And lastname = ?";
 $stmt = $dbconn->prepare($sql);
 $stmt->execute([$name, $lastname]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -24,14 +24,16 @@ if ($user) {
     $username = htmlspecialchars($user['name']);
     $userlastname = htmlspecialchars($user['lastname']);
     $userage = htmlspecialchars($user['age']);
-  
-   //!  $usercomment = htmlspecialchars($user['comment']);
-    
+    //! Det var en error om att den var null gjorde en @
+    @$userdesc = htmlspecialchars($user['description']);
     $userdate = htmlspecialchars($user['date']);
 
 
 }
 
+
+
+//! Är för att spara en desciption på din users databas
 if(isset($_POST['save-desc']))
 {
    
@@ -43,7 +45,7 @@ if(isset($_POST['save-desc']))
     if ($user) {
         $userId = $user['id'];
 
-        $desc = $_POST['save-desc'];
+        $desc = $_POST['desc'];
 
         $sql = "UPDATE users SET description = ? WHERE id = ?";
         $stmt = $dbconn->prepare($sql);
@@ -115,10 +117,11 @@ if(isset($_POST['save-desc']))
                 </div>
             </div>
             <div class="desc-container">
-                <textarea class="description" name="" id="" cols="30"
-                    rows="5"> Vill du skriva en beskrivning? </textarea>
+                
                 <form action="" method="post">
-                        <button name="save-desc" type="submit" class="btn btn-warning">Save</button>
+                <textarea class="description" name="desc" id="" cols="30"
+                    rows="5"> <?php echo $userdesc; ?> </textarea>
+                <button name="save-desc" type="submit" class="btn btn-warning">Save</button>
                 </form>
             </div>
         </div>
