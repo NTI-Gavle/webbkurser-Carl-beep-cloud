@@ -39,6 +39,8 @@
             $commentcomment = htmlspecialchars($row['comment']);
             $commentdate = htmlspecialchars($row['date']);
 
+            $commentId = htmlspecialchars($row['id']);
+
             //! Detta 2 gör ingen är mäst för syns skull
             $_SESSION['lastname'];
             $_SESSION['name'];
@@ -68,13 +70,16 @@
             //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
             else {
                 echo "
-            <div class='test-comentar my-test-comentar'>
+                <div class='test-comentar my-test-comentar'>
                 <h4>$commentname $commentlastname </h4>
                 <h5>$commentdate</h5>
 
                 
                 <h4>Age: $commentage</h4>
-                <p>$commentcomment</p>
+                <p>$commentcomment</p> 
+                <form action='' method='post'>
+                <button class='kill-button-class' type='submit' name='kill-btn' value='$commentId'> KILL COMMENT </button>
+                </form>
             </div>
             ";
 

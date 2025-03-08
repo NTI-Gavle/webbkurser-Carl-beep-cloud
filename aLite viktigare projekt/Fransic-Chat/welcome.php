@@ -8,9 +8,10 @@ include 'Cookies&Connect/cookieholder.php';
 
 
 //todo GLÖMM INTE DETTA NU AJABAJA 
-//? Göra så man kan radera komentarer
 //? borde fixa en separat fil för det
 //! KOMMR BRHÖVA ANÄVDAS BÅDE HÄR OCH I my-profile.php
+
+//? Man skriver en kommentar
 if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 
     //! Detta 2 gör ingen är mäst för syns skull
@@ -43,6 +44,22 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
     header("refresh: 1");
     $_POST['comment'] = "";
     unset($_POST['comment']);
+}
+
+//? Man dödar en kommentar 
+
+
+if (isset($_POST['kill-btn'])) {
+
+    $TheCommentsId = $_POST['kill-btn'];
+
+    $sql = "DELETE FROM comments WHERE id = ?";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$TheCommentsId]);
+
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    unset($_POST['kill-btn']);
+    exit();
 }
 
 ?>

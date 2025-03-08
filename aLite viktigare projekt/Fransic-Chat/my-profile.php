@@ -69,7 +69,6 @@ if (isset($_POST['kill-btn'])) {
 }
 
 //todo GLÖMM INTE DETTA NU AJABAJA 
-//? Göra så man kan radera komentarer
 //? borde fixa en separat fil för det
 //! KOMMR BRHÖVA ANÄVDAS BÅDE HÄR OCH I welcome.php
 if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
