@@ -27,11 +27,7 @@ if ($user) {
     //! Det var en error om att den var null gjorde en @
     @$userdesc = htmlspecialchars($user['description']);
     $userdate = htmlspecialchars($user['date']);
-
-
 }
-
-
 
 //! Är för att spara en desciption på din users databas
 if(isset($_POST['save-desc']))
