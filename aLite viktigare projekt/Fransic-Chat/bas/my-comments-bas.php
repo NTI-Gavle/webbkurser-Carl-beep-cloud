@@ -17,7 +17,6 @@
                 </form>
             </div>
 
-
             <?php
             $query = $dbconn->query("
        SELECT comments.*,  users.name, users.lastname, users.age 

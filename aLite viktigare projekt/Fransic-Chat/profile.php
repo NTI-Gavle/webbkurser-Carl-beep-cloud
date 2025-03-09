@@ -3,18 +3,6 @@ session_start();
 require 'Cookies&Connect/cookieholder.php';
 
 
-/*
- //! Detta 2 gör ingen är mäst för syns skull
- //! Men gör senare kod lättare att fatta
- $_SESSION['lastname'];
- $_SESSION['name'];
-
- if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
-
-     $_SESSION['name'] = $_COOKIE['name'];
-     $_SESSION['lastname'] = $_COOKIE['lastname'];
- }
-*/
 $name = $_GET['F-name'];
 $lastname = $_GET['L-name'];
 
@@ -38,6 +26,19 @@ if ($user) {
     @$userdesc = htmlspecialchars($user['description']);
     $userdate = htmlspecialchars($user['date']);
 }
+
+
+//! är för att få nummret av chats meddelanden man skrvit
+if (isset($userId)) {
+    $sql = "SELECT COUNT(*) as comment_count FROM comments WHERE userId = ?";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$userId]);
+    $commentAmount = $stmt->fetch(PDO::FETCH_ASSOC);
+} else {
+    $commentAmount = ['comment_count' => 0];
+}
+
+
 
 //! Är för att spara en desciption på din users databas
 if (isset($_POST['save-desc'])) {
@@ -158,7 +159,7 @@ if (isset($_POST['save-desc'])) {
                 <div class="stats">
 
                     <h3>Chats</h3>
-                    <div> </div>
+                    <div><?php echo $commentAmount['comment_count'];  ?> </div>
                 </div>
 
             </div>

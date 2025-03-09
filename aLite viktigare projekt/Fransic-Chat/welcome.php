@@ -41,7 +41,7 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
         $stmt = $dbconn->prepare($sql);
         $stmt->execute([$comment, $userId]);
     }
-    header("refresh: 1");
+   
     $_POST['comment'] = "";
     unset($_POST['comment']);
 }

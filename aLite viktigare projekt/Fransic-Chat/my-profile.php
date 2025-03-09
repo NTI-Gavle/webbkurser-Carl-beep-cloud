@@ -29,6 +29,19 @@ if ($user) {
     $userdate = htmlspecialchars($user['date']);
 }
 
+
+//! är för att få nummret av chats meddelanden man skrvit
+if (isset($userId)) {
+    $sql = "SELECT COUNT(*) as comment_count FROM comments WHERE userId = ?";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$userId]);
+    $commentAmount = $stmt->fetch(PDO::FETCH_ASSOC);
+} else {
+    $commentAmount = ['comment_count' => 0];
+}
+
+
+
 //! Är för att spara en desciption på din users databas
 if (isset($_POST['save-desc'])) {
 
@@ -100,10 +113,14 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
         $stmt = $dbconn->prepare($sql);
         $stmt->execute([$comment, $userId]);
     }
+
+
     header("refresh: 1");
     $_POST['comment'] = "";
     unset($_POST['comment']);
 }
+
+
 
 ?>
 
@@ -182,19 +199,19 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
                 <div class="stats">
 
                     <h3>Följer</h3>
-                    <div> 12 </div>
+                    <div> 0 </div>
                 </div>
 
                 <div class="stats">
 
                     <h3>Följare</h3>
-                    <div> 15 </div>
+                    <div> 0 </div>
                 </div>
 
                 <div class="stats">
 
                     <h3>Chats</h3>
-                    <div> 27 </div>
+                    <div> <?php echo $commentAmount['comment_count'];  ?></div>
                 </div>
 
             </div>
