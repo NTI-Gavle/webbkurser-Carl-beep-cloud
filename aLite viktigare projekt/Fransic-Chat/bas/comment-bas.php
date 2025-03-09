@@ -30,7 +30,7 @@
    ");
 
 
-            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
                 $commentname = htmlspecialchars($row['name']);
                 $commentlastname = htmlspecialchars($row['lastname']);
@@ -54,16 +54,21 @@
 
                 //! Göra så att man kan radera sina egna commentarer
                 if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
-                    echo "
-       <div class='test-comentar'>
-           <h4>$commentname $commentlastname</h4>
-           <h5>$commentdate</h5>
+                    echo
+       "<div class='test-comentar'>
+       <form action='profile.php' method='get'> 
+       <input name='F-name' type='hidden' value='$commentname'>
+       <input name='L-name' type='hidden' value='$commentlastname'>
+       <button type='submit' class='name-form' >
+           $commentname $commentlastname
+       </button>
+   </form>
+   <h5>$commentdate</h5>
 
            
-           <h4>Age: $commentage</h4>
-           <p>$commentcomment</p>
-       </div>
-       ";
+   <h4>Age: $commentage</h4>
+   <p>$commentcomment</p>
+</div>";
 
                 }
 
@@ -71,7 +76,7 @@
                 else {
                     echo "
                 <div class='test-comentar my-test-comentar'>
-                <h4>$commentname $commentlastname </h4>
+               <a href='my-profile.php' style='text-decoration:none;'> <h4>$commentname $commentlastname </h4> </a>
                 <h5>$commentdate</h5>
 
                 
@@ -91,11 +96,7 @@
 
         </div>
 
-        <form action="profile.php" method="get">
-            <input  name="F-name" type="text" value="Fransic">
-            <input name="L-name" type="text" value="Bacon">
-                <input type="submit" value="skicka">
-        </form>
+       <a href=""></a>
 
     </div>
 

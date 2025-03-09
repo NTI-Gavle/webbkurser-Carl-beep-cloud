@@ -73,6 +73,26 @@
     text-decoration-color: black;
 }
 
+.name-form {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    text-decoration: underline 5px;
+    text-decoration-color: black;   
+    transition: 0.5s;
+}
+
+.name-form:hover
+{
+color: black;
+text-decoration-color: orange;
+}
+
+
+
+
 /*! Egen komentar */
 .my-test-comentar h4:first-child {
     text-decoration: underline 5px;
@@ -80,16 +100,17 @@
 }
 
 
+
+
 .test-comentar p {
     color: white;
     line-height: 1.6;
     margin-bottom: 0;
-    word-wrap: break-word; 
-    overflow-wrap: break-word; 
-    white-space: normal; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
-.my-test-comentar>form {}
 
 
 .kill-button-class {
@@ -102,6 +123,7 @@
     cursor: pointer;
     transition: 0.3s;
     width: 40%;
+    font-size: 65%;
 }
 
 .kill-button-class:hover {

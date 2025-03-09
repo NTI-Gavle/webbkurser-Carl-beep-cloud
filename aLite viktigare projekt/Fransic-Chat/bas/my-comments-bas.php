@@ -60,18 +60,18 @@
                 //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
                 else {
                     echo "
-            <div class='test-comentar my-test-comentar'>
-                <h4>$commentname $commentlastname </h4>
-                <h5>$commentdate</h5>
-
-                
-                <h4>Age: $commentage</h4>
-                <p>$commentcomment</p> 
-                <form action='' method='post'>
-                <button class='kill-button-class' type='submit' name='kill-btn' value='$commentId'> KILL COMMENT </button>
-                </form>
-            </div>
-            ";
+                    <div class='test-comentar my-test-comentar'>
+                   <a href='my-profile.php' style='text-decoration:none;'> <h4>$commentname $commentlastname </h4> </a>
+                    <h5>$commentdate</h5>
+    
+                    
+                    <h4>Age: $commentage</h4>
+                    <p>$commentcomment</p> 
+                    <form action='' method='post'>
+                    <button class='kill-button-class' type='submit' name='kill-btn' value='$commentId'> KILL COMMENT </button>
+                    </form>
+                </div>
+                ";
 
                 }
 

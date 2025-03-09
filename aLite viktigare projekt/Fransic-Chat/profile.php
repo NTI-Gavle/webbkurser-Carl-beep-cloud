@@ -1,25 +1,25 @@
 <?php require 'Cookies&Connect/connect.php';
 session_start();
-include 'Cookies&Connect/cookieholder.php';
+require 'Cookies&Connect/cookieholder.php';
 
-//! Det gör ingenting just nu   
+
 /*
-$_SESSION['lastname'];
-$_SESSION['name'];
+ //! Detta 2 gör ingen är mäst för syns skull
+ //! Men gör senare kod lättare att fatta
+ $_SESSION['lastname'];
+ $_SESSION['name'];
 
-if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
+ if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
 
-    $_SESSION['name'] = $_COOKIE['name'];
-    $_SESSION['lastname'] = $_COOKIE['lastname'];
-}
-
+     $_SESSION['name'] = $_COOKIE['name'];
+     $_SESSION['lastname'] = $_COOKIE['lastname'];
+ }
 */
-
 $name = $_GET['F-name'];
 $lastname = $_GET['L-name'];
 
 $profileLastName = $_GET['L-name'];
-$profileName = $_GET['L-name'];
+$profileName = $_GET['F-name'];
 
 
 
@@ -93,7 +93,20 @@ if (isset($_POST['save-desc'])) {
 
 <body>
     <?php
+if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
+
+    $_SESSION['name'] = $_COOKIE['name'];
+    $_SESSION['lastname'] = $_COOKIE['lastname'];
+}
+
+if($_SESSION['name'] == "" && $_SESSION['lastname'] == "")
+{
+include 'no-loggin/no-loggin-header.html';
+}
+
+else{
     include 'yes-loggin/yes-loggin-header.html';
+}
     ?>
 
     <div class="about-container">

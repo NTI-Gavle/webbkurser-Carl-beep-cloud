@@ -45,6 +45,8 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
     $_POST['comment'] = "";
     unset($_POST['comment']);
 }
+//? Slut på man skriver en kommentar
+
 
 //? Man dödar en kommentar 
 
