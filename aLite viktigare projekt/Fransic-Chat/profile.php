@@ -93,20 +93,17 @@ if (isset($_POST['save-desc'])) {
 
 <body>
     <?php
-if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
+    if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
 
-    $_SESSION['name'] = $_COOKIE['name'];
-    $_SESSION['lastname'] = $_COOKIE['lastname'];
-}
+        $_SESSION['name'] = $_COOKIE['name'];
+        $_SESSION['lastname'] = $_COOKIE['lastname'];
+    }
 
-if($_SESSION['name'] == "" && $_SESSION['lastname'] == "")
-{
-include 'no-loggin/no-loggin-header.html';
-}
-
-else{
-    include 'yes-loggin/yes-loggin-header.html';
-}
+    if ($_SESSION['name'] == "" && $_SESSION['lastname'] == "") {
+        include 'no-loggin/no-loggin-header.html';
+    } else {
+        include 'yes-loggin/yes-loggin-header.html';
+    }
     ?>
 
     <div class="about-container">
@@ -137,9 +134,8 @@ else{
             <div class="desc-container">
 
                 <form action="" method="post">
-                    <textarea class="description" name="desc" id="" cols="30"
+                    <textarea  class="description" name="desc" id="" cols="30" readonly
                         rows="5"> <?php echo $userdesc; ?> </textarea>
-                    <button name="save-desc" type="submit" class="btn btn-warning">Save</button>
                 </form>
             </div>
         </div>
@@ -150,19 +146,19 @@ else{
                 <div class="stats">
 
                     <h3>Följer</h3>
-                    <div> 12 </div>
+                    <div> 0 </div>
                 </div>
 
                 <div class="stats">
 
                     <h3>Följare</h3>
-                    <div> 15 </div>
+                    <div> 0 </div>
                 </div>
 
                 <div class="stats">
 
                     <h3>Chats</h3>
-                    <div> 27 </div>
+                    <div> </div>
                 </div>
 
             </div>
