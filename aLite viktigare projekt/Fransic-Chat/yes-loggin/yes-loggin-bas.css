@@ -92,6 +92,18 @@
 }
 
 
+.vote{
+    width:1.5vw;
+    height: auto;
+    transition: 0.5s;   
+    border-radius: 50%;
+    border:solid 2px orange;
+}
+
+.vote:hover{
+    opacity: 0.5;
+}
+
 
 
 /*! Egen komentar */
@@ -142,12 +154,36 @@
     color: black;
     border-color: white;
 }
+.vote{
+    width:1.5vw;
+    height: auto;
+}
+
+@media (max-width:1200px) {
+
+    .vote{
+        width:3vw;
+    }
+
+}
+
 
 @media (max-width:650px) {
     .kill-button-class {
         width: 80%;
     }
 
+    .vote{
+        width:5vw;
+    }
+
+
+}
+
+@media (max-width:450px) {
+    .vote{
+        width:7vw;
+    }
 }
 
 @media (max-width:400px) {
@@ -167,5 +203,10 @@
     .test-comentar {
         width: 80%;
     }
+
+    .vote{
+        width:8vw;
+    }
+
 
 }

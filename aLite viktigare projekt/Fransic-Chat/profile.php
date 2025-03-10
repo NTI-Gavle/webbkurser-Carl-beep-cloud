@@ -68,6 +68,23 @@ $theirProfile = checkimage($_GET['F-name'], $_GET['L-name']);
 
 $headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
 
+
+
+//! På Welcome sidan kan den här vara i comment-bas.php men här fungerade det visst inte
+//! läggertill och tar bort score på kommentarerna
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vote-btn'])) {
+    $commentId = $_POST['comment_id'];
+    $action = $_POST['vote-btn'];
+
+    if ($action === "upvote") {
+        $dbconn->query("UPDATE comments SET score = score + 1 WHERE id = $commentId");
+    } elseif ($action === "downvote") {
+        $dbconn->query("UPDATE comments SET score = GREATEST(score - 1, 0) WHERE id = $commentId");
+    }
+    header("Location: " . $_SERVER['REQUEST_URI']);
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>

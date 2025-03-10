@@ -20,8 +20,6 @@
 
             <?php
 
-
-
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vote-btn'])) {
                 $commentId = $_POST['comment_id'];
                 $action = $_POST['vote-btn'];
@@ -31,6 +29,8 @@
                 } elseif ($action === "downvote") {
                     $dbconn->query("UPDATE comments SET score = GREATEST(score - 1, 0) WHERE id = $commentId");
                 }
+                header("Location: " . $_SERVER['REQUEST_URI']);
+                exit();
             }
 
 
@@ -97,17 +97,23 @@
    <p>$commentcomment</p>
 
    <h4>Score: $commentScore</h4>
-        
    <form action='' method='post' style='display: flex; gap: 10px;'>
-       <input type='hidden' name='comment_id' value='$commentId'>
-       <button type='submit' name='vote-btn' value='upvote' class='vote-button'>👍</button>;";
+   <input type='hidden' name='comment_id' value='$commentId;'>
 
-                    if ($commentScore > 0) {
-                        echo "<button type='submit' name='vote-btn' value='downvote' class='vote-button'>👎</button>";
-                    }
+   <!-- Upvote button using label -->
+   <label for='upvote $commentId; ' style='cursor: pointer;'>
+       <img src='bilder/image_upward.png' class='vote' alt='Upvote'>
+   </label>
+   <input type='submit' id='upvote $commentId; ' name='vote-btn' value='upvote' style='display: none;'>";
 
-                    echo "</form></div>";
-
+    if ($commentScore > 0) { echo"
+      
+       <label for='downvote $commentId; ' style='cursor: pointer;'>
+           <img src='bilder/image-downward.png' class='vote' alt='Downvote'>
+       </label>
+       <input type='submit' id='downvote $commentId; ' name='vote-btn' value='downvote' style='display: none;'>";
+    } echo"
+</form> </div>";
                 }
 
                 //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
