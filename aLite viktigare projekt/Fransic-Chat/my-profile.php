@@ -164,7 +164,15 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 
             <div class="info-img-container">
                 <div class="img-container">
-                    <img src="bilder/smart.jpg" alt="oj">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <label for="imageUpload">
+                            <img id="profileImage" src="bilder/smart.jpg" alt="Click to change"
+                                style="cursor: pointer;">
+                        </label>
+                        <input type="file" name="image" id="imageUpload" accept="image/*" style="display: none;"
+                            onchange="previewImage(event)">
+                        <button type="submit" name="upload-image" class="upload-button">Upload</button>
+                    </form>
                 </div>
 
                 <div class="info-container">
@@ -186,8 +194,8 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
             <div class="desc-container">
 
                 <form action="" method="post">
-                    <textarea class="description" name="desc" id="" cols="30"
-                        rows="5" maxlength="199"> <?php echo $userdesc; ?> </textarea>
+                    <textarea class="description" name="desc" id="" cols="30" rows="5"
+                        maxlength="199"> <?php echo $userdesc; ?> </textarea>
                     <button name="save-desc" type="submit" class="btn btn-warning">Save</button>
                 </form>
             </div>
@@ -211,7 +219,7 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
                 <div class="stats">
 
                     <h3>Chats</h3>
-                    <div> <?php echo $commentAmount['comment_count'];  ?></div>
+                    <div> <?php echo $commentAmount['comment_count']; ?></div>
                 </div>
 
             </div>
