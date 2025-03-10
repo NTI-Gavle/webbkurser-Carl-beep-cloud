@@ -1,7 +1,7 @@
 <?php require 'Cookies&Connect/connect.php';
 session_start();
 require 'Cookies&Connect/cookieholder.php';
-
+include 'Cookies&Connect/check-image.php';
 
 $name = $_GET['F-name'];
 $lastname = $_GET['L-name'];
@@ -63,28 +63,10 @@ if (isset($_POST['save-desc'])) {
 
 
 
-//! ÄR för att bilden du laddar upp I headern fungera
-$extensions = ['jpg', 'jpeg', 'png', 'gif'];
-$imagePath = '';
-foreach ($extensions as $ext) {
-    if (file_exists("bilder/{$_SESSION['name']}{$_SESSION['lastname']}.$ext")) {
-        $imagePath = "bilder/{$_SESSION['name']}{$_SESSION['lastname']}.$ext";
-        break;
-    }
-}
 
+$theirProfile = checkimage($_GET['F-name'], $_GET['L-name']);
 
-
-//! ÄR för profilen profilbild ska fungera
-$extensions1 = ['jpg', 'jpeg', 'png', 'gif'];
-$imagePath1 = '';
-foreach ($extensions1 as $ext1) {
-    if (file_exists("bilder/{$_GET['F-name']}{$_GET['L-name']}.$ext1")) {
-        $imagePath1 = "bilder/{$_GET['F-name']}{$_GET['L-name']}.$ext1";
-        break;
-    }
-}
-
+$headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
 
 ?>
 
@@ -138,7 +120,7 @@ foreach ($extensions1 as $ext1) {
 
             <div class="info-img-container">
                 <div class="img-container">
-                    <img  src="<?php echo $imagePath1 ?: 'bilder/no-user-image.png'; ?>" alt="Porfile">
+                    <img  src="<?php echo $theirProfile ?: 'bilder/no-user-image.png'; ?>" alt="Porfile">
                 </div>
 
                 <div class="info-container">

@@ -37,9 +37,24 @@
                 $commentId = htmlspecialchars($row['id']);
 
 
+                
+                $extensions2 = ['jpg', 'jpeg', 'png', 'gif'];
+                $imagePath2 = '';
+                foreach ($extensions2 as $ext2) {
+                    if (file_exists("bilder/{$commentname}{$commentlastname}.$ext2")) {
+                        $imagePath2 = "bilder/{$commentname}{$commentlastname}.$ext2";
+                        break;
+                    }
+                }
+
+                $imagePath2 = $imagePath2 ?: "bilder/no-user-image.png";
+
                 echo
        "<div class='test-comentar'>
        <form action='profile.php' method='get'> 
+       <label>
+       <img class='not-my-comentar-prof-image' src='$imagePath2 ?: 'bilder/no-user-image.png';'>
+       </label>
        <input name='F-name' type='hidden' value='$commentname'>
        <input name='L-name' type='hidden' value='$commentlastname'>
        <button type='submit' class='name-form' >

@@ -1,7 +1,7 @@
 <?php require 'Cookies&Connect/connect.php';
 session_start();
 include 'Cookies&Connect/cookieholder.php';
-
+include 'Cookies&Connect/check-image.php';
 $_SESSION['lastname'];
 $_SESSION['name'];
 
@@ -147,25 +147,10 @@ if (isset($_POST['upload-image']) && isset($_FILES['image'])) {
 
 }
 
-//! ÄR för att bilden du laddar ska kunna ses på profilen
-$extensions0 = ['jpg', 'jpeg', 'png', 'gif'];
-$imagePath0 = '';
-foreach ($extensions0 as $ext0) {
-    if (file_exists("bilder/{$name}{$lastname}.$ext0")) {
-        $imagePath0 = "bilder/{$name}{$lastname}.$ext0";
-        break;
-    }
-}
 
-//! Är för att din profilbild ska ses i headern
-$extensions = ['jpg', 'jpeg', 'png', 'gif'];
-$imagePath = '';
-foreach ($extensions as $ext) {
-    if (file_exists("bilder/{$name}{$lastname}.$ext")) {
-        $imagePath = "bilder/{$name}{$lastname}.$ext";
-        break;
-    }
-}
+$profilimage = checkimage($name, $lastname);
+
+$headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
 
 
 
@@ -217,7 +202,7 @@ foreach ($extensions as $ext) {
                 <div class="img-container">
                     <form action="" method="post" enctype="multipart/form-data">
                         <label  for="imageUpload">
-                            <img  id="profileImage" src="<?php echo $imagePath0 ?: 'bilder/no-user-image.png'; ?>"
+                            <img  id="profileImage" src="<?php echo $profilimage ?: 'bilder/no-user-image.png'; ?>"
                                 alt="Click to change" style="cursor: pointer;">
                         </label>
                         <input type="file" name="image" id="imageUpload" accept="image/*" style="display: none;"

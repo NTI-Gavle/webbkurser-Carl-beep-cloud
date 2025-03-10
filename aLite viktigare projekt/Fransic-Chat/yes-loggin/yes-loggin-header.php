@@ -19,7 +19,7 @@
       </a>
       <div class="mydropdown">
         <img class="prof-image" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false" src="<?php echo $imagePath ?: 'bilder/no-user-image.png';?>" alt='image'>
+          aria-expanded="false" src="<?php echo $headerimagePath ?: 'bilder/no-user-image.png';?>" alt='image'>
         </a>
         <ul class="dropdown-menu  my-change"> 
           <li><a class="dropdown-item " href="my-profile.php">My Profile </a></li>

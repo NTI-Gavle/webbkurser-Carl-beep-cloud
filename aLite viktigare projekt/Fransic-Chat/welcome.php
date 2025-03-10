@@ -1,7 +1,7 @@
 <?php require 'Cookies&Connect/connect.php';
 session_start();
 include 'Cookies&Connect/cookieholder.php';
-
+include 'Cookies&Connect/check-image.php';
 
 
 
@@ -65,15 +65,8 @@ if (isset($_POST['kill-btn'])) {
 }
 
 
-//! ÄR för att bilden du laddar upp I headern fungera
-$extensions = ['jpg', 'jpeg', 'png', 'gif'];
-$imagePath = '';
-foreach ($extensions as $ext) {
-    if (file_exists("bilder/{$_SESSION['name']}{$_SESSION['lastname']}.$ext")) {
-        $imagePath = "bilder/{$_SESSION['name']}{$_SESSION['lastname']}.$ext";
-        break;
-    }
-}
+
+$headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
 
 ?>
 

@@ -27,7 +27,7 @@
 
 
 
-           
+
 
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
@@ -50,17 +50,8 @@
                     $_SESSION['name'] = $_COOKIE['name'];
                     $_SESSION['lastname'] = $_COOKIE['lastname'];
                 }
-
-                $extensions2 = ['jpg', 'jpeg', 'png', 'gif'];
-                $imagePath2 = '';
-                foreach ($extensions2 as $ext2) {
-                    if (file_exists("bilder/{$commentname}{$commentlastname}.$ext2")) {
-                        $imagePath2 = "bilder/{$commentname}{$commentlastname}.$ext2";
-                        break;
-                    }
-                }
-
-                $imagePath2 = $imagePath2 ?: "bilder/no-user-image.png";
+               
+                $imagePath2 = checkimage($commentname, $commentlastname);
 
 
                 //! Göra så att man kan radera sina egna commentarer

@@ -117,6 +117,11 @@
 
 }
 
+.not-my-comentar-prof-image{
+    width: 15%;
+    border-radius: 50%;
+    border: solid 2px orange;
+}
 
 
 .kill-button-class {

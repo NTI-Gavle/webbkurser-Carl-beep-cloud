@@ -50,18 +50,8 @@
                     $_SESSION['lastname'] = $_COOKIE['lastname'];
                 }
 
-                $extensions2 = ['jpg', 'jpeg', 'png', 'gif'];
-                $imagePath2 = '';
-                foreach ($extensions2 as $ext2) {
-                    if (file_exists("bilder/{$commentname}{$commentlastname}.$ext2")) {
-                        $imagePath2 = "bilder/{$commentname}{$commentlastname}.$ext2";
-                        break;
-                    }
-                }
-
-                //! Ifall den inte hittar någon bild
-                //! funkar annars med :? men det är konstigt när man skrivver html i php sak
-                $imagePath2 = $imagePath2 ?: "bilder/no-user-image.png";
+                // ! kollar om bilden finns i bilder/ mappen
+                $imagePath2 = checkimage($commentname, $commentlastname);
 
 
                 //! Göra så att man kan radera sina egna commentarer
@@ -70,7 +60,7 @@
                         "<div class='test-comentar'>
        <form action='profile.php' method='get'> 
        <label>
-       <img width='15%' style='border-radius:50%; border:solid 2px orange;' src='$imagePath2;'>
+       <img class='not-my-comentar-prof-image' src='$imagePath2 ?: 'bilder/no-user-image.png';'>
        </label>
        <input name='F-name' type='hidden' value='$commentname'>
        <input name='L-name' type='hidden' value='$commentlastname'>
