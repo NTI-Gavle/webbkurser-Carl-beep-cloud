@@ -64,6 +64,17 @@ if (isset($_POST['kill-btn'])) {
     exit();
 }
 
+
+//! ÄR för att bilden du laddar upp I headern fungera
+$extensions = ['jpg', 'jpeg', 'png', 'gif'];
+$imagePath = '';
+foreach ($extensions as $ext) {
+    if (file_exists("bilder/{$_SESSION['name']}{$_SESSION['lastname']}.$ext")) {
+        $imagePath = "bilder/{$_SESSION['name']}{$_SESSION['lastname']}.$ext";
+        break;
+    }
+}
+
 ?>
 
 
@@ -96,7 +107,7 @@ if (isset($_POST['kill-btn'])) {
 </head>
 
 <body>
-    <?php include "yes-loggin/yes-loggin-header.html"; ?>
+    <?php include "yes-loggin/yes-loggin-header.php"; ?>
 
     <?php include "bas/comment-bas.php"; ?>
 

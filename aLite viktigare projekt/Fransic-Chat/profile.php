@@ -61,6 +61,31 @@ if (isset($_POST['save-desc'])) {
     unset($_POST['save-desc']);
 }
 
+
+
+//! ÄR för att bilden du laddar upp I headern fungera
+$extensions = ['jpg', 'jpeg', 'png', 'gif'];
+$imagePath = '';
+foreach ($extensions as $ext) {
+    if (file_exists("bilder/{$_SESSION['name']}{$_SESSION['lastname']}.$ext")) {
+        $imagePath = "bilder/{$_SESSION['name']}{$_SESSION['lastname']}.$ext";
+        break;
+    }
+}
+
+
+
+//! ÄR för profilen profilbild ska fungera
+$extensions1 = ['jpg', 'jpeg', 'png', 'gif'];
+$imagePath1 = '';
+foreach ($extensions1 as $ext1) {
+    if (file_exists("bilder/{$_GET['F-name']}{$_GET['L-name']}.$ext1")) {
+        $imagePath1 = "bilder/{$_GET['F-name']}{$_GET['L-name']}.$ext1";
+        break;
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -103,7 +128,7 @@ if (isset($_POST['save-desc'])) {
     if ($_SESSION['name'] == "" && $_SESSION['lastname'] == "") {
         include 'no-loggin/no-loggin-header.html';
     } else {
-        include 'yes-loggin/yes-loggin-header.html';
+        include 'yes-loggin/yes-loggin-header.php';
     }
     ?>
 
@@ -113,7 +138,7 @@ if (isset($_POST['save-desc'])) {
 
             <div class="info-img-container">
                 <div class="img-container">
-                    <img src="bilder/no-user-image.png" alt="oj">
+                    <img  src="<?php echo $imagePath1 ?: 'bilder/no-user-image.png'; ?>" alt="Porfile">
                 </div>
 
                 <div class="info-container">

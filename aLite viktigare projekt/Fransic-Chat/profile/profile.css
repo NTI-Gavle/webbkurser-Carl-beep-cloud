@@ -47,6 +47,15 @@
     border-radius: 50%;
 }
 
+.img-container > form >label{
+    transition: 1s;
+}
+
+.img-container > form > label:hover{
+    opacity: 0.2;
+}
+
+
 .upload-button {
     background-color: darkgray;  
     color: black;

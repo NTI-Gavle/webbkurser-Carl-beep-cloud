@@ -11,6 +11,9 @@ if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
     $_SESSION['lastname'] = $_COOKIE['lastname'];
 }
 
+
+
+//! ÄR FÖR ATT FÅ ALL VANLIG INFORMATION OM DIG
 $name = $_SESSION['name'];
 $lastname = $_SESSION['lastname'];
 
@@ -64,10 +67,7 @@ if (isset($_POST['save-desc'])) {
 }
 
 
-//todo GLÖMM INTE DETTA NU AJABAJA 
-//? Göra så man kan radera komentarer
-//? borde fixa en separat fil för det
-//! KOMMR BRHÖVA ANÄVDAS BÅDE HÄR OCH I welcome.php
+//! DÖDA KOMENTARER
 if (isset($_POST['kill-btn'])) {
 
     $TheCommentsId = $_POST['kill-btn'];
@@ -81,9 +81,7 @@ if (isset($_POST['kill-btn'])) {
     exit();
 }
 
-//todo GLÖMM INTE DETTA NU AJABAJA 
-//? borde fixa en separat fil för det
-//! KOMMR BRHÖVA ANÄVDAS BÅDE HÄR OCH I welcome.php
+//! POSTA COMMENTS
 if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 
     //! Detta 2 gör ingen är mäst för syns skull
@@ -121,6 +119,57 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 }
 
 
+//! Profilbild IMG byte 
+if (isset($_POST['upload-image']) && isset($_FILES['image'])) {
+    $targetDir = "bilder/";
+
+    // Get the file extension
+    $imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
+
+    // Create new filename using session variables
+    if (isset($_SESSION['name']) && isset($_SESSION['lastname'])) {
+        $newFileName = $_SESSION['name'] . $_SESSION['lastname'] . "." . $imageFileType;
+        $targetFilePath = $targetDir . $newFileName;
+
+        // Allow only specific image formats
+        $allowedTypes = array("jpg", "jpeg", "png", "gif");
+        if (in_array($imageFileType, $allowedTypes)) {
+            // Check if the file is uploaded correctly
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
+                "File uploaded successfully.";
+            } else {
+                 "Error uploading file.";
+            }
+        } else {
+                 "Invalid file type.";
+        }
+    }
+
+}
+
+//! ÄR för att bilden du laddar ska kunna ses på profilen
+$extensions0 = ['jpg', 'jpeg', 'png', 'gif'];
+$imagePath0 = '';
+foreach ($extensions0 as $ext0) {
+    if (file_exists("bilder/{$name}{$lastname}.$ext0")) {
+        $imagePath0 = "bilder/{$name}{$lastname}.$ext0";
+        break;
+    }
+}
+
+//! Är för att din profilbild ska ses i headern
+$extensions = ['jpg', 'jpeg', 'png', 'gif'];
+$imagePath = '';
+foreach ($extensions as $ext) {
+    if (file_exists("bilder/{$name}{$lastname}.$ext")) {
+        $imagePath = "bilder/{$name}{$lastname}.$ext";
+        break;
+    }
+}
+
+
+
+
 
 ?>
 
@@ -142,6 +191,8 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
     <!--    //! Specefik för profile   -->
     <link rel="stylesheet" href="profile/profile.css">
 
+    <!--//!  JS för Byta profilbild   -->
+    <link rel="stylesheet" href="profile/my-profile.js">
 
     <!--    //! Bootstrap  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -155,7 +206,7 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 
 <body>
     <?php
-    include 'yes-loggin/yes-loggin-header.html';
+    include 'yes-loggin/yes-loggin-header.php';
     ?>
 
     <div class="about-container">
@@ -165,15 +216,16 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
             <div class="info-img-container">
                 <div class="img-container">
                     <form action="" method="post" enctype="multipart/form-data">
-                        <label for="imageUpload">
-                            <img id="profileImage" src="bilder/smart.jpg" alt="Click to change"
-                                style="cursor: pointer;">
+                        <label  for="imageUpload">
+                            <img  id="profileImage" src="<?php echo $imagePath0 ?: 'bilder/no-user-image.png'; ?>"
+                                alt="Click to change" style="cursor: pointer;">
                         </label>
                         <input type="file" name="image" id="imageUpload" accept="image/*" style="display: none;"
                             onchange="previewImage(event)">
                         <button type="submit" name="upload-image" class="upload-button">Upload</button>
                     </form>
                 </div>
+
 
                 <div class="info-container">
 
