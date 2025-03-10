@@ -25,10 +25,6 @@
        ORDER BY comments.date DESC
    ");
 
-
-
-
-
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
                 $commentname = htmlspecialchars($row['name']);
@@ -50,19 +46,12 @@
                     $_SESSION['name'] = $_COOKIE['name'];
                     $_SESSION['lastname'] = $_COOKIE['lastname'];
                 }
-               
+
                 $imagePath2 = checkimage($commentname, $commentlastname);
 
-
-                //! Göra så att man kan radera sina egna commentarer
                 if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
 
-                }
-
-                //todo  TA med den här
-            
-                //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
-                else {
+                } else {
                     echo "
                     <div class='test-comentar my-test-comentar'>
                    <a href='my-profile.php' style='text-decoration:none;'>  <h4> <img class=my-comentar-prof-image src='$imagePath2' ?: 'bilder/no-user-image.png'>  $commentname $commentlastname </h4> </a>

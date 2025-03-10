@@ -112,8 +112,6 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
         $stmt->execute([$comment, $userId]);
     }
 
-
-    header("refresh: 1");
     $_POST['comment'] = "";
     unset($_POST['comment']);
 }
@@ -123,10 +121,8 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 if (isset($_POST['upload-image']) && isset($_FILES['image'])) {
     $targetDir = "bilder/";
 
-    // Get the file extension
     $imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
 
-    // Create new filename using session variables
     if (isset($_SESSION['name']) && isset($_SESSION['lastname'])) {
         $newFileName = $_SESSION['name'] . $_SESSION['lastname'] . "." . $imageFileType;
         $targetFilePath = $targetDir . $newFileName;

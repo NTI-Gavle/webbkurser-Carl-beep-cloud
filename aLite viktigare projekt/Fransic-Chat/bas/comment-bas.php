@@ -21,12 +21,33 @@
             <?php
 
 
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vote-btn'])) {
+                $commentId = $_POST['comment_id'];
+                $action = $_POST['vote-btn'];
+
+                if ($action === "upvote") {
+                    $dbconn->query("UPDATE comments SET score = score + 1 WHERE id = $commentId");
+                } elseif ($action === "downvote") {
+                    $dbconn->query("UPDATE comments SET score = GREATEST(score - 1, 0) WHERE id = $commentId");
+                }
+            }
+
+
+
             $query = $dbconn->query("
-       SELECT comments.*, users.name, users.lastname, users.age 
-       FROM comments
-       JOIN users ON comments.userId = users.id
-       ORDER BY comments.date DESC
-   ");
+    SELECT comments.*, users.name, users.lastname, users.age 
+    FROM comments
+    JOIN users ON comments.userId = users.id
+    ORDER BY 
+        CASE 
+            WHEN comments.date >= NOW() - INTERVAL 5 HOUR THEN comments.score 
+            ELSE 0 
+        END DESC,
+        comments.date DESC
+");
+
+
 
 
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
@@ -39,6 +60,7 @@
                 $commentdate = htmlspecialchars($row['date']);
 
                 $commentId = htmlspecialchars($row['id']);
+                $commentScore = (int) $row['score'];
 
                 //! Detta 2 gör ingen är mäst för syns skull
                 $_SESSION['lastname'];
@@ -73,7 +95,18 @@
            
    <h4>Age: $commentage</h4>
    <p>$commentcomment</p>
-</div>";
+
+   <h4>Score: $commentScore</h4>
+        
+   <form action='' method='post' style='display: flex; gap: 10px;'>
+       <input type='hidden' name='comment_id' value='$commentId'>
+       <button type='submit' name='vote-btn' value='upvote' class='vote-button'>👍</button>;";
+
+                    if ($commentScore > 0) {
+                        echo "<button type='submit' name='vote-btn' value='downvote' class='vote-button'>👎</button>";
+                    }
+
+                    echo "</form></div>";
 
                 }
 
