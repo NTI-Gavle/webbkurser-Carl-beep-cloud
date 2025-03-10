@@ -24,6 +24,7 @@
         <ul class="dropdown-menu  my-change"> 
           <li><a class="dropdown-item " href="my-profile.php">My Profile </a></li>
           <li><a class="dropdown-item " href="welcome.php">Start</a></li>
+          <li><a class="dropdown-item " href="cube/start.html">Betyg!!</a></li>
           <li>
             <form method="post" action="">
               <button type="submit" name="loggout-btn" class="dropdown-item">Logga ut</button>
