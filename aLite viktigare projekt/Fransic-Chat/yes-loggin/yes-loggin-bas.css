@@ -82,14 +82,13 @@
     font-size: 1.5em;
     cursor: pointer;
     text-decoration: underline 5px;
-    text-decoration-color: black;   
+    text-decoration-color: black;
     transition: 0.5s;
 }
 
-.name-form:hover
-{
-color: black;
-text-decoration-color: orange;
+.name-form:hover {
+    color: black;
+    text-decoration-color: orange;
 }
 
 
@@ -102,8 +101,6 @@ text-decoration-color: orange;
 }
 
 
-
-
 .test-comentar p {
     color: white;
     line-height: 1.6;
@@ -111,6 +108,13 @@ text-decoration-color: orange;
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
+}
+
+.my-comentar-prof-image {
+    width: 15%;
+    border-radius: 50%;
+    border: solid 2px green;
+
 }
 
 

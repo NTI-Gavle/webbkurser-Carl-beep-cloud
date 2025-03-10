@@ -20,7 +20,7 @@
 
             <?php
 
-            
+
             $query = $dbconn->query("
        SELECT comments.*, users.name, users.lastname, users.age 
        FROM comments
@@ -29,7 +29,7 @@
    ");
 
 
-                while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
                 $commentname = htmlspecialchars($row['name']);
                 $commentlastname = htmlspecialchars($row['lastname']);
@@ -50,12 +50,28 @@
                     $_SESSION['lastname'] = $_COOKIE['lastname'];
                 }
 
+                $extensions2 = ['jpg', 'jpeg', 'png', 'gif'];
+                $imagePath2 = '';
+                foreach ($extensions2 as $ext2) {
+                    if (file_exists("bilder/{$commentname}{$commentlastname}.$ext2")) {
+                        $imagePath2 = "bilder/{$commentname}{$commentlastname}.$ext2";
+                        break;
+                    }
+                }
+
+                //! Ifall den inte hittar någon bild
+                //! funkar annars med :? men det är konstigt när man skrivver html i php sak
+                $imagePath2 = $imagePath2 ?: "bilder/no-user-image.png";
+
 
                 //! Göra så att man kan radera sina egna commentarer
                 if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
                     echo
-       "<div class='test-comentar'>
+                        "<div class='test-comentar'>
        <form action='profile.php' method='get'> 
+       <label>
+       <img width='15%' style='border-radius:50%; border:solid 2px orange;' src='$imagePath2;'>
+       </label>
        <input name='F-name' type='hidden' value='$commentname'>
        <input name='L-name' type='hidden' value='$commentlastname'>
        <button type='submit' class='name-form' >
@@ -75,7 +91,7 @@
                 else {
                     echo "
                 <div class='test-comentar my-test-comentar'>
-               <a href='my-profile.php' style='text-decoration:none;'> <h4>$commentname $commentlastname </h4> </a>
+                <a href='my-profile.php' style='text-decoration:none;'>  <h4> <img class=my-comentar-prof-image src='$imagePath2' ?: 'bilder/no-user-image.png'>  $commentname $commentlastname </h4> </a>
                 <h5>$commentdate</h5>
 
                 
@@ -95,7 +111,7 @@
 
         </div>
 
-       <a href=""></a>
+        <a href=""></a>
 
     </div>
 

@@ -26,6 +26,9 @@
    ");
 
 
+
+           
+
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
                 $commentname = htmlspecialchars($row['name']);
@@ -48,6 +51,17 @@
                     $_SESSION['lastname'] = $_COOKIE['lastname'];
                 }
 
+                $extensions2 = ['jpg', 'jpeg', 'png', 'gif'];
+                $imagePath2 = '';
+                foreach ($extensions2 as $ext2) {
+                    if (file_exists("bilder/{$commentname}{$commentlastname}.$ext2")) {
+                        $imagePath2 = "bilder/{$commentname}{$commentlastname}.$ext2";
+                        break;
+                    }
+                }
+
+                $imagePath2 = $imagePath2 ?: "bilder/no-user-image.png";
+
 
                 //! Göra så att man kan radera sina egna commentarer
                 if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
@@ -60,7 +74,7 @@
                 else {
                     echo "
                     <div class='test-comentar my-test-comentar'>
-                   <a href='my-profile.php' style='text-decoration:none;'> <h4>$commentname $commentlastname </h4> </a>
+                   <a href='my-profile.php' style='text-decoration:none;'>  <h4> <img class=my-comentar-prof-image src='$imagePath2' ?: 'bilder/no-user-image.png'>  $commentname $commentlastname </h4> </a>
                     <h5>$commentdate</h5>
     
                     
@@ -74,9 +88,10 @@
 
                 }
 
+
             }
 
-           
+
 
 
             ?>
