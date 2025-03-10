@@ -113,7 +113,7 @@ if (isset($_POST['save-desc'])) {
 
             <div class="info-img-container">
                 <div class="img-container">
-                    <img src="bilder/smart.jpg" alt="oj">
+                    <img src="bilder/no-user-image.png" alt="oj">
                 </div>
 
                 <div class="info-container">

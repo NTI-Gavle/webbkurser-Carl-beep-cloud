@@ -32,7 +32,7 @@
 .image-class {
     width: 10% !important;
     border-radius: 50% !important;
-
+  
 }
 
 /* ProfilBild delen */
@@ -48,6 +48,7 @@
     width: 50% !important;
     border-radius: 50% !important;
     height: auto;
+    border: 2px solid orange !important;
 
 }
 

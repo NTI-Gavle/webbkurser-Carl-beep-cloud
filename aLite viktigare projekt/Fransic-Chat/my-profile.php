@@ -187,7 +187,7 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 
                 <form action="" method="post">
                     <textarea class="description" name="desc" id="" cols="30"
-                        rows="5"> <?php echo $userdesc; ?> </textarea>
+                        rows="5" maxlength="199"> <?php echo $userdesc; ?> </textarea>
                     <button name="save-desc" type="submit" class="btn btn-warning">Save</button>
                 </form>
             </div>

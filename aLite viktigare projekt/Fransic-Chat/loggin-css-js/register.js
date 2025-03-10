@@ -16,12 +16,12 @@ registration.addEventListener("submit", function (event) {
 
     let str = "";
 
-    if (inpnamn.value.length < 2 || inplastname.value.length < 1 || inppass.value.length < 3 || inpage.value < 1 || inpnamn.value.length > 6 || inplastname.value.length > 6 || inpage.value.length > 3) {
+    if (inpnamn.value.length < 2 || inplastname.value.length < 1 || inppass.value.length < 3 || inpage.value < 1 || inpnamn.value.length > 9 || inplastname.value.length > 9 || inpage.value.length > 3) {
         if (inpnamn.value.length < 2) {
             str += "Name must be longer then 1 letter" + "<br>";
         }
 
-        if (inpnamn.value.length > 6) {
+        if (inpnamn.value.length > 9) {
             str += "Name must be shorter then 7 letter" + "<br>";
         }
 
@@ -29,7 +29,7 @@ registration.addEventListener("submit", function (event) {
             str += "Last Name must be longer then 1 letters" + "<br>";
         }
 
-        if (inplastname.value.length > 6) {
+        if (inplastname.value.length > 9) {
             str += "Last Name must be shorter then 7 letters" + "<br>";
         }
 

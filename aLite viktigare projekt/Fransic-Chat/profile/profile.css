@@ -195,7 +195,7 @@
 
 }
 
-@media (max-width: 360px) {
+@media (max-width: 390px) {
 
     .info-container>ul>li>u>h1 {
        font-size: 5vw !important;
