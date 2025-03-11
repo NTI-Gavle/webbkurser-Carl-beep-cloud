@@ -97,6 +97,7 @@
    <p>$commentcomment</p>
 
    <h4>Score: $commentScore</h4>
+   <div style='display: flex; align-items: center; gap: 10px;'>
    <form action='' method='post' style='display: flex; gap: 10px;'>
    <input type='hidden' name='comment_id' value='$commentId;'>
 
@@ -113,7 +114,16 @@
        </label>
        <input type='submit' id='downvote $commentId; ' name='vote-btn' value='downvote' style='display: none;'>";
     } echo"
-</form> </div>";
+</form>
+<form action='comment-view.php' method='GET' style='display: inline-block;'>
+    <input type='hidden' name='comId' value='$commentId'>
+    <button type='submit' style='background: none; border: none; cursor: pointer;'>
+        <img src='bilder/view-icon.png' alt='View Comment' style='width: 25px; height: 25px;'> 
+    </button>
+</form>
+</div>
+
+</div>";
                 }
 
                 //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
@@ -126,9 +136,16 @@
                 
                 <h4>Age: $commentage</h4>
                 <p>$commentcomment</p> 
+                
                 <form action='' method='post'>
                 <button class='kill-button-class' type='submit' name='kill-btn' value='$commentId'> KILL COMMENT </button>
                 </form>
+                <form action='comment-view.php' method='GET' style='display: inline-block;'>
+                <input type='hidden' name='comId' value='$commentId'>
+                <button type='submit' style='background: none; border: none; cursor: pointer;'>
+                    <img src='bilder/view-icon.png' alt='View Comment' style='width: 25px; height: 25px;'> 
+                </button>
+            </form>
             </div>
             ";
 
