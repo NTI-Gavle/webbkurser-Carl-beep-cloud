@@ -126,6 +126,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     header("refresh: 0");
 }
+
+
+
+//! Kollar nummret på konton som följer konton som du är inne på
+$sql = "SELECT COUNT(*) as follow_count FROM follows WHERE following_id = ?";
+$stmt = $dbconn->prepare($sql);
+$stmt->execute([$userId]);
+$followCount = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+$sql = "SELECT COUNT(*) as following_count FROM follows WHERE follower_id = ?";
+$stmt = $dbconn ->prepare($sql);
+$stmt->execute([$userId]);
+$followingCount = $stmt->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -214,13 +229,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="stats">
 
                     <h3>Följer</h3>
-                    <div> 0 </div>
+                    <div> <?php echo $followingCount['following_count']?> </div>
                 </div>
 
                 <div class="stats">
 
                     <h3>Följare</h3>
-                    <div> 0 </div>
+                    <div> <?php echo $followCount['follow_count']; ?> </div>
                 </div>
 
                 <div class="stats">
