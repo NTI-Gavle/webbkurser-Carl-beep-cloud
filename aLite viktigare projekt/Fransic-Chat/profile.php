@@ -62,10 +62,7 @@ if (isset($_POST['save-desc'])) {
 }
 
 
-
-
 $theirProfile = checkimage($_GET['F-name'], $_GET['L-name']);
-
 $headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
 
 

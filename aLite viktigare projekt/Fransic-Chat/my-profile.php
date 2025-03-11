@@ -134,10 +134,10 @@ if (isset($_POST['upload-image']) && isset($_FILES['image'])) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
                 "File uploaded successfully.";
             } else {
-                 "Error uploading file.";
+                "Error uploading file.";
             }
         } else {
-                 "Invalid file type.";
+            "Invalid file type.";
         }
     }
 
@@ -159,7 +159,7 @@ $followCount = $stmt->fetch(PDO::FETCH_ASSOC);
 
 //! Konton  som du följer
 $sql = "SELECT COUNT(*) as following_count FROM follows WHERE follower_id = ?";
-$stmt = $dbconn ->prepare($sql);
+$stmt = $dbconn->prepare($sql);
 $stmt->execute([$userId]);
 $followingCount = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -212,8 +212,8 @@ $followingCount = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="info-img-container">
                 <div class="img-container">
                     <form action="" method="post" enctype="multipart/form-data">
-                        <label  for="imageUpload">
-                            <img  id="profileImage" src="<?php echo $profilimage ?: 'bilder/no-user-image.png'; ?>"
+                        <label for="imageUpload">
+                            <img id="profileImage" src="<?php echo $profilimage ?: 'bilder/no-user-image.png'; ?>"
                                 alt="Click to change" style="cursor: pointer;">
                         </label>
                         <input type="file" name="image" id="imageUpload" accept="image/*" style="display: none;"
@@ -253,31 +253,82 @@ $followingCount = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="stats-container">
 
                 <div class="stats">
-
                     <h3>Följer</h3>
-                    <div> <?php echo $followingCount['following_count']?> </div>
+                    <div> <?php echo $followingCount['following_count'] ?> </div>
+                    <form class="follow-form" method="POST" action="">
+                        <button width="10%" id="följerid" name="följer" class="follow-button"
+                            type="submit">Look</button>
+                    </form>
                 </div>
 
                 <div class="stats">
-
                     <h3>Följare</h3>
-                    <div> <?php echo $followCount['follow_count']; ?>  </div>
+                    <div> <?php echo $followCount['follow_count']; ?> </div>
+                    <form class="follow-form" method="POST" action="">
+                        <button width="10%" id="my-följid" name="my-följ" class="follow-button"
+                            type="submit">Look</button>
+                    </form>
                 </div>
 
                 <div class="stats">
-
                     <h3>Chats</h3>
                     <div> <?php echo $commentAmount['comment_count']; ?></div>
+                    <form class="follow-form" method="POST" action="">
+                        <button width="10%" id="mychatsid" name="my-chats" class="follow-button"
+                            type="submit">Look</button>
+                    </form>
                 </div>
 
             </div>
-
-
         </div>
     </div>
 
-    <?php // include 'bas/my-comments-bas.php'; ?> 
-    <?php include 'bas/my-following-bas.php'; ?>
+    <?php
+
+
+    ?>
+    <script>
+        let följ = document.getElementById("följerid");
+        let myfölj = document.getElementById("my-följid");
+        let mychats = document.getElementById("mychatsid");
+    </script>
+    <?php
+
+    if (isset($_POST['följer']) || isset($_POST['my-följ'])) {
+        if (isset($_POST['följer'])) {
+            include 'bas/my-following-bas.php';
+            ?>
+            <script>
+                    följ.classList.add("pressed-btn");
+                    myfölj.classList.remove("pressed-btn");
+                    mychats.classList.remove("pressed-btn");       
+            </script> <?php
+
+        } else {
+            include 'bas/my-followers-bas.php';
+            ?>
+            <script>
+                             följ.classList.remove("pressed-btn");
+                    myfölj.classList.add("pressed-btn");
+                    mychats.classList.remove("pressed-btn");   
+            </script> <?php
+
+        }
+    } else {
+        include 'bas/my-comments-bas.php';
+        ?>
+        <script>
+                    följ.classList.remove("pressed-btn");
+                    myfölj.classList.remove("pressed-btn");
+                    mychats.classList.add("pressed-btn");         
+        </script> <?php
+
+    }
+
+
+
+    ?>
+
 </body>
 
 </html>

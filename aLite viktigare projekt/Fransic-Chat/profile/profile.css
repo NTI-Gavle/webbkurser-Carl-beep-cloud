@@ -188,6 +188,12 @@
     margin-right: 20px; /* Adds spacing between button and stats */
 }
 
+.pressed-btn{
+    border: solid green 2px !important;
+    background-color: darkgray !important;
+    color: black !important;
+}
+
 @media (max-width: 1300px) {
     .about-container {
         display: block;
