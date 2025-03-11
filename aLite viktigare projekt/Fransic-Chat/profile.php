@@ -85,6 +85,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vote-btn'])) {
     exit();
 }
 
+
+//! För Följa och unfollow knappen
+$follower_name = $_SESSION['name'];
+$follower_lastname = $_SESSION['lastname'];
+
+$query = "SELECT u.id 
+FROM users u 
+WHERE u.name = ? AND u.lastname = ?";
+$stmt = $dbconn->prepare($query);
+$stmt->execute([$follower_name, $follower_lastname]);
+$follower = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$follower) {
+    die("User not found.");
+}
+
+$follower_id = $follower['id'];
+
+$userId = $user['id'];
+
+// Check if already following
+$query = "SELECT * FROM follows WHERE follower_id = ? AND following_id = ?";
+$stmt = $dbconn->prepare($query);
+$stmt->execute([$follower_id, $userId]);
+$isFollowing = $stmt->fetch(PDO::FETCH_ASSOC) !== false;
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+   $userId;
+
+    if ($isFollowing) {
+        $deleteQuery = "DELETE FROM follows WHERE follower_id = ? AND following_id = ?";
+        $stmt = $dbconn->prepare($deleteQuery);
+        $stmt->execute([$follower_id, $userId]);
+    } else {
+        $insertQuery = "INSERT INTO follows(follower_id, following_id) VALUES (?, ?)";
+        $stmt = $dbconn->prepare($insertQuery);
+        $stmt->execute([$follower_id, $userId]);
+    }
+
+    header("refresh: 0");
+}
 ?>
 
 <!DOCTYPE html>
@@ -137,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vote-btn'])) {
 
             <div class="info-img-container">
                 <div class="img-container">
-                    <img  src="<?php echo $theirProfile ?: 'bilder/no-user-image.png'; ?>" alt="Porfile">
+                    <img src="<?php echo $theirProfile ?: 'bilder/no-user-image.png'; ?>" alt="Porfile">
                 </div>
 
                 <div class="info-container">
@@ -159,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vote-btn'])) {
             <div class="desc-container">
 
                 <form action="" method="post">
-                    <textarea  class="description" name="desc" id="" cols="30" readonly
+                    <textarea class="description" name="desc" id="" cols="30" readonly
                         rows="5"> <?php echo $userdesc; ?> </textarea>
                 </form>
             </div>
@@ -167,7 +208,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vote-btn'])) {
 
         <div class="about-container-part-2">
             <div class="stats-container">
-
+                <form class="follow-form" method="POST" action="">
+                    <button class="follow-button" type="submit"><?php echo $isFollowing ? "Unfollow" : "Follow"; ?></button>
+                </form>
                 <div class="stats">
 
                     <h3>Följer</h3>
@@ -183,7 +226,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vote-btn'])) {
                 <div class="stats">
 
                     <h3>Chats</h3>
-                    <div><?php echo $commentAmount['comment_count'];  ?> </div>
+                    <div><?php echo $commentAmount['comment_count']; ?> </div>
                 </div>
 
             </div>
