@@ -187,6 +187,9 @@ $followingCount = $stmt->fetch(PDO::FETCH_ASSOC);
     <!--//!  JS för Byta profilbild   -->
     <link rel="stylesheet" href="profile/my-profile.js">
 
+    <!-- //! CSS för basdelen när man ser följare och de man följer -->
+    <link rel="stylesheet" href="bas/bas-follow.css">
+
     <!--    //! Bootstrap  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">

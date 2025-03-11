@@ -1,0 +1,60 @@
+.name-box-container{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.name-box {
+    margin-top: 1.5vw;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 4px solid orange;
+    border-radius: 30px;
+    padding: 5px 20px;
+    width: fit-content;
+    min-width: 200px;
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.name-box img {
+    width: 10%;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid orange;
+    margin-right: 10px;
+}
+
+.name-box span {
+    color: white;
+    font-size: 175%;
+    font-weight: bold;
+    transition:0.5s;
+    cursor: pointer;
+}
+
+.name-box span:hover{
+    color: orange;
+    text-decoration: underline 5px solid blue;
+    
+}
+
+
+@media (max-width:750px) {
+
+    .name-box img {
+        width: 15%;
+    }
+
+}
+
+@media (max-width:450px) {
+
+    .name-box img {
+        width: 20%;
+    }
+
+}
