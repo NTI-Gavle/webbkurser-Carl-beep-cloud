@@ -277,7 +277,7 @@ $followingCount = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
 
     <?php // include 'bas/my-comments-bas.php'; ?> 
-    <?php include 'bas/my-followers-bas.php'; ?>
+    <?php include 'bas/my-following-bas.php'; ?>
 </body>
 
 </html>
