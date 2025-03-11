@@ -149,7 +149,19 @@ $profilimage = checkimage($name, $lastname);
 $headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
 
 
+$userId = $user['id'];
 
+//! Kollar nummret på konton som följare
+$sql = "SELECT COUNT(*) as follow_count FROM follows WHERE following_id = ?";
+$stmt = $dbconn->prepare($sql);
+$stmt->execute([$userId]);
+$followCount = $stmt->fetch(PDO::FETCH_ASSOC);
+
+//! Konton  som du följer
+$sql = "SELECT COUNT(*) as following_count FROM follows WHERE follower_id = ?";
+$stmt = $dbconn ->prepare($sql);
+$stmt->execute([$userId]);
+$followingCount = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 ?>
@@ -240,13 +252,13 @@ $headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
                 <div class="stats">
 
                     <h3>Följer</h3>
-                    <div> 0 </div>
+                    <div> <?php echo $followingCount['following_count']?> </div>
                 </div>
 
                 <div class="stats">
 
                     <h3>Följare</h3>
-                    <div> 0 </div>
+                    <div> <?php echo $followCount['follow_count']; ?>  </div>
                 </div>
 
                 <div class="stats">
@@ -261,7 +273,8 @@ $headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
         </div>
     </div>
 
-    <?php include 'bas/my-comments-bas.php'; ?>
+    <?php // include 'bas/my-comments-bas.php'; ?> 
+    <?php include 'bas/my-followers-bas.php'; ?>
 </body>
 
 </html>
