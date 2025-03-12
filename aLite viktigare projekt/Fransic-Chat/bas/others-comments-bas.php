@@ -46,55 +46,62 @@
                 $commentScore = (int) $row['score'];
 
 
-                $extensions2 = ['jpg', 'jpeg', 'png', 'gif'];
-                $imagePath2 = '';
-                foreach ($extensions2 as $ext2) {
-                    if (file_exists("bilder/{$commentname}{$commentlastname}.$ext2")) {
-                        $imagePath2 = "bilder/{$commentname}{$commentlastname}.$ext2";
-                        break;
-                    }
-                }
+                $sql = "SELECT COUNT(*) AS total FROM comments WHERE link = ?";
+                $stmt = $dbconn->prepare($sql);
+                $stmt->execute([$commentId]);
+                $row2 = $stmt->fetch(PDO::FETCH_ASSOC);
+                $totalComments = $row2['total'] ?? 0;
 
-                $imagePath2 = $imagePath2 ?: "bilder/no-user-image.png";
+                $imagePath2 = checkimage($commentname, $commentlastname);
 
                 echo
-                    "<div class='test-comentar'>
-<form action='profile.php' method='get'> 
-<label>
-<img class='not-my-comentar-prof-image' src='$imagePath2 ?: 'bilder/no-user-image.png';'>
-</label>
-<input name='F-name' type='hidden' value='$commentname'>
-<input name='L-name' type='hidden' value='$commentlastname'>
-<button type='submit' class='name-form' >
-   $commentname $commentlastname
-</button>
-</form>
-<h5>$commentdate</h5>
-
-   
-<h4>Age: $commentage</h4>
-<p>$commentcomment</p>
-
-<h4>Score: $commentScore</h4>
-<form action='' method='post' style='display: flex; gap: 10px;'>
-<input type='hidden' name='comment_id' value='$commentId;'>
-
-<!-- Upvote button using label -->
-<label for='upvote $commentId; ' style='cursor: pointer;'>
-<img src='bilder/image_upward.png' class='vote' alt='Upvote'>
-</label>
-<input type='submit' id='upvote $commentId; ' name='vote-btn' value='upvote' style='display: none;'>";
-
-                if ($commentScore > 0) {
-                    echo "
-
-<label for='downvote $commentId; ' style='cursor: pointer;'>
-   <img src='bilder/image-downward.png' class='vote' alt='Downvote'>
-</label>
-<input type='submit' id='downvote $commentId; ' name='vote-btn' value='downvote' style='display: none;'>";
-                }
-                echo "
-</form> </div>";
+                "<div class='test-comentar'>
+                <form action='profile.php' method='get'> 
+                <label>
+                <img class='not-my-comentar-prof-image' src='$imagePath2 ?: 'bilder/no-user-image.png';'>
+                </label>
+                <input name='F-name' type='hidden' value='$commentname'>
+                <input name='L-name' type='hidden' value='$commentlastname'>
+                <button type='submit' class='name-form' >
+                   $commentname $commentlastname
+                </button>
+                </form>
+                <h5>$commentdate</h5>
+                
+                   
+                <h4>Age: $commentage</h4>
+                <p>$commentcomment</p>
+                
+                <h4>Score: $commentScore</h4>
+                <div style='display: flex; align-items: center; gap: 10px;'>
+                <form action='' method='post' style='display: flex; gap: 10px;'>
+                <input type='hidden' name='comment_id' value='$commentId;'>
+                
+                <!-- Upvote button using label -->
+                <label for='upvote $commentId; ' style='cursor: pointer;'>
+                <img src='bilder/image_upward.png' class='vote' alt='Upvote'>
+                </label>
+                <input type='submit' id='upvote $commentId; ' name='vote-btn' value='upvote' style='display: none;'>";
+                
+                        if ($commentScore > 0) {
+                            echo "
+                
+                <label for='downvote $commentId; ' style='cursor: pointer;'>
+                   <img src='bilder/image-downward.png' class='vote' alt='Downvote'>
+                </label>
+                <input type='submit' id='downvote $commentId; ' name='vote-btn' value='downvote' style='display: none;'>";
+                        }
+                        echo "
+                </form>
+                <form action='comment-view.php' method='GET' style='display: inline-block;'>
+                <input type='hidden' name='comId' value='$commentId'>
+                <button type='submit' style='background: none; border: none; cursor: pointer;'>
+                <img src='bilder/view-icon.png' alt='View Comment' style='width: 25px; height: 25px;'> 
+                </button>
+                </form>
+                </div>
+                <span bold style='color:orange; font-weight:400;'>  $totalComments comments</span>
+                </div>";
             }
 
 
