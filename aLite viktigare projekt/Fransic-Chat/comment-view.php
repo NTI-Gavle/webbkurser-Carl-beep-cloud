@@ -4,7 +4,6 @@ include 'Cookies&Connect/cookieholder.php';
 include 'Cookies&Connect/check-image.php';
 
 
-
 //! Så att bilde i headern ska visas
 $headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
 ?>

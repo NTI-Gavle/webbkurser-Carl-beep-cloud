@@ -52,3 +52,49 @@
     margin: 0;
     line-height: 1.4;
 }
+
+
+/* //! För Där man skrivern svar på kommentarer */
+
+
+.my-specific-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.my-specific-input-container>form {
+    display: flex;
+    gap: 8px;
+    width: 80%;
+    justify-content: center;
+}
+
+.my-specific-input-container>form> :first-child {
+    border: 3px solid red;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: #222;
+    color: white;
+    outline: none;
+    font-size: 16px;
+    width: 40%;
+}
+
+.my-specific-input-container>form :last-child {
+    font-weight: 600;
+    border: 3px solid red;
+    border-radius: 12px;
+    padding: 8px 12px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 20%;
+}
+
+.my-specific-input-container>form :last-child:hover {
+    background-color: darkred;
+    color: white;
+}

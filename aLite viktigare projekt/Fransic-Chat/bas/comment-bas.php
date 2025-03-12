@@ -39,6 +39,7 @@
     SELECT comments.*, users.name, users.lastname, users.age 
     FROM comments
     JOIN users ON comments.userId = users.id
+    WHERE comments.link IS NULL
     ORDER BY 
         CASE 
             WHEN comments.date >= NOW() - INTERVAL 5 HOUR THEN comments.score 
