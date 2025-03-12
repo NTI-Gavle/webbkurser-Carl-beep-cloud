@@ -1,0 +1,54 @@
+.special-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.specific-change {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    border: 2px solid red;
+    border-radius: 10px;
+    background-color: #1a1a1a; /* Dark theme for contrast */
+    padding: 15px;
+    box-shadow: 3px 3px 10px rgba(255, 0, 0, 0.3);
+}
+
+.not-my-comentar-prof-image {
+    border: 2px solid red;
+    max-height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.comment-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.comment-details h3 {
+    color: orange;
+    text-decoration: underline red 3px solid;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.comment-details h2 {
+    color: orange;
+    text-decoration: underline red 3px solid;
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.comment-details p {
+    color: red;
+    font-size: 1.2em;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    line-height: 1.4;
+}

@@ -17,6 +17,8 @@ $SpecificScore = htmlspecialchars($result['score']);
 
 $SpecificCommentImagePath = checkimage($SpecificName, $SpecificLastName);
 
+echo $SpecificAge . $SpecificComment . $SpecificLastName . $SpecificLastName;
+
 ?>
 
 <div class="mycontainer">
@@ -28,13 +30,17 @@ $SpecificCommentImagePath = checkimage($SpecificName, $SpecificLastName);
 
         <div class="center-container">
 
-        <?php  
-
-
-        ?>
-
-
-
+            <div class="special-container">
+                <div class="specific-change">
+                    <img class='not-my-comentar-prof-image'
+                        src='<?php echo $SpecificCommentImagePath ?: "bilder/no-user-image.png"; ?>'>
+                    <div class="comment-details">
+                        <h3><?php echo $SpecificName . " " . $SpecificLastName; ?></h3>
+                        <h2><?php echo $SpecificAge; ?></h2>
+                        <p><?php echo $SpecificComment; ?></p>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
