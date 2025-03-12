@@ -49,110 +49,121 @@
 ");
 
 
+while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+
+    $commentname = htmlspecialchars($row['name']);
+    $commentlastname = htmlspecialchars($row['lastname']);
+    $commentage = htmlspecialchars($row['age']);
+
+    $commentcomment = htmlspecialchars($row['comment']);
+    $commentdate = htmlspecialchars($row['date']);
+
+    $commentId = htmlspecialchars($row['id']);
+    $commentScore = (int) $row['score'];
 
 
-            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+    $sql = "SELECT COUNT(*) AS total FROM comments WHERE link = ?";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$commentId]); 
+    $row2 = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalComments = $row2['total'] ?? 0;
+    
 
-                $commentname = htmlspecialchars($row['name']);
-                $commentlastname = htmlspecialchars($row['lastname']);
-                $commentage = htmlspecialchars($row['age']);
+    //! Detta 2 gör ingen är mäst för syns skull
+    $_SESSION['lastname'];
+    $_SESSION['name'];
 
-                $commentcomment = htmlspecialchars($row['comment']);
-                $commentdate = htmlspecialchars($row['date']);
+    if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
 
-                $commentId = htmlspecialchars($row['id']);
-                $commentScore = (int) $row['score'];
+        $_SESSION['name'] = $_COOKIE['name'];
+        $_SESSION['lastname'] = $_COOKIE['lastname'];
+    }
 
-                //! Detta 2 gör ingen är mäst för syns skull
-                $_SESSION['lastname'];
-                $_SESSION['name'];
-
-                if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
-
-                    $_SESSION['name'] = $_COOKIE['name'];
-                    $_SESSION['lastname'] = $_COOKIE['lastname'];
-                }
-
-                // ! kollar om bilden finns i bilder/ mappen
-                $imagePath2 = checkimage($commentname, $commentlastname);
+    // ! kollar om bilden finns i bilder/ mappen
+    $imagePath2 = checkimage($commentname, $commentlastname);
 
 
-                //! Göra så att man kan radera sina egna commentarer
-                if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
-                    echo
-                        "<div class='test-comentar'>
-       <form action='profile.php' method='get'> 
-       <label>
-       <img class='not-my-comentar-prof-image' src='$imagePath2 ?: 'bilder/no-user-image.png';'>
-       </label>
-       <input name='F-name' type='hidden' value='$commentname'>
-       <input name='L-name' type='hidden' value='$commentlastname'>
-       <button type='submit' class='name-form' >
-           $commentname $commentlastname
-       </button>
-   </form>
-   <h5>$commentdate</h5>
 
-           
-   <h4>Age: $commentage</h4>
-   <p>$commentcomment</p>
 
-   <h4>Score: $commentScore</h4>
-   <div style='display: flex; align-items: center; gap: 10px;'>
-   <form action='' method='post' style='display: flex; gap: 10px;'>
-   <input type='hidden' name='comment_id' value='$commentId;'>
+    //! Göra så att man kan radera sina egna commentarer
+    if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
+        echo
+            "<div class='test-comentar'>
+<form action='profile.php' method='get'> 
+<label>
+<img class='not-my-comentar-prof-image' src='$imagePath2 ?: 'bilder/no-user-image.png';'>
+</label>
+<input name='F-name' type='hidden' value='$commentname'>
+<input name='L-name' type='hidden' value='$commentlastname'>
+<button type='submit' class='name-form' >
+   $commentname $commentlastname
+</button>
+</form>
+<h5>$commentdate</h5>
 
-   <!-- Upvote button using label -->
-   <label for='upvote $commentId; ' style='cursor: pointer;'>
-       <img src='bilder/image_upward.png' class='vote' alt='Upvote'>
-   </label>
-   <input type='submit' id='upvote $commentId; ' name='vote-btn' value='upvote' style='display: none;'>";
+   
+<h4>Age: $commentage</h4>
+<p>$commentcomment</p>
 
-    if ($commentScore > 0) { echo"
-      
-       <label for='downvote $commentId; ' style='cursor: pointer;'>
-           <img src='bilder/image-downward.png' class='vote' alt='Downvote'>
-       </label>
-       <input type='submit' id='downvote $commentId; ' name='vote-btn' value='downvote' style='display: none;'>";
-    } echo"
+<h4>Score: $commentScore</h4>
+<div style='display: flex; align-items: center; gap: 10px;'>
+<form action='' method='post' style='display: flex; gap: 10px;'>
+<input type='hidden' name='comment_id' value='$commentId;'>
+
+<!-- Upvote button using label -->
+<label for='upvote $commentId; ' style='cursor: pointer;'>
+<img src='bilder/image_upward.png' class='vote' alt='Upvote'>
+</label>
+<input type='submit' id='upvote $commentId; ' name='vote-btn' value='upvote' style='display: none;'>";
+
+        if ($commentScore > 0) {
+            echo "
+
+<label for='downvote $commentId; ' style='cursor: pointer;'>
+   <img src='bilder/image-downward.png' class='vote' alt='Downvote'>
+</label>
+<input type='submit' id='downvote $commentId; ' name='vote-btn' value='downvote' style='display: none;'>";
+        }
+        echo "
 </form>
 <form action='comment-view.php' method='GET' style='display: inline-block;'>
-    <input type='hidden' name='comId' value='$commentId'>
-    <button type='submit' style='background: none; border: none; cursor: pointer;'>
-        <img src='bilder/view-icon.png' alt='View Comment' style='width: 25px; height: 25px;'> 
-    </button>
+<input type='hidden' name='comId' value='$commentId'>
+<button type='submit' style='background: none; border: none; cursor: pointer;'>
+<img src='bilder/view-icon.png' alt='View Comment' style='width: 25px; height: 25px;'> 
+</button>
 </form>
 </div>
-
+<span bold style='color:orange; font-weight:400;'>  $totalComments comments</span>
 </div>";
-                }
+    }
 
-                //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
-                else {
-                    echo "
-                <div class='test-comentar my-test-comentar'>
-                <a href='my-profile.php' style='text-decoration:none;'>  <h4> <img class=my-comentar-prof-image src='$imagePath2' ?: 'bilder/no-user-image.png'>  $commentname $commentlastname </h4> </a>
-                <h5>$commentdate</h5>
+    //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
+    else {
+        echo "
+        <div class='test-comentar my-test-comentar'>
+        <a href='my-profile.php' style='text-decoration:none;'>  <h4> <img class=my-comentar-prof-image src='$imagePath2' ?: 'bilder/no-user-image.png'>  $commentname $commentlastname </h4> </a>
+        <h5>$commentdate</h5>
 
-                
-                <h4>Age: $commentage</h4>
-                <p>$commentcomment</p> 
-                
-                <form action='' method='post'>
-                <button class='kill-button-class' type='submit' name='kill-btn' value='$commentId'> KILL COMMENT </button>
-                </form>
-                <form action='comment-view.php' method='GET' style='display: inline-block;'>
-                <input type='hidden' name='comId' value='$commentId'>
-                <button type='submit' style='background: none; border: none; cursor: pointer;'>
-                    <img src='bilder/view-icon.png' alt='View Comment' style='width: 25px; height: 25px;'> 
-                </button>
-            </form>
-            </div>
-            ";
+        
+        <h4>Age: $commentage</h4>
+        <p>$commentcomment</p> 
+        
+        <form action='' method='post'>
+        <button class='kill-button-class' type='submit' name='kill-btn' value='$commentId'> KILL COMMENT </button>
+        </form>
+        <form action='comment-view.php' method='GET' style='display: inline-block;'>
+        <input type='hidden' name='comId' value='$commentId'>
+        <button type='submit' style='background: none; border: none; cursor: pointer;'>
+            <img src='bilder/view-icon.png' alt='View Comment' style='width: 25px; height: 25px;'> 
+        </button>
+    </form>
+    <span bold style='color:green; font-weight:400;'>  $totalComments comments</span>
+    </div>
+    ";
 
-                }
+    }
 
-            }
+}
 
             ?>
 
