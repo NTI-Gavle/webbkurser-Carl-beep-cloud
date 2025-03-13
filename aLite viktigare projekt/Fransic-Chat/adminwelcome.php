@@ -29,6 +29,7 @@ include 'Cookies&Connect/check-image.php';
         
          if($thisbool == '1')
          {
+           
          }
 
          else{
@@ -43,8 +44,14 @@ include 'Cookies&Connect/check-image.php';
 
     if(isset($_POST['delete'])){
 
-
+        $stmt = $dbconn->prepare("DELETE FROM users WHERE id = ?");
+        $stmt->execute([$_POST['delete']]);
     }
+
+
+
+    //! Gör så bilden i headern finns 
+$headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
 
 ?>
 
@@ -69,11 +76,19 @@ include 'Cookies&Connect/check-image.php';
       <!--    //! basen som typ alla kommer ha  -->
       <link rel="stylesheet" href="admin.css">
 
+          <!--    //! Bootstrap  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
 
     <title>Fransic Chat</title>
 </head>
 <body>
+
+<?php  include'yes-loggin/yes-loggin-header.php'?>
 
 <div class="mycontainer">
 
@@ -91,17 +106,17 @@ include 'Cookies&Connect/check-image.php';
 
             <?php
 
-        $sql ="SELECT * ,id FROM users WHERE NOT name = 'admin'";
+        $sql ="SELECT * FROM users WHERE NOT name = 'admin'";
 
             $stmt = $dbconn->prepare($sql);
             $stmt->execute();
             $followers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($followers as $follower) {
+                $FolId = $follower['id'];
                 $FolName = htmlspecialchars($follower['name']);
                 $FolLastName = htmlspecialchars($follower['lastname']);
-                $FolId = htmlspecialchars($followers['id']);
-
+               
                 $imagePathfolowers = checkimage($FolName, $FolLastName);
 
 
@@ -112,7 +127,7 @@ include 'Cookies&Connect/check-image.php';
         <img src='$imagePathfolowers' alt='Profile Picture'>
         <span >$FolName $FolLastName </span>
         <form action='' method='post'>
-        <button name='delete'>Delete </button>
+        <button value='$FolId'  name='delete'>Delete</button>
     </form>
 
         </div>

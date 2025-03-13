@@ -25,6 +25,10 @@
           <li><a class="dropdown-item " href="my-profile.php">My Profile </a></li>
           <li><a class="dropdown-item " href="welcome.php">Start</a></li>
           <li><a class="dropdown-item " href="cube/start.html">Betyg!!</a></li>
+          <?php if($_COOKIE['adminbool'] == "1"){
+            echo "<li><a class='dropdown-item' href='adminwelcome.php'>Admin!!</a></li>";
+          } ?>
+
           <li>
             <form method="post" action="">
               <button type="submit" name="loggout-btn" class="dropdown-item">Logga ut</button>

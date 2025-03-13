@@ -115,6 +115,7 @@ if (isset($_POST['name']) && isset($_POST['pass'])) {
             }
 
             if ($row['bool'] == 1) {
+                setcookie('adminbool', "1",$expiry,"/");
                 header("Location: adminwelcome.php");
                 exit;
             }

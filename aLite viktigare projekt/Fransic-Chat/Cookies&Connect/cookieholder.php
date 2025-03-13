@@ -11,6 +11,12 @@ if (!isset($_COOKIE['lastname'])) {
 }
 
 
+if (!isset($_COOKIE['adminbool'])) {
+    $_COOKIE['adminbool'] = null;
+}
+
+
+
 if(isset($_POST['loggout-btn']))
 {
     cookiedestoryer();
@@ -25,8 +31,9 @@ function cookiedestoryer()
 
     setcookie('name', '', time() - 3600, "/");
     setcookie('lastname', '', time() - 3600, "/");
-
-
+    setcookie('adminbool', '', time() - 3600, "/");
+    
+    unset($_COOKIE['adminbool']);
     unset($_COOKIE['name']);
     unset($_COOKIE['lastname']);
 
