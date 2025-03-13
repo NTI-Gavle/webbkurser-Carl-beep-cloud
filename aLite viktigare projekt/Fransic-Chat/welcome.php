@@ -87,6 +87,8 @@ $headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
     <!--    //! basen som typ alla kommer ha  -->
     <link rel="stylesheet" href="bas/bas.css">
 
+    <!-- //! Clockan -->
+    <script src="clock.js" defer></script>
 
 
     <!--    //! Bootstrap  -->

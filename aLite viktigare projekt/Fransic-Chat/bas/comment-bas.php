@@ -1,7 +1,10 @@
 <div class="mycontainer">
 
 
-    <div class="leftside"></div>
+    <div class="leftside">
+<canvas id="timecanvas"  style="margin-left: 10%; width: 80%;" ></canvas>
+
+    </div>
 
     <div class="center">
 
