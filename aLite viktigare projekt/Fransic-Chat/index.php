@@ -19,6 +19,10 @@ include 'Cookies&Connect/cookieholder.php';
     <!-- //! är inuti själva bas men css separat för den här filen -->
     <link rel="stylesheet" href="no-loggin/no-loggin-bas.css">
 
+    
+    <!-- //! css För fottern -->
+    <link rel="stylesheet" href="fotter/fotter.css">
+
 
     <!--    //! Bootstrap  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -57,6 +61,9 @@ include "no-loggin/no-loggin-header.html";
         <div class="rightside"></div>
     </div>
 
+    <?php include'fotter/inteinloggad-fotter copy.html'?>
+
 </body>
+
 
 </html>

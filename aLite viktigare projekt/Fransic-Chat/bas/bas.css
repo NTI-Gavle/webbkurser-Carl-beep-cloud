@@ -52,7 +52,7 @@ body {
 
     .mycontainer {
         display: block;
-        min-height: 250px;
+        min-height: auto;
         width: 100vw;
         height: fit-content;
     }
