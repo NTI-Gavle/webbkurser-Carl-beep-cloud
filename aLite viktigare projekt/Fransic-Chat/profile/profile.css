@@ -297,6 +297,8 @@
        font-size: 5vw !important;
     }
 
- 
+    .stats{
+    max-width: 80px;    
+    }
 
 }

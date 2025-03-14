@@ -22,7 +22,7 @@ registration.addEventListener("submit", function (event) {
         }
 
         if (inpnamn.value.length > 9) {
-            str += "Name must be shorter then 7 letter" + "<br>";
+            str += "Name must be shorter then 9 letter" + "<br>";
         }
 
         if (inplastname.value.length < 1) {
@@ -30,7 +30,7 @@ registration.addEventListener("submit", function (event) {
         }
 
         if (inplastname.value.length > 9) {
-            str += "Last Name must be shorter then 7 letters" + "<br>";
+            str += "Last Name must be shorter then 9 letters" + "<br>";
         }
 
         if (inpage.value < 1) {
