@@ -2,7 +2,7 @@
 
 
     <div class="leftside">
-<canvas id="timecanvas"  style="margin-left: 10%; width: 80%;" ></canvas>
+        <canvas id="timecanvas" style="margin-left: 10%; width: 80%;"></canvas>
 
     </div>
 
@@ -52,46 +52,46 @@
 ");
 
 
-while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
-    $commentname = htmlspecialchars($row['name']);
-    $commentlastname = htmlspecialchars($row['lastname']);
-    $commentage = htmlspecialchars($row['age']);
+                $commentname = htmlspecialchars($row['name']);
+                $commentlastname = htmlspecialchars($row['lastname']);
+                $commentage = htmlspecialchars($row['age']);
 
-    $commentcomment = htmlspecialchars($row['comment']);
-    $commentdate = htmlspecialchars($row['date']);
+                $commentcomment = htmlspecialchars($row['comment']);
+                $commentdate = htmlspecialchars($row['date']);
 
-    $commentId = htmlspecialchars($row['id']);
-    $commentScore = (int) $row['score'];
-
-
-    $sql = "SELECT COUNT(*) AS total FROM comments WHERE link = ?";
-    $stmt = $dbconn->prepare($sql);
-    $stmt->execute([$commentId]); 
-    $row2 = $stmt->fetch(PDO::FETCH_ASSOC);
-    $totalComments = $row2['total'] ?? 0;
-    
-
-    //! Detta 2 gör ingen är mäst för syns skull
-    $_SESSION['lastname'];
-    $_SESSION['name'];
-
-    if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
-
-        $_SESSION['name'] = $_COOKIE['name'];
-        $_SESSION['lastname'] = $_COOKIE['lastname'];
-    }
-
-    // ! kollar om bilden finns i bilder/ mappen
-    $imagePath2 = checkimage($commentname, $commentlastname);
+                $commentId = htmlspecialchars($row['id']);
+                $commentScore = (int) $row['score'];
 
 
+                $sql = "SELECT COUNT(*) AS total FROM comments WHERE link = ?";
+                $stmt = $dbconn->prepare($sql);
+                $stmt->execute([$commentId]);
+                $row2 = $stmt->fetch(PDO::FETCH_ASSOC);
+                $totalComments = $row2['total'] ?? 0;
 
 
-    //! Göra så att man kan radera sina egna commentarer
-    if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
-        echo
-            "<div class='test-comentar'>
+                //! Detta 2 gör ingen är mäst för syns skull
+                $_SESSION['lastname'];
+                $_SESSION['name'];
+
+                if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) {
+
+                    $_SESSION['name'] = $_COOKIE['name'];
+                    $_SESSION['lastname'] = $_COOKIE['lastname'];
+                }
+
+                // ! kollar om bilden finns i bilder/ mappen
+                $imagePath2 = checkimage($commentname, $commentlastname);
+
+
+
+
+                //! Göra så att man kan radera sina egna commentarer
+                if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
+                    echo
+                        "<div class='test-comentar'>
 <form action='profile.php' method='get'> 
 <label>
 <img class='not-my-comentar-prof-image' src='$imagePath2 ?: 'bilder/no-user-image.png';'>
@@ -119,15 +119,15 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 </label>
 <input type='submit' id='upvote $commentId; ' name='vote-btn' value='upvote' style='display: none;'>";
 
-        if ($commentScore > 0) {
-            echo "
+                    if ($commentScore > 0) {
+                        echo "
 
 <label for='downvote $commentId; ' style='cursor: pointer;'>
    <img src='bilder/image-downward.png' class='vote' alt='Downvote'>
 </label>
 <input type='submit' id='downvote $commentId; ' name='vote-btn' value='downvote' style='display: none;'>";
-        }
-        echo "
+                    }
+                    echo "
 </form>
 <form action='comment-view.php' method='GET' style='display: inline-block;'>
 <input type='hidden' name='comId' value='$commentId'>
@@ -137,12 +137,19 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 </form>
 </div>
 <span bold style='color:orange; font-weight:400;'>  $totalComments comments</span>
+"; 
+if(@$_SESSION['adminbool'] == "1"){
+echo" <form action='' method='post'>
+        <button class='kill-button-class' style='border:red solid 2px;'  type='submit' name='kill-btn' value='$commentId'> KILL COMMENT </button>
+        </form>";
+}
+echo"
 </div>";
-    }
+                }
 
-    //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
-    else {
-        echo "
+                //! Är ifall du har skrivit koemntaren ska den ha en annan border och en extra knapp
+                else {
+                    echo "
         <div class='test-comentar my-test-comentar'>
         <a href='my-profile.php' style='text-decoration:none;'>  <h4> <img class=my-comentar-prof-image src='$imagePath2' ?: 'bilder/no-user-image.png'>  $commentname $commentlastname </h4> </a>
         <h5>$commentdate</h5>
@@ -164,9 +171,9 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
     </div>
     ";
 
-    }
+                }
 
-}
+            }
 
             ?>
 

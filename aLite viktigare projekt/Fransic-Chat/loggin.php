@@ -118,7 +118,6 @@ if (isset($_POST['name']) && isset($_POST['pass'])) {
                     setcookie('lastname', '', time() - 3600, "/");
                     unset($_COOKIE['name']);
                     unset($_COOKIE['lastname']);
-
                 }
             }
 

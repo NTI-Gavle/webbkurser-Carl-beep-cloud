@@ -57,6 +57,20 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 }
 
 
+if (isset($_POST['kill-btn'])) {
+
+    $TheCommentsId = $_POST['kill-btn'];
+
+    $sql = "DELETE FROM comments WHERE id = ?";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$TheCommentsId]);
+
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    unset($_POST['kill-btn']);
+    exit();
+}
+
+
 ?>
 
 <div class="mycontainer">
@@ -211,6 +225,13 @@ if (isset($_POST['comment']) && strlen($_POST['comment']) != 0) {
 </form>     
 </div>
 <span bold style='color:orange; font-weight:400;'>  $totalComments comments</span>
+"; 
+if(@$_SESSION['adminbool'] == "1"){
+echo" <form action='' method='post'>
+        <button class='kill-button-class' style='border:red solid 2px;'  type='submit' name='kill-btn' value='$commentId'> KILL COMMENT </button>
+        </form>";
+}
+echo"
 </div>";
             }
 
