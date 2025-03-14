@@ -112,10 +112,21 @@ if (isset($_POST['name']) && isset($_POST['pass'])) {
                 $expiry = time() + (30 * 24 * 60 * 60); // 30 days
                 setcookie('name', $_POST['name'], $expiry, "/");
                 setcookie('lastname', $row['lastname'] ?? '', $expiry, "/");
+
+                if ($row['bool'] == 1) {
+                    setcookie('name', '', time() - 3600, "/");
+                    setcookie('lastname', '', time() - 3600, "/");
+                    unset($_COOKIE['name']);
+                    unset($_COOKIE['lastname']);
+
+                }
             }
 
+            $_SESSION['adminbool'] = "0";
+
             if ($row['bool'] == 1) {
-                setcookie('adminbool', "1",$expiry,"/");
+
+                $_SESSION['adminbool'] = "1";
                 header("Location: adminwelcome.php");
                 exit;
             }
