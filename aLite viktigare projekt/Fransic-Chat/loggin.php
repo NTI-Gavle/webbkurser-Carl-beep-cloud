@@ -46,7 +46,7 @@ include 'Cookies&Connect/cookieholder.php'
                     <label for="cbox">Remeber login</label>
 
                     <div class="cboxfiller">
-                        <input name="cbox" type="checkbox" id="cbox" class="cbox">
+                        <input name="cbox" type="checkbox" id="cbox" class="cbox"> <label for="">Tryck inte Remeber loggin ifall du har admin roll</label>
                     </div>
 
                     <button type="submit">Logga in</button>

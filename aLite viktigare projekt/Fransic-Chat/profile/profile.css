@@ -214,7 +214,7 @@
 }
 
 
-@media (max-width: 950px) {
+@media (max-width: 1130px) {
     .info-img-container {
         display: block;
     }
@@ -291,7 +291,7 @@
 
 }
 
-@media (max-width: 390px) {
+@media (max-width: 450px) {
 
     .info-container>ul>li>u>h1 {
        font-size: 5vw !important;

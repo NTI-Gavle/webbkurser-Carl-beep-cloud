@@ -106,7 +106,7 @@ $headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
 
             <?php
 
-        $sql ="SELECT * FROM users WHERE NOT name = 'admin'";
+        $sql ="SELECT * FROM users WHERE NOT name = 'admin' ORDER BY name ";
 
             $stmt = $dbconn->prepare($sql);
             $stmt->execute();

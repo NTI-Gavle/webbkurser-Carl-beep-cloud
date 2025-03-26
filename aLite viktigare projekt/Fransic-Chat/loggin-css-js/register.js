@@ -16,21 +16,21 @@ registration.addEventListener("submit", function (event) {
 
     let str = "";
 
-    if (inpnamn.value.length < 2 || inplastname.value.length < 1 || inppass.value.length < 3 || inpage.value < 1 || inpnamn.value.length > 9 || inplastname.value.length > 9 || inpage.value.length > 3) {
+    if (inpnamn.value.length < 2 || inplastname.value.length < 1 || inppass.value.length < 3 || inpage.value < 1 || inpnamn.value.length > 12 || inplastname.value.length > 12 || inpage.value.length > 3) {
         if (inpnamn.value.length < 2) {
             str += "Name must be longer then 1 letter" + "<br>";
         }
 
-        if (inpnamn.value.length > 9) {
-            str += "Name must be shorter then 9 letter" + "<br>";
+        if (inpnamn.value.length > 12) {
+            str += "Name must be shorter then 12 letter" + "<br>";
         }
 
         if (inplastname.value.length < 1) {
             str += "Last Name must be longer then 1 letters" + "<br>";
         }
 
-        if (inplastname.value.length > 9) {
-            str += "Last Name must be shorter then 9 letters" + "<br>";
+        if (inplastname.value.length > 12) {
+            str += "Last Name must be shorter then 12 letters" + "<br>";
         }
 
         if (inpage.value < 1) {
@@ -44,13 +44,15 @@ registration.addEventListener("submit", function (event) {
         if (inppass.value.length < 3) {
             str += "Your password need to be longer then 3 letters" + "<br>";
         }
-
-
         diven.innerHTML = str;
         show();
     }
 
-
+    else if (/[\/\\:*?"<>|.,]/.test(inpnamn.value) || /[\/\\:*?"<>|.,]/.test(inplastname.value)) {
+        str += "Your name or lastname cant contain any wierd charachters!" + "<br>";
+        diven.innerHTML = str;
+        show();
+    }
 
     else {
         dontshow();
