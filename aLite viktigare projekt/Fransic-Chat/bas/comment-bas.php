@@ -86,10 +86,10 @@
                 $imagePath2 = checkimage($commentname, $commentlastname);
 
 
-
-
+                     
+    
                 //! Göra så att man kan radera sina egna commentarer
-                if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
+                if ($row['name'] != $_SESSION['name'] || $row['lastname'] != $_SESSION['lastname']) {
                     echo
                         "<div class='test-comentar'>
 <form action='profile.php' method='get'> 

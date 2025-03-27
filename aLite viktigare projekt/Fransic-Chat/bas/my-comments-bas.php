@@ -55,7 +55,7 @@
 
                 $imagePath2 = checkimage($commentname, $commentlastname);
 
-                if ($row['name'] != $_SESSION['name'] && $row['lastname'] != $_SESSION['lastname']) {
+                if ($row['name'] != $_SESSION['name'] || $row['lastname'] != $_SESSION['lastname']) {
 
                 } else {
                     echo "

@@ -7,7 +7,7 @@
 
         <div class="center-container">
             <div class="my-input-container">
-                <h1 style="color:orange;"><?php echo $_SESSION['name'] . " " . $_SESSION['lastname']; ?>s Following </h1>
+            <h1 style="color:orange;"><?php  echo htmlspecialchars( $_SESSION['name'] . " " . $_SESSION['lastname']); ?>s Followers </h1>
             </div>
           
 
