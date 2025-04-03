@@ -104,11 +104,12 @@ if (isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['pass']) 
 
     if ($taken == false) {
 
+        $hashedPass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
         
         $sql = "INSERT INTO users (name, lastname, age, pass, date) VALUES (?, ?, ?, ?, NOW())";
 
         $stmt = $dbconn->prepare($sql);
-        $stmt->execute([$_POST['name'], $_POST['lastname'], $_POST['age'], $_POST['pass']]);
+        $stmt->execute([$_POST['name'], $_POST['lastname'], $_POST['age'], $hashedPass]);
         header("Location: loggin.php");
 
     }

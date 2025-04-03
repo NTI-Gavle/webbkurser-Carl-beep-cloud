@@ -85,8 +85,6 @@ include 'Cookies&Connect/cookieholder.php'
 </html>
 
 
-
-
 <?php
 
 
@@ -99,7 +97,7 @@ if (isset($_POST['name']) && isset($_POST['pass'])) {
 
     $res = $stmt->fetchAll();
     foreach ($res as $row) {
-        if ($row['name'] == $_POST['name'] && $row['pass'] == $_POST['pass']) {
+        if ($row['name'] == $_POST['name'] && password_verify($_POST['pass'],$row['pass'])) {
 
             $_SESSION['name'] = $row['name'];
             $_SESSION['lastname'] = $row['lastname'];

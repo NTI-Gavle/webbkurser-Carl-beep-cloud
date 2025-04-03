@@ -202,7 +202,7 @@ $followingCount = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <body>
     <?php
-    include 'yes-loggin/yes-loggin-header.php';
+    include 'yes-loggin/yes-loggin-header.php'; 
     ?>
 
     <div class="about-container">
