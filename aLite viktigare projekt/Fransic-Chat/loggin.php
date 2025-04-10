@@ -87,8 +87,6 @@ include 'Cookies&Connect/cookieholder.php'
 
 <?php
 
-
-
 if (isset($_POST['name']) && isset($_POST['pass'])) {
 
     $sql = "SELECT * FROM users";

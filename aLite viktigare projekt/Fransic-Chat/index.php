@@ -61,7 +61,6 @@ include "no-loggin/no-loggin-header.html";
         <div class="rightside"></div>
     </div>
 
-    <?php include'fotter/inteinloggad-fotter copy.html'?>
 
 </body>
 

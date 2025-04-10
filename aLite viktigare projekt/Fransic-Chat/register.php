@@ -30,7 +30,7 @@ session_start(); ?>
 
         <div class="my-container">
             <div class="text-container">
-                <h1> Loggin to Fransic Chat</h1>
+                <h1> Register to Fransic Chat</h1>
             </div>
             <div class="form-container" id="write-loggin">
 
