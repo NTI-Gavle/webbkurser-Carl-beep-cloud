@@ -39,9 +39,16 @@ include 'Cookies&Connect/cookieholder.php'
                     <label for="name">Namn:</label>
                     <input name="name" type="text" id="name" placeholder="Skriv ditt namn"> <br>
 
+                    
+                    <label for="lastname">Last Name:</label>
+                    <input name="lastname" type="text" id="lastname" placeholder="Skriv ditt efternamn"> <br>
+
+                    
 
                     <label for="pass">Password:</label>
                     <input name="pass" type="password" id="pass" placeholder="Password"> <br>
+
+                  
 
                     <label for="cbox">Remeber login</label>
 
@@ -95,7 +102,7 @@ if (isset($_POST['name']) && isset($_POST['pass'])) {
 
     $res = $stmt->fetchAll();
     foreach ($res as $row) {
-        if ($row['name'] == $_POST['name'] && password_verify($_POST['pass'],$row['pass'])) {
+        if ($row['name'] == $thelastname = ucfirst(strtolower($_POST['name'])) && password_verify($_POST['pass'], $row['pass']) && $row['lastname'] == $thelastname = ucfirst(strtolower($_POST['lastname']))) {
 
             $_SESSION['name'] = $row['name'];
             $_SESSION['lastname'] = $row['lastname'];

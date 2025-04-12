@@ -37,7 +37,6 @@
             }
 
 
-
             $query = $dbconn->query("
     SELECT comments.*, users.name, users.lastname, users.age 
     FROM comments
@@ -86,8 +85,8 @@
                 $imagePath2 = checkimage($commentname, $commentlastname);
 
 
-                     
-    
+
+
                 //! Göra så att man kan radera sina egna commentarer
                 if ($row['name'] != $_SESSION['name'] || $row['lastname'] != $_SESSION['lastname']) {
                     echo
@@ -137,13 +136,13 @@
 </form>
 </div>
 <span bold style='color:orange; font-weight:400;'>  $totalComments comments</span>
-"; 
-if(@$_SESSION['adminbool'] == "1"){
-echo" <form action='' method='post'>
+";
+                    if (@$_SESSION['adminbool'] == "1") {
+                        echo " <form action='' method='post'>
         <button class='kill-button-class' style='border:red solid 2px;'  type='submit' name='kill-btn' value='$commentId'> KILL COMMENT </button>
         </form>";
-}
-echo"
+                    }
+                    echo "
 </div>";
                 }
 
