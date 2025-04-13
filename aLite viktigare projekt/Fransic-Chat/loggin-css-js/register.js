@@ -9,6 +9,7 @@ registration.addEventListener("submit", function (event) {
 
     let diven = document.getElementById("alerten");
 
+    let epost = document.getElementById("epost");
     let inpnamn = document.getElementById("name");
     let inplastname = document.getElementById("lastname");
     let inppass = document.getElementById("pass");
@@ -16,7 +17,13 @@ registration.addEventListener("submit", function (event) {
 
     let str = "";
 
-    if (inpnamn.value.length < 2 || inplastname.value.length < 1 || inppass.value.length < 3 || inpage.value < 1 || inpnamn.value.length > 12 || inplastname.value.length > 12 || inpage.value.length > 3) {
+    EPostParts = epost.split("@");
+
+    if (inpnamn.value.length < 2 || inplastname.value.length < 1 || inppass.value.length < 3 || inpage.value < 1 || inpnamn.value.length > 12 || inplastname.value.length > 12 || inpage.value.length > 3 ||
+        
+        (epost.includes('@')&& (epost.length > 6) && ( epost.slice('@').length>4 ))     &&   EPostParts[1].substring(EPostParts[1].length-2).includes() != "." ) {
+        
+
         if (inpnamn.value.length < 2) {
             str += "Name must be longer then 1 letter" + "<br>";
         }

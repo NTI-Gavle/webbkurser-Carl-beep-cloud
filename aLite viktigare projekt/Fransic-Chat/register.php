@@ -47,6 +47,9 @@ session_start(); ?>
                     <label for="pass">Password:</label>
                     <input name="pass" type="password" id="pass" placeholder="Password"> <br>
 
+                    <label for="epost">E-post: Not neccesary</label>
+                    <input name="epost" type="text" id="epost" placeholder="e-post"> <br>
+
                     <button type="submit">Register</button>
 
                 </form>
@@ -106,14 +109,15 @@ if (isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['pass']) 
 
         $thename = ucfirst(strtolower($_POST['name']));
         $thelastname = ucfirst(strtolower($_POST['lastname']));
-
+        $theepost = $_POST['epost'];
 
         $hashedPass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-        
-        $sql = "INSERT INTO users (name, lastname, age, pass, date) VALUES (?, ?, ?, ?, NOW())";
+
+        $sql = "INSERT INTO users (name, lastname, age, pass, epost, date) VALUES (?, ?, ?, ?,?, NOW())";
 
         $stmt = $dbconn->prepare($sql);
-        $stmt->execute([$thename, $thelastname, $_POST['age'], $hashedPass]);
+        $stmt->execute([$thename, $thelastname, $_POST['age'], $hashedPass, $theepost]);
+
         header("Location: loggin.php");
 
     }
