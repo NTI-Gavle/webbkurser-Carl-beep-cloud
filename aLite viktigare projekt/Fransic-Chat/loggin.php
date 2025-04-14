@@ -77,8 +77,9 @@ include 'Cookies&Connect/cookieholder.php'
                 <a href="index.php">
                     <button>
                         Go back
-                    </button>
+                    </button> 
                 </a>
+                <a href="new-pass.php">asdasd</a>
 
             </div>
 

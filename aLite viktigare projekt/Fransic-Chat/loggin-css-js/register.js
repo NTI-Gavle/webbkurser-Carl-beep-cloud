@@ -9,7 +9,7 @@ registration.addEventListener("submit", function (event) {
 
     let diven = document.getElementById("alerten");
 
-    let epost = document.getElementById("epost");
+    let epost = document.getElementById("epost").value;
     let inpnamn = document.getElementById("name");
     let inplastname = document.getElementById("lastname");
     let inppass = document.getElementById("pass");
@@ -17,12 +17,8 @@ registration.addEventListener("submit", function (event) {
 
     let str = "";
 
-    EPostParts = epost.split("@");
+    if (inpnamn.value.length < 2 || inplastname.value.length < 1 || inppass.value.length < 3 || inpage.value < 1 || inpnamn.value.length > 12 || inplastname.value.length > 12 || inpage.value.length > 3 ) {
 
-    if (inpnamn.value.length < 2 || inplastname.value.length < 1 || inppass.value.length < 3 || inpage.value < 1 || inpnamn.value.length > 12 || inplastname.value.length > 12 || inpage.value.length > 3 ||
-        
-        (epost.includes('@')&& (epost.length > 6) && ( epost.slice('@').length>4 ))     &&   EPostParts[1].substring(EPostParts[1].length-2).includes() != "." ) {
-        
 
         if (inpnamn.value.length < 2) {
             str += "Name must be longer then 1 letter" + "<br>";
@@ -51,6 +47,8 @@ registration.addEventListener("submit", function (event) {
         if (inppass.value.length < 3) {
             str += "Your password need to be longer then 3 letters" + "<br>";
         }
+        
+
         diven.innerHTML = str;
         show();
     }
