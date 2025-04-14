@@ -78,7 +78,11 @@ if(isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['mail']))
         ':mail' => $mail
     ]);
 
+    $themail = htmlspecialchars($_POST['mail']);
+    $headers = "From: support@idontknowmydomain.com\r\n";
+
     if ($stmt->rowCount() > 0) {
+        mail($themail,'Renew-password','this is about chicken' ,$headers);
         echo "<h1 style='color:yellow;'>skibidi ohio</h1>";
     } else {
         echo "<p style='color:red;'>No matching user found.</p>";
