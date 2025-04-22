@@ -82,8 +82,21 @@ if(isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['mail']))
     $headers = "From: ntimailsender@gmail.com\r\n";
 
     if ($stmt->rowCount() > 0) {
-        mail($themail,'Renew-password','this is about chicken' ,$headers);
+
+        $resetLink = "http://localhost:8080/aLite%20viktigare%20projekt/Fransic-Chat/reset_password.php?email=" . urlencode($mail);
+
+        $message = "Click this link to reset your password: $resetLink";
+        $headers = "From: ntimailsender@gmail.com\r\n";
+    
+        mail($mail, 'Reset your password', $message, $headers);
+    
+        echo "<h1 style='color:yellow;'>Reset link sent.</h1>";
+
+      /*  mail($themail,'Renew-password','this is about chicken' ,$headers);
         echo "<h1 style='color:yellow;'>skibidi ohio</h1>";
+        */
+
+        
     } else {
         echo "<p style='color:red;'>No matching user found.</p>";
     }

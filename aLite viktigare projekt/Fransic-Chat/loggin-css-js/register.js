@@ -94,7 +94,8 @@ function alertshower() {
 
     let diven = document.getElementById("alerten");
 
-    let str = "En annan har redan det där namnet och efternamnet";
+    str = "MAybe someone already has that email adress" + "<br>";
+
     console.log("hejsan");
     diven.innerHTML = str;
     diven.classList.remove("hidden");

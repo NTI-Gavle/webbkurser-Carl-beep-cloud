@@ -91,7 +91,7 @@ if (isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['pass']) 
     foreach ($res as $row) {
 
 
-        if ($row['name'] == $_POST['name'] && $row['lastname'] == $_POST['lastname']) {
+        if ($row['name'] == $_POST['name'] && $row['lastname'] == $_POST['lastname'] || $row['epost'] == $_POST['epost']) {
             $taken = true;
 
             ?>
