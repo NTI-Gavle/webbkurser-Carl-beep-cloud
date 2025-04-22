@@ -79,7 +79,7 @@ if(isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['mail']))
     ]);
 
     $themail = htmlspecialchars($_POST['mail']);
-    $headers = "From: support@idontknowmydomain.com\r\n";
+    $headers = "From: ntimailsender@gmail.com\r\n";
 
     if ($stmt->rowCount() > 0) {
         mail($themail,'Renew-password','this is about chicken' ,$headers);
