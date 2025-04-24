@@ -42,6 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email']) && isset($_P
     <!-- Custom CSS -->
     <link rel="stylesheet" href="loggin-css-js/loggin-reg.css">
 
+    <!-- js -->
+<script src="reset.js" defer></script>
+
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -67,10 +70,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email']) && isset($_P
                         <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
 
                         <label style="color:lightblue;" for="new_password">New Password:</label>
-                        <input style="border:blue 2px solid;" name="new_password" type="password" id="new_password" placeholder="Enter new password" required> <br><br>
+                        <input style="border:blue 2px solid;" id="pass" name="new_password" type="password" id="new_password" placeholder="Enter new password" required> <br><br>
 
                         <button class="btn btn-primary" style="border:solid 2px blue; background-color:darkblue;" type="submit">Reset Password</button>
                     </form>
+                </div>
+                <div id="alerten" onclick="check()" class="hidden" role="alert">
+                    A simple dark alert—check it out!
                 </div>
             <?php else: ?>
                 <div class="alert alert-warning">Invalid password reset link.</div>
