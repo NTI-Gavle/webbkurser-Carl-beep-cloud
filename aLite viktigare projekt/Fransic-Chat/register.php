@@ -47,7 +47,7 @@ session_start(); ?>
                     <label for="pass">Password:</label>
                     <input name="pass" type="password" id="pass" placeholder="Password"> <br>
 
-                    <label for="epost">E-post: Not neccesary</label>
+                    <label for="epost">E-post</label>
                     <input name="epost" type="text" id="epost" placeholder="e-post"> <br>
 
                     <button type="submit">Register</button>
