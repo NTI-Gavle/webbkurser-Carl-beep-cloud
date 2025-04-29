@@ -121,9 +121,6 @@ if (isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['pass']) 
         header("Location: loggin.php");
 
     }
-
-
-
 }
 
 ?>
