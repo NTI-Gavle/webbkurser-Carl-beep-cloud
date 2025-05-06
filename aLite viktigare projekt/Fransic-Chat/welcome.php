@@ -112,6 +112,5 @@ $headerimagePath = checkimage($_SESSION['name'], $_SESSION['lastname']);
 
 
 
-</body>
 
 </html>
